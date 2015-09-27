@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="../../favicon.ico" />
+
+<title th:text="#{editarusuario}"></title>
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- CSS do projeto -->
+<link href="/css/main.css" rel="stylesheet" />
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="/libs/html5shiv/html5shiv.min.js"></script>
+      <script src="/libs/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
+		
+		<!-- navbar -->
+		<div th:include="/fragments/nav :: navbarcontent"></div>
+		
+		<div class="content">
+				
+				<form action="#" th:action="@{/usuario}" th:object="${usuario}" method="post" enctype="multipart/form-data">
+				
+					<input th:type="hidden" th:name="id" th:field="*{id}"/>
+					
+					<fieldset class="form">
+					
+							<legend><text for="editarusuario" th:text="#{editarusuario}"></text></legend>
+							
+							<a th:href="@{/deleteusuario/{id}(id=${usuario.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
+							
+							<div class="fieldcontain">
+								<label for="username" th:text="#{username}"></label>
+								<span class="required-indicator">*</span>
+								<input th:class="lower" th:type="text" th:name="username" th:field="*{username}" th:maxlength="20" th:placeholder="#{username}" th:required="true" th:autofocus="true" /> 
+								<span class="field-validator" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="password" th:text="#{password}"></label>
+								<span class="required-indicator">*</span>
+								<input th:type="password" th:placeholder="#{password}" th:required="true"  th:name="password" th:field="*{password}"/>
+								<span class="field-validator" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="confirmapassword" th:text="#{confirmapassword}"></label>
+								<span class="required-indicator">*</span>
+								<input th:type="password" th:placeholder="#{confirmapassword}" th:required="true"  th:name="confirmapassword"/> 
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="primeironome" th:text="#{primeironome}"></label>
+								<span class="required-indicator">*</span>
+								<input th:type="text" th:field="*{primeironome}" th:name="primeironome" th:placeholder="#{primeironome}" th:required="true"/> 
+								<span class="field-validator" th:if="${#fields.hasErrors('primeironome')}" th:errors="*{primeironome}"></span>
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="sobrenome" th:text="#{sobrenome}"></label>
+								<span class="not-required"></span>
+								<input th:type="text" th:field="*{sobrenome}" th:name="sobrenome" th:placeholder="#{sobrenome}" th:required="false"/> 
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="email" th:text="#{email}"></label>
+								<span class="required-indicator">*</span>
+								<input th:type="text" th:field="*{email}" th:name="email" th:size="35" th:placeholder="#{email}" th:required="true"/> 
+								<span class="field-validator" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="imagem" th:text="#{imagem}"></label>
+								<span class="required-indicator"></span>
+								<input th:type="file" th:name="arquivo" placeholder="#{imagem}"/>
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="ativo" th:text="#{ativo}"></label>
+								<input th:type="checkbox" th:field="*{ativo}" th:name="ativo" th:placeholder="#{ativo}"/> 
+								<span class="field-validator" th:if="${#fields.hasErrors('ativo')}" th:errors="*{ativo}"></span>
+							</div>
+							
+							<div class="fieldcontain">
+								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
+							</div>
+							
+					</fieldset>	
+					
+				</form>
+		</div>
+		
+		<!-- footer -->
+		<div th:include="/fragments/footer :: footercontent"></div>
+	
+	</div>
+	<!-- /.container -->
+</body>
+</html>
