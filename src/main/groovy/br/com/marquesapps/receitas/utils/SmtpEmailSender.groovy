@@ -1,4 +1,4 @@
-package br.com.marquesapps.utils
+package br.com.marquesapps.receitas.utils
 
 import javax.mail.MessagingException
 import javax.mail.internet.MimeMessage
@@ -20,11 +20,11 @@ class SmtpEmailSender{
 		MimeMessageHelper helper
 		
 		helper = new MimeMessageHelper(message, true) //true = multipart message
-		helper.setFrom("liuit@gmail.com")
+		helper.setFrom("liunit@gmail.com")
 		helper.setSubject(subject)
 		helper.setTo(to)
 		helper.setText(body, true)
 		
-		javaMailSender.send(message)
+		return javaMailSender.send(message)
 	}
 }

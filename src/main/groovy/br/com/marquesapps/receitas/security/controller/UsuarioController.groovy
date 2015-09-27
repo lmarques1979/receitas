@@ -27,8 +27,8 @@ import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
 import br.com.marquesapps.receitas.utils.Amazon
+import br.com.marquesapps.receitas.utils.SmtpEmailSender
 import br.com.marquesapps.receitas.utils.Util
-import br.com.marquesapps.utils.SmtpEmailSender;
 
 @RestController
 @PreAuthorize('permitAll')
@@ -66,13 +66,10 @@ class UsuarioController {
 		    Random novasenha = new Random()
 			String senha = Math.abs(novasenha.nextInt())
 			usuario.setPassword(new BCryptPasswordEncoder().encode(senha))
-			def assunto = messageSource.getMessage("emailnaocadastrado", null, LocaleContextHolder.getLocale())
-			def msg = messageSource.getMessage("novasenha", null, LocaleContextHolder.getLocale()) + "<b>" + senha + "</b>" 
-			smtpEmailSender.send(email , assunto , msg)
-						
+			def assunto=messageSource.getMessage("novasenhaassunto", null, LocaleContextHolder.getLocale())
+			def msg=messageSource.getMessage("novasenha", null, LocaleContextHolder.getLocale()) + "<b>" + senha + "</b>" 
+			def ret=smtpEmailSender.send(usuario.email , assunto , msg)
 			usuarioRepositorio.save(usuario)
-			
-			
 		}
 				
 		new ModelAndView("views/usuario/esqueceusenha",

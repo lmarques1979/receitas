@@ -14,7 +14,9 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor
 import org.springframework.web.servlet.i18n.SessionLocaleResolver
 
 @SpringBootApplication
-@ComponentScan(["br.com.marquesapps.receitas","br.com.marquesapps.utils", "br.com.marquesapps.receitas.security"])
+@ComponentScan(["br.com.marquesapps.receitas",
+				"br.com.marquesapps.receitas.utils", 
+				"br.com.marquesapps.receitas.security"])
 class Main extends WebMvcConfigurerAdapter{
 	
 	@Autowired
