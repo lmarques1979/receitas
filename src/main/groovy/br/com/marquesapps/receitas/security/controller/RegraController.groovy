@@ -38,7 +38,7 @@ class RegraController {
 	
 	@RequestMapping(value="/verregras",method = RequestMethod.GET)
 	def view(Model model , @PageableDefault(page=0,size=10) Pageable pageable) {
-		Sort sort = new Sort(Sort.Direction.DESC, "descricao")
+		Sort sort = new Sort(Sort.Direction.ASC, "descricao")
 		def pageabledefault = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),sort)
 		
 		def regras=regraRepositorio.findAll(pageabledefault)

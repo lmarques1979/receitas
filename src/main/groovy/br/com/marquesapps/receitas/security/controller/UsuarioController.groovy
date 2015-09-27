@@ -1,13 +1,14 @@
 package br.com.marquesapps.receitas.security.controller;
 
+import javax.mail.MessagingException
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
+import org.springframework.mail.MailSender
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
@@ -26,10 +28,14 @@ import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
 import br.com.marquesapps.receitas.utils.Amazon
 import br.com.marquesapps.receitas.utils.Util
+import br.com.marquesapps.utils.SmtpEmailSender;
 
-@Controller
+@RestController
 @PreAuthorize('permitAll')
 class UsuarioController {
+	
+	@Autowired
+	private SmtpEmailSender smtpEmailSender
 	
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio
@@ -42,6 +48,41 @@ class UsuarioController {
 	
 	@Autowired
 	private MessageSource messageSource
+	
+	public void setMailSender(MailSender mailSender) {
+		this.mailSender = mailSender;
+	}
+	
+	@RequestMapping(value="/esqueceusenha",method = RequestMethod.POST)
+	def esqueceu(@RequestParam("email") String email) throws MessagingException{
+		
+		def usuario = usuarioRepositorio.findByEmail(email)
+		
+		if (usuario==null){
+			return new ModelAndView("views/usuario/esqueceusenha",
+			[errors:messageSource.getMessage("emailnaocadastrado", null, LocaleContextHolder.getLocale())])
+		}else{
+			
+		    Random novasenha = new Random()
+			String senha = Math.abs(novasenha.nextInt())
+			usuario.setPassword(new BCryptPasswordEncoder().encode(senha))
+			def assunto = messageSource.getMessage("emailnaocadastrado", null, LocaleContextHolder.getLocale())
+			def msg = messageSource.getMessage("novasenha", null, LocaleContextHolder.getLocale()) + "<b>" + senha + "</b>" 
+			smtpEmailSender.send(email , assunto , msg)
+						
+			usuarioRepositorio.save(usuario)
+			
+			
+		}
+				
+		new ModelAndView("views/usuario/esqueceusenha",
+			[message:messageSource.getMessage("emailenviadocomsucesso", null, LocaleContextHolder.getLocale())])
+	}
+	
+	@RequestMapping(value="/esqueceusenha",method = RequestMethod.GET)
+	def senha() {
+		new ModelAndView("views/usuario/esqueceusenha")
+	}
 	
 	@RequestMapping(value="/verusuarios",method = RequestMethod.GET)
 	@PreAuthorize('hasAuthority("ADMIN")')
@@ -101,7 +142,6 @@ class UsuarioController {
 	def create(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		new ModelAndView("views/usuario/create")
-		
 	}
 	
 	@RequestMapping(value="/usuario" , method = RequestMethod.POST)
@@ -118,15 +158,19 @@ class UsuarioController {
 				def ret
 				def regra, usuarioregra
 				
-				//Verifico se é usuário novo ou é edição
-				if (usuario.id==null){
-					//Valido username
-					ret = usuarioRepositorio.findByUsername(usuario.username)	
-					if (ret!=null){
-						bindingResult.rejectValue("username","userexists", messageSource.getMessage("usernameexiste", null, LocaleContextHolder.getLocale()))
-						return "views/usuario/edit"
-					}
+				//Valido username
+				ret = usuarioRepositorio.findByUsername(usuario.username)	
+				if (ret!=null){
+					bindingResult.rejectValue("username","userexists", messageSource.getMessage("usernameexiste", null, LocaleContextHolder.getLocale()))
+					return "views/usuario/edit"
 				}
+				//Valido username
+				ret = usuarioRepositorio.findByEmail(usuario.email)
+				if (ret!=null){
+					bindingResult.rejectValue("email","emailexists", messageSource.getMessage("emailexiste", null, LocaleContextHolder.getLocale()))
+					return "views/usuario/edit"
+				}
+				
 				
 				if(usuario.password!=confirmapassword){
 					bindingResult.rejectValue("password","passworddiferent", messageSource.getMessage("senhanaoconfere", null, LocaleContextHolder.getLocale()))

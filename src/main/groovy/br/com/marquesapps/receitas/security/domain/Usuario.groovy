@@ -34,7 +34,7 @@ public class Usuario{
 	@NotNull
 	private String password;
 	
-	@Column(name = "email", nullable = false)
+	@Column(name = "email",nullable=false,unique = true)
 	@NotNull
 	@Size(min=5, max=70)
 	@Email(message="{emailinvalido}")

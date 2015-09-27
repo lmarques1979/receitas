@@ -95,6 +95,8 @@
 				<label for="inputPassword" class="sr-only"	th:text="#{password}"></label> 
 				<input th:type="password" th:id="inputPassword" class="form-control" th:placeholder="#{password}" th:required="true" th:name="password" />
 	
+				<a th:href="@{/esqueceusenha}" class="esqueceu"><text for="usuario" th:text="#{esqueceusenha}"></text></a>
+				
 				<button class="btn btn-lg btn-primary btn-block" th:type="submit">
 					<text for="remember" th:text="#{botaoentrarsistema}"></text>
 				</button>

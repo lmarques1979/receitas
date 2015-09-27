@@ -10,6 +10,13 @@ a{
 	color:#2F548B; 
 }
 
+a.esqueceu, a.esqueceu:hover, a.esqueceu:active{
+	display:block;
+	text-decoration:none;
+	font-weight:bold;
+	margin:0.5em;
+}
+
 /*TABLES*/
 table {
 	width:70%;
