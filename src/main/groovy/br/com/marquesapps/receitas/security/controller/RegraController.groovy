@@ -78,7 +78,22 @@ class RegraController {
 		if (bindingResult.hasErrors()) {
 				return "views/regra/edit" 
 		}else{
-				def usuarioregra
+				
+				def regradescricao
+				//Valido descricao
+				regradescricao = regraRepositorio.findByDescricao(regra.getDescricao())
+				if (regradescricao!=null){
+					
+						if (regradescricao.getId()==null){
+							bindingResult.rejectValue("descricao","regraexiste", messageSource.getMessage("regraexiste", null, LocaleContextHolder.getLocale()))
+							return "views/regra/edit"
+						}
+						
+						if (regradescricao.id!=regra.getId()){
+							bindingResult.rejectValue("descricao","regraexiste", messageSource.getMessage("regraexiste", null, LocaleContextHolder.getLocale()))
+							return "views/regra/edit"
+						}
+				}
 			    regra.descricao = regra.descricao.toUpperCase()
 				regraRepositorio.save(regra)
 		}

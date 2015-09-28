@@ -43,19 +43,15 @@ class UsuarioRegraController {
 	@RequestMapping(value="/verusuarioregras",method = RequestMethod.GET)
 	def view(Model model) {
 		def usuarioregras = usuarioregraRepositorio.findAll()
-		model.addAttribute("usuarioregra", usuarioregras);
+		model.addAttribute("usuarioregra", usuarioregras);	
 		new ModelAndView("views/usuarioregra/view")
-		
 	}
 	
 	@RequestMapping(value="/showusuarioregra/{id}",method = RequestMethod.GET)
 	def show(Model model , @PathVariable(value="id") Long id) {
-		
-		def usuarios = usuarioRepositorio.findByAtivoTrue();
-		def regras = regraRepositorio.findByAtivoTrue();
 		def usuarioregra=usuarioregraRepositorio.findOne(id);
-		model.addAttribute("usuarios", usuarios);
-		model.addAttribute("regras", regras);
+		model.addAttribute("usuarios", usuarioRepositorio.findByAtivoTrue());
+		model.addAttribute("regras", regraRepositorio.findByAtivoTrue());
 		model.addAttribute("usuarioregra", usuarioregra);
 		new ModelAndView("views/usuarioregra/edit")		
 	}
@@ -86,15 +82,20 @@ class UsuarioRegraController {
 				return "views/usuarioregra/edit"  
 		}else{
 				
-				def ret
-				ret = usuarioregraRepositorio.findByUsuarioAndRegra(usuarioregra.usuario , usuarioregra.regra)
-				if (ret!=null){
-					def errors =  messageSource.getMessage("usuarioregraexiste", null, LocaleContextHolder.getLocale())
-					model.addAttribute("usuarios", usuarioRepositorio.findByAtivoTrue());
-					model.addAttribute("regras", regraRepositorio.findByAtivoTrue());
-					model.addAttribute("errors", errors);
-					return "views/usuarioregra/create"
+				def usuarioregraregrausuario
+				//Valido regra x usuario
+				usuarioregraregrausuario = usuarioregraRepositorio.findByUsuarioAndRegra(usuarioregra.getUsuario() , usuarioregra.getRegra())
+				if (usuarioregraregrausuario!=null){
+					
+						if (usuarioregraregrausuario.getId()==null){
+							return "redirect:verusuarioregras";
+						}
+						
+						if (usuarioregraregrausuario.id!=usuarioregra.getId()){
+							return "redirect:verusuarioregras";
+						}
 				}
+				
 				usuarioregraRepositorio.save(usuarioregra)			
 		}
 		

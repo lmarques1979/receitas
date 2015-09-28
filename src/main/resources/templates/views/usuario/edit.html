@@ -44,6 +44,8 @@
 							
 							<a th:href="@{/deleteusuario/{id}(id=${usuario.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
 							
+						
+							
 							<div class="fieldcontain">
 								<label for="username" th:text="#{username}"></label>
 								<span class="required-indicator">*</span>

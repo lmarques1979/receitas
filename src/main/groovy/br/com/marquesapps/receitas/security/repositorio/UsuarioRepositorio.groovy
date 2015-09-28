@@ -10,6 +10,8 @@ public interface UsuarioRepositorio extends PagingAndSortingRepository<Usuario, 
 	
 	Page<Usuario> findAll(Pageable pageable);
 	List<Usuario> findByAtivoTrue();
+	Usuario findByUsernameAndId(String username, Long id);
+	Usuario findByEmailAndId(String email, Long id);
 	Usuario findByUsername(String username);
 	Usuario findByEmail(String email);
 }

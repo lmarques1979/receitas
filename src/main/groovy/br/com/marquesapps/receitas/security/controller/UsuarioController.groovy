@@ -9,6 +9,7 @@ import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.mail.MailSender
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
@@ -30,7 +30,7 @@ import br.com.marquesapps.receitas.utils.Amazon
 import br.com.marquesapps.receitas.utils.SmtpMailSender
 import br.com.marquesapps.receitas.utils.Util
 
-@RestController
+@Controller
 @PreAuthorize('permitAll')
 class UsuarioController {
 	
@@ -71,12 +71,15 @@ class UsuarioController {
 			usuario.setPassword(new BCryptPasswordEncoder().encode(senha))
 			def assunto=messageSource.getMessage("novasenhaassunto", null, LocaleContextHolder.getLocale())
 			def msg=messageSource.getMessage("novasenha", null, LocaleContextHolder.getLocale()) + "<b>" + senha + "</b>" 
-			def ret=smtpMailSender.send(usuario.email,assunto,msg)
+			def ret=smtpMailSender.send(usuario.getEmail() ,assunto,msg)
 			usuarioRepositorio.save(usuario)
 		}
-				
+		
+		def msg=[email]
+		Object[] args = msg
+		
 		new ModelAndView("views/usuario/esqueceusenha",
-			[message:messageSource.getMessage("emailenviadocomsucesso", null, LocaleContextHolder.getLocale())])
+			[message:messageSource.getMessage("emailenviadocomsucesso", args , LocaleContextHolder.getLocale())])
 	}
 	
 	@RequestMapping(value="/esqueceusenha",method = RequestMethod.GET)
@@ -155,22 +158,39 @@ class UsuarioController {
 				return "views/usuario/edit" 
 		}else{
 		
-				def ret
+				def usuariousername, usuarioemail, usuariousernameid , usuarioemailid
 				def regra, usuarioregra
-				
+								
 				//Valido username
-				ret = usuarioRepositorio.findByUsername(usuario.username)	
-				if (ret!=null){
-					bindingResult.rejectValue("username","userexists", messageSource.getMessage("usernameexiste", null, LocaleContextHolder.getLocale()))
-					return "views/usuario/edit"
-				}
-				//Valido username
-				ret = usuarioRepositorio.findByEmail(usuario.email)
-				if (ret!=null){
-					bindingResult.rejectValue("email","emailexists", messageSource.getMessage("emailexiste", null, LocaleContextHolder.getLocale()))
-					return "views/usuario/edit"
+				usuariousername = usuarioRepositorio.findByUsername(usuario.getUsername())	
+				if (usuariousername!=null){
+					
+						if (usuario.getId()==null){
+							bindingResult.rejectValue("username","userexists", messageSource.getMessage("usernameexiste", null, LocaleContextHolder.getLocale()))
+							return "views/usuario/edit"
+						}
+						
+						if (usuariousername.id!=usuario.getId()){
+									bindingResult.rejectValue("username","userexists", messageSource.getMessage("usernameexiste", null, LocaleContextHolder.getLocale()))
+									return "views/usuario/edit"
+					    }						
 				}
 				
+				//Valido email 
+				usuarioemail=usuarioRepositorio.findByEmail(usuario.getEmail())
+				if (usuarioemail!=null){	
+									
+						if (usuario.getId()==null){
+							bindingResult.rejectValue("email","emailexists", messageSource.getMessage("emailexiste", null, LocaleContextHolder.getLocale()))
+							return "views/usuario/edit"
+						}
+						
+						if (usuarioemail.id!=usuario.getId()){
+							bindingResult.rejectValue("email","emailexists", messageSource.getMessage("emailexiste", null, LocaleContextHolder.getLocale()))
+							return "views/usuario/edit"
+						}
+						
+				}
 				
 				if(usuario.password!=confirmapassword){
 					bindingResult.rejectValue("password","passworddiferent", messageSource.getMessage("senhanaoconfere", null, LocaleContextHolder.getLocale()))

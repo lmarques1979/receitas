@@ -311,12 +311,16 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 	text-transform:lowercase;
 }
 
-.navbar-inner .internacionalizacao li {
+.navbar-inner .internacionalizacao{
 	position:relative;
 	float:right;
 	padding:0;
 	top:-0.3em;
 	margin-right:0;
+}
+
+.navbar-inner .internacionalizacao li{
+	margin-right:0.3em;
 }
 
 a.delete{ 
