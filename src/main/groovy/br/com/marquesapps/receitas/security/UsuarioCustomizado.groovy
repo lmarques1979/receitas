@@ -1,9 +1,9 @@
-package br.com.marquesapps.receitas.security
+package br.com.marquesapps.receitas.security;
 
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.marquesapps.receitas.security.domain.Usuario
+import br.com.marquesapps.receitas.security.domain.Usuario;
 
 public class UsuarioCustomizado implements UserDetails{
 	

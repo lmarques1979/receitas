@@ -27,7 +27,7 @@ import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
 import br.com.marquesapps.receitas.utils.Amazon
-import br.com.marquesapps.receitas.utils.SmtpEmailSender
+import br.com.marquesapps.receitas.utils.SmtpMailSender
 import br.com.marquesapps.receitas.utils.Util
 
 @RestController
@@ -35,7 +35,10 @@ import br.com.marquesapps.receitas.utils.Util
 class UsuarioController {
 	
 	@Autowired
-	private SmtpEmailSender smtpEmailSender
+	private Amazon amazon;
+	
+	@Autowired
+	private SmtpMailSender smtpMailSender;
 	
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio
@@ -68,7 +71,7 @@ class UsuarioController {
 			usuario.setPassword(new BCryptPasswordEncoder().encode(senha))
 			def assunto=messageSource.getMessage("novasenhaassunto", null, LocaleContextHolder.getLocale())
 			def msg=messageSource.getMessage("novasenha", null, LocaleContextHolder.getLocale()) + "<b>" + senha + "</b>" 
-			def ret=smtpEmailSender.send(usuario.email , assunto , msg)
+			def ret=smtpMailSender.send(usuario.email,assunto,msg)
 			usuarioRepositorio.save(usuario)
 		}
 				
@@ -175,7 +178,7 @@ class UsuarioController {
 				}
 				
 				if (!f.isEmpty()) {
-					def midia = new Amazon().UploadS3(f , 'receitaslmdcm')
+					def midia = amazon.UploadS3(f , 'receitaslmdcm')
 					usuario.imagem = midia
 				}
 				usuario.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()))

@@ -1,6 +1,6 @@
-package br.com.marquesapps.receitas.utils
+package br.com.marquesapps.receitas.utils;
 
-import org.apache.commons.io.IOUtils
+import org.apache.commons.io.IOUtils;
 
 class StreamUtil {
 	

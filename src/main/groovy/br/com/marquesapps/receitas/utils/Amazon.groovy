@@ -1,11 +1,12 @@
 package br.com.marquesapps.receitas.utils;
 
-import org.springframework.web.multipart.MultipartFile
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 
-import com.amazonaws.services.s3.AmazonS3Client
-import com.amazonaws.services.s3.model.CannedAccessControlList
-import com.amazonaws.services.s3.model.PutObjectRequest
-
+@Component
 public class Amazon{
 	
 	public String UploadS3(MultipartFile f , String bucket) {

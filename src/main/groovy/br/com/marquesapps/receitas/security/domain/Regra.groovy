@@ -1,8 +1,8 @@
-package br.com.marquesapps.receitas.security.domain
+package br.com.marquesapps.receitas.security.domain;
 
-import javax.persistence.*
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Size
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="tb_regra")
