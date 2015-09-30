@@ -1,29 +1,29 @@
 package br.com.marquesapps.receitas.security.controller;
 
-import javax.servlet.http.HttpSession
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.servlet.ModelAndView
 
-import br.com.marquesapps.receitas.security.domain.Regra
-import br.com.marquesapps.receitas.security.domain.Usuario
 import br.com.marquesapps.receitas.security.domain.UsuarioRegra
 import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
-
 @Controller 
 @PreAuthorize('hasAuthority("ADMIN")')
 class UsuarioRegraController {
@@ -41,12 +41,17 @@ class UsuarioRegraController {
 	private MessageSource messageSource
 	
 	@RequestMapping(value="/verusuarioregras",method = RequestMethod.GET)
-	def view(Model model) {
-		def usuarioregras = usuarioregraRepositorio.findAll()
-		model.addAttribute("usuarioregra", usuarioregras);	
+	def view(Model model, 
+			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def pagerequest = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),new Sort(Sort.Direction.ASC, "usuario.username"))
+		def usuarioregra=usuarioregraRepositorio.findAll(pagerequest)	
+		def i , pages=[]
+		for (i=0; i < usuarioregra.getTotalPages(); i++) {pages.add(i)}
+		model.addAttribute("pages", pages);
+		model.addAttribute("pageimpl", usuarioregra);
 		new ModelAndView("views/usuarioregra/view")
 	}
-	
+			 
 	@RequestMapping(value="/showusuarioregra/{id}",method = RequestMethod.GET)
 	def show(Model model , @PathVariable(value="id") Long id) {
 		def usuarioregra=usuarioregraRepositorio.findOne(id);
@@ -74,7 +79,7 @@ class UsuarioRegraController {
 				  
 	@RequestMapping(value="/usuarioregra" , method = RequestMethod.POST)
 	@Transactional
-	def save(@Valid UsuarioRegra usuarioregra,
+	def save(@Valid @ModelAttribute("usuarioregra") UsuarioRegra usuarioregra,
 			 BindingResult bindingResult,
 			 Model model) {
 		
@@ -88,11 +93,17 @@ class UsuarioRegraController {
 				if (usuarioregraregrausuario!=null){
 					
 						if (usuarioregraregrausuario.getId()==null){
-							return "redirect:verusuarioregras";
+							bindingResult.rejectValue("usuario","usuarioregraexiste", messageSource.getMessage("usuarioregraexiste", null, LocaleContextHolder.getLocale()))
+							model.addAttribute("usuarios", usuarioRepositorio.findByAtivoTrue());
+							model.addAttribute("regras", regraRepositorio.findByAtivoTrue());
+							return "views/usuarioregra/edit" 
 						}
 						
 						if (usuarioregraregrausuario.id!=usuarioregra.getId()){
-							return "redirect:verusuarioregras";
+							bindingResult.rejectValue("usuario","usuarioregraexiste", messageSource.getMessage("usuarioregraexiste", null, LocaleContextHolder.getLocale()))
+							model.addAttribute("usuarios", usuarioRepositorio.findByAtivoTrue());
+							model.addAttribute("regras", regraRepositorio.findByAtivoTrue());
+							return "views/usuarioregra/edit" 
 						}
 				}
 				

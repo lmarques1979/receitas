@@ -8,11 +8,10 @@
 <meta name="author" content="" />
 <link rel="icon" href="../../favicon.ico" />
 
-<title th:text="#{usuarioregra}"></title>
+<title th:text="#{tiporeceita}"></title>
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
-
 <!-- CSS do projeto -->
 <link href="/css/main.css" rel="stylesheet" />
 
@@ -41,20 +40,20 @@
 				<table>
 					<thead>
 							<tr>
-								<th class="model"><text for="usuarioregra" th:text="#{usuarioregra}"></text></th>
+								<th class="model"><text for="tiporeceita" th:text="#{tiporeceita}"></text></th>
 							</tr>
 							<tr>
-								<th colspan="2"><text for="usuarioregra.descricao" th:text="#{usuarioregra}"></text></th>
+								<th colspan="2"><text for="tiporeceita" th:text="#{tiporeceita}"></text></th>
 							</tr>
 						</thead>
 						<tbody>
 						
-							<tr th:each="usuarioregra : ${pageimpl}">
-								<td colspan="2"><a th:href="@{/showusuarioregra/{id}(id= ${usuarioregra.id})}"><text for="home" th:text="${usuarioregra.usuario.username + ' - ' + usuarioregra.regra.descricao}"></text></a></td>
+							<tr th:each="tiporeceita : ${pageimpl}">
+								<td colspan="2"><a th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><text for="home" th:text="${tiporeceita.descricao}"></text></a></td>
 							</tr>
 							
 							<tr>
-								<td><a class="criar" href="/usuarioregra"><text for="regra" th:text="#{criarusuarioregra}"></text></a></td>
+								<td><a class="criar" href="/tiporeceita"><text for="tiporeceita" th:text="#{criartiporeceita}"></text></a></td>
 							</tr>
 													
 						</tbody>
@@ -69,5 +68,6 @@
 	
 	</div>
 	<!-- /.container -->
+	
 </body>
 </html>

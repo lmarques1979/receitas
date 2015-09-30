@@ -345,6 +345,11 @@ a.delete{
     background-image: url("../images/usuario.png");
 }
 
+.navbar-inner a.tiporeceitas {
+    background-image: url("../images/tiporeceitas.png");
+}
+
+
 .navbar-inner a.cadastrousuario {
     background-image: url("../images/cadastrousuario.png");
 }
@@ -386,7 +391,7 @@ a.delete{
 
 .navbar-inner a, .navbar-inner a.cadastrousuario , .navbar-inner a.login, 
 .navbar-inner a.logout , .navbar-inner a.home , .navbar-inner a.regra,
-.navbar-inner a.usuarioregra , .navbar-inner a.usuario{
+.navbar-inner a.usuarioregra , .navbar-inner a.usuario , .navbar-inner a.tiporeceitas{
     color: #FFF;
     display: block;
     padding: 0.25em 0.7em;

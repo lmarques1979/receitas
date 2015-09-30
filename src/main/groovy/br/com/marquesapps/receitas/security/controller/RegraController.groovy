@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
@@ -21,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView
 
 import br.com.marquesapps.receitas.security.domain.Regra
 import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
-import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 
 @Controller
 @PreAuthorize('hasAuthority("ADMIN")')
@@ -30,19 +30,18 @@ class RegraController {
 	@Autowired
 	private RegraRepositorio regraRepositorio
 	
-	@Autowired
-	private UsuarioRegraRepositorio usuarioregraRepositorio
-	
 	@Autowired 
 	private MessageSource messageSource
 	
 	@RequestMapping(value="/verregras",method = RequestMethod.GET)
-	def view(Model model , @PageableDefault(page=0,size=10) Pageable pageable) {
-		Sort sort = new Sort(Sort.Direction.ASC, "descricao")
-		def pageabledefault = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),sort)
-		
-		def regras=regraRepositorio.findAll(pageabledefault)
-		model.addAttribute("regra", regras);
+	def view(Model model, 
+			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def pagerequest = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),new Sort(Sort.Direction.ASC, "descricao"))
+		def regras=regraRepositorio.findAll(pagerequest)	
+		def i , pages=[]
+		for (i=0; i < regras.getTotalPages(); i++) {pages.add(i)}
+		model.addAttribute("pages", pages);
+		model.addAttribute("pageimpl", regras);
 		new ModelAndView("views/regra/view")
 	}
 	
@@ -72,7 +71,7 @@ class RegraController {
 				  
 	@RequestMapping(value="/regra" , method = RequestMethod.POST)
 	@Transactional
-	def save(@Valid Regra regra, 
+	def save(@Valid @ModelAttribute("regra") Regra regra, 
 			 BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors()) {

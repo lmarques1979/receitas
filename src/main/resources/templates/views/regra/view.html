@@ -15,7 +15,7 @@
 
 <!-- CSS do projeto -->
 <link href="/css/main.css" rel="stylesheet" />
-
+    
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="/libs/html5shiv/html5shiv.min.js"></script>
@@ -50,7 +50,7 @@
 						</thead>
 						<tbody>
 						
-							<tr th:each="regra : ${regra}">
+							<tr th:each="regra : ${pageimpl}">
 								<td><a th:href="@{/showregra/{id}(id= ${regra.id})}"><text for="home" th:text="${regra.descricao}"></text></a></td>
 								<td class="centro"><text for="home" th:text="${regra.ativo}? #{sim} : #{nao}"></text></td>
 							</tr>
@@ -61,7 +61,11 @@
 													
 						</tbody>
 				</table>
+				
 		</div>
+		
+		<!-- pagination -->
+		<div th:include="/fragments/pagination :: paginationcontent"></div>
 		
 		<!-- footer -->
 		<div th:include="/fragments/footer :: footercontent"></div>

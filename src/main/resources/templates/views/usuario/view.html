@@ -54,7 +54,7 @@
 						</thead>
 						<tbody>
 						
-							<tr th:each="usuario : ${usuario}">
+							<tr th:each="usuario : ${pageimpl}">
 								<td><a th:href="@{/showusuario/{id}(id=${usuario.id})}"><text for="home" th:text="${usuario.username}"></text></a></td>
 								<td class="centro"><text for="home" th:text="${usuario.primeironome}"></text></td>
 								<td class="centro"><text for="home" th:text="${usuario.sobrenome}"></text></td>
@@ -69,6 +69,9 @@
 						</tbody>
 				</table>
 		</div>
+		
+		<!-- pagination -->
+		<div th:include="/fragments/pagination :: paginationcontent"></div>
 		
 		<!-- footer -->
 		<div th:include="/fragments/footer :: footercontent"></div>

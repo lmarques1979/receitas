@@ -52,6 +52,7 @@
 								          th:value="${usuario.id}" 
 								          th:text="${usuario.username + ' - ' + usuario.email}"></option>
 								</select>
+								<span class="field-validator" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></span>
 							</div>
 							
 							<div class="fieldcontain">
@@ -62,6 +63,7 @@
 								          th:value="${regra.id}" 
 								          th:text="${regra.descricao}"></option>
 								</select>
+								<span class="field-validator" th:if="${#fields.hasErrors('regra')}" th:errors="*{regra}"></span>
 							</div>
 							
 							<div class="fieldcontain">
