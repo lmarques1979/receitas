@@ -70,8 +70,10 @@
 				</table>
 		</div>
 		
-		<!-- pagination -->
-		<div th:include="/fragments/pagination :: paginationcontent"></div>
+		<div th:if="${pageimpl.getTotalPages()} > 0">
+			<!-- pagination -->
+			<div th:include="/fragments/pagination :: paginationcontent"></div>
+		</div>
 		
 		<!-- footer -->
 		<div th:include="/fragments/footer :: footercontent"></div>

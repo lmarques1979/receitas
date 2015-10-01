@@ -48,7 +48,7 @@
 							<div class="fieldcontain">
 								<label for="descricao" th:text="#{tiporeceita}"></label>
 								<span class="required-indicator">*</span>
-								<input th:class="upper" th:type="text" th:name="descricao" th:size="35" th:field="*{descricao}" th:maxlength="50" th:placeholder="#{descricao}" th:required="true" th:autofocus="true" /> 
+								<input th:class="upper" th:type="text" th:name="descricao" th:size="45" th:field="*{descricao}" th:maxlength="50" th:placeholder="#{descricao}" th:required="true" th:autofocus="true" /> 
 								<span class="field-validator" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
 							</div>
 							

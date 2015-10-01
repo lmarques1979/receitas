@@ -10,11 +10,49 @@ a{
 	color:#2F548B; 
 }
 
+.autenticado {
+	position:relative;
+    display:block;
+    float:right;
+	font-weight: bold;
+	font-size:0.9em;
+	margin:0.5em;
+	height:2em;
+	padding:0;
+	color: #fff;
+	width:100%;
+}
+
+.autenticado .userlogado{
+	display:block;
+	position:relative;
+	margin: 0 0.2em;
+	float:right;
+}
+.autenticado .logo{
+	display:block;
+	position:relative;
+	margin: 0 2em;
+	float:left;
+}
+
 a.esqueceu, a.esqueceu:hover, a.esqueceu:active{
 	display:block;
 	text-decoration:none;
 	font-weight:bold;
 	margin:0.5em;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color:#2F548B;   
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 2;
+    color: #FFF;
+    cursor: default;
+    background-color:#2F548B;
+    border-color: #2F548B;
 }
 
 /*TABLES*/
@@ -315,7 +353,7 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 	position:relative;
 	float:right;
 	padding:0;
-	top:-0.3em;
+	top:-0.2em;
 	margin-right:0;
 }
 
@@ -339,6 +377,10 @@ a.delete{
 
 .navbar-inner .internacionalizacao a.pt_BR {
     background-image: url("../images/pt_BR.png");
+}
+
+.navbar-inner a.configuracao {
+    background-image: url("../images/configuracao.png");
 }
 
 .navbar-inner a.usuario {
@@ -391,7 +433,8 @@ a.delete{
 
 .navbar-inner a, .navbar-inner a.cadastrousuario , .navbar-inner a.login, 
 .navbar-inner a.logout , .navbar-inner a.home , .navbar-inner a.regra,
-.navbar-inner a.usuarioregra , .navbar-inner a.usuario , .navbar-inner a.tiporeceitas{
+.navbar-inner a.usuarioregra , .navbar-inner a.usuario , .navbar-inner a.tiporeceitas,
+.navbar-inner a.configuracao{
     color: #FFF;
     display: block;
     padding: 0.25em 0.7em;
@@ -431,21 +474,6 @@ a.delete{
 	color:#fff;
 	border-bottom:3px solid #CD592C;
 	/*height:100px;*/
-}
-
-.autenticado {
-	position:relative;
-    display: block;
-    float:right;
-	font-weight: bold;
-	font-size: 0.9em;
-	margin: 0.5em;
-	height: 2em;
-	padding: 0.4em;
-}
-.logo{
-	background-color:#fff;
-	height:100px;
 }
 
 .content{

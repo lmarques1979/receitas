@@ -1,5 +1,6 @@
 package br.com.marquesapps.receitas.controller;
 
+import java.util.List;
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
@@ -8,6 +9,7 @@ import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
+import org.springframework.data.domain.Sort.Order
 import org.springframework.data.web.PageableDefault
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
@@ -21,7 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.servlet.ModelAndView
 
 import br.com.marquesapps.receitas.domain.TipoReceita
+import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio;
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
+import br.com.marquesapps.receitas.security.domain.Usuario;
+import br.com.marquesapps.receitas.utils.Paginacao;
+import br.com.marquesapps.receitas.utils.Util
 
 @Controller
 @PreAuthorize('isAuthenticated()') 
@@ -30,18 +36,20 @@ class TipoReceitaController {
 	@Autowired
 	private TipoReceitaRepositorio tipoReceitaRepositorio
 	
+	@Autowired
+	private Paginacao paginacao
+	
+	@Autowired
+	private ConfiguracaoRepositorio configuracaoRepositorio
+	
 	@Autowired 
 	private MessageSource messageSource
 	
 	@RequestMapping(value="/vertiporeceitas",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
-		def pagerequest = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),new Sort(Sort.Direction.ASC, "descricao"))
-		def tiporeceita=tipoReceitaRepositorio.findAll(pagerequest)	
-		def i , pages=[]
-		for (i=0; i < tiporeceita.getTotalPages(); i++) {pages.add(i)}
-		model.addAttribute("pages", pages);
-		model.addAttribute("pageimpl", tiporeceita);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList) 
 		new ModelAndView("views/tiporeceita/view")
 	}
 	
@@ -62,10 +70,12 @@ class TipoReceitaController {
 	}
 	
 	@RequestMapping(value="/deletetiporeceita/{id}",method=RequestMethod.GET)
-	def delete(@PathVariable(value="id") Long id , Model model) {		
+	def delete(	@PathVariable(value="id") Long id , 
+				@PageableDefault(page=0,size=10) Pageable pageable,
+				Model model) {		
 		tipoReceitaRepositorio.delete(id);	
-		def tiporeceitas = tipoReceitaRepositorio.findAll()
-		model.addAttribute("tiporeceita", tiporeceitas);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList) 
 		new ModelAndView("views/tiporeceita/view")
 	}
 				  

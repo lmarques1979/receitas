@@ -1,18 +1,23 @@
 package br.com.marquesapps.receitas.security.controller;
 
 import javax.mail.MessagingException
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
-import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
+import org.springframework.data.domain.Sort.Order
 import org.springframework.data.web.PageableDefault
 import org.springframework.mail.MailSender
 import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler
 import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.ui.Model
@@ -25,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
+import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.security.domain.Regra
 import br.com.marquesapps.receitas.security.domain.Usuario
 import br.com.marquesapps.receitas.security.domain.UsuarioRegra
@@ -32,6 +38,7 @@ import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
 import br.com.marquesapps.receitas.utils.Amazon
+import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.SmtpMailSender
 import br.com.marquesapps.receitas.utils.Util
 
@@ -46,6 +53,9 @@ class UsuarioController {
 	private SmtpMailSender smtpMailSender;
 	
 	@Autowired
+	private Paginacao paginacao
+	
+	@Autowired
 	private UsuarioRepositorio usuarioRepositorio
 	
 	@Autowired
@@ -53,6 +63,9 @@ class UsuarioController {
 	
 	@Autowired
 	private RegraRepositorio regraRepositorio
+	
+	@Autowired
+	private ConfiguracaoRepositorio configuracaoRepositorio
 	
 	@Autowired
 	private MessageSource messageSource
@@ -96,14 +109,8 @@ class UsuarioController {
 	@PreAuthorize('hasAuthority("ADMIN")')
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
-		def pagerequest = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),new Sort(Sort.Direction.ASC, "primeironome"))
-		def usuario=usuarioRepositorio.findAll(pagerequest)	
-		def i , pages=[]
-		for (i=0; i < usuario.getTotalPages(); i++) {
-			 pages.add(i)
-		}
-		model.addAttribute("pages", pages);
-		model.addAttribute("pageimpl", usuario);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
+		paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList)
 		new ModelAndView("views/usuario/view")
 	}
 	
@@ -130,11 +137,24 @@ class UsuarioController {
 				  
 	@RequestMapping(value="/deleteusuario/{id}",method=RequestMethod.GET)
 	@PreAuthorize('isAuthenticated()')
-	def delete(@PathVariable(value="id") Long id, Model model) {
-	    usuarioRepositorio.delete(id);	  
-		def usuarios=usuarioRepositorio.findAll()
-		model.addAttribute("usuario", usuarios);
-		new ModelAndView("views/usuario/view")
+	def delete(@PathVariable(value="id") Long id, 
+		       @PageableDefault(page=0,size=10) Pageable pageable,
+			   Model model,
+			   HttpServletRequest request, 
+			   HttpServletResponse response) {
+		def usuariodeletado = usuarioRepositorio.findOne(id)
+		usuarioRepositorio.delete(id);	  
+		def util = new Util()
+		def usuariologado = util.getUsuarioLogado()
+		if(usuariodeletado.getId()==usuariologado.getId()){
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		    new SecurityContextLogoutHandler().logout(request, response, auth);
+			return "redirect:/login?logout";
+		}else{
+			def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
+			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList)
+			new ModelAndView("views/usuario/view")
+		}
 	}
 				  
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

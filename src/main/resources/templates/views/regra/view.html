@@ -44,19 +44,17 @@
 								<th class="model"><text for="regra" th:text="#{regra}"></text></th>
 							</tr>
 							<tr>
-								<th><text for="regra.descricao" th:text="#{regra.descricao}"></text></th>
-								<th><text for="ativo" th:text="#{ativo}"></text></th>
+								<th><text for="configuracao.itensporpagina" th:text="#{itensporpagina}"></text></th>
 							</tr>
 						</thead>
 						<tbody>
 						
 							<tr th:each="regra : ${pageimpl}">
 								<td><a th:href="@{/showregra/{id}(id= ${regra.id})}"><text for="home" th:text="${regra.descricao}"></text></a></td>
-								<td class="centro"><text for="home" th:text="${regra.ativo}? #{sim} : #{nao}"></text></td>
 							</tr>
 							
 							<tr>
-								<td colspan="2"><a class="criar" href="/regra"><text for="regra" th:text="#{criarregra}"></text></a></td>
+								<td><a class="criar" href="/regra"><text for="regra" th:text="#{criarregra}"></text></a></td>
 							</tr>
 													
 						</tbody>
@@ -64,8 +62,10 @@
 				
 		</div>
 		
-		<!-- pagination -->
-		<div th:include="/fragments/pagination :: paginationcontent"></div>
+		<div th:if="${pageimpl.getTotalPages()} > 0">
+			<!-- pagination -->
+			<div th:include="/fragments/pagination :: paginationcontent"></div>
+		</div>
 		
 		<!-- footer -->
 		<div th:include="/fragments/footer :: footercontent"></div>

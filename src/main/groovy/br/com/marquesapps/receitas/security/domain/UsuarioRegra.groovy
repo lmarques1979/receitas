@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
+@Entity 
 @Table(name="tb_usuario_regra")
 public class UsuarioRegra{
 

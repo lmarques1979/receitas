@@ -8,6 +8,7 @@ import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
+import org.springframework.data.domain.Sort.Order
 import org.springframework.data.web.PageableDefault
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
@@ -20,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.servlet.ModelAndView
 
+import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio;
 import br.com.marquesapps.receitas.security.domain.Regra
 import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
+import br.com.marquesapps.receitas.utils.Paginacao
+import br.com.marquesapps.receitas.utils.Util
 
 @Controller
 @PreAuthorize('hasAuthority("ADMIN")')
@@ -30,18 +34,20 @@ class RegraController {
 	@Autowired
 	private RegraRepositorio regraRepositorio
 	
+	@Autowired
+	private Paginacao paginacao
+	
+	@Autowired
+	private ConfiguracaoRepositorio configuracaoRepositorio
+	
 	@Autowired 
 	private MessageSource messageSource
 	
 	@RequestMapping(value="/verregras",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
-		def pagerequest = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),new Sort(Sort.Direction.ASC, "descricao"))
-		def regras=regraRepositorio.findAll(pagerequest)	
-		def i , pages=[]
-		for (i=0; i < regras.getTotalPages(); i++) {pages.add(i)}
-		model.addAttribute("pages", pages);
-		model.addAttribute("pageimpl", regras);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(regraRepositorio, pageable, model,orderList)
 		new ModelAndView("views/regra/view")
 	}
 	
@@ -62,10 +68,12 @@ class RegraController {
 	}
 	
 	@RequestMapping(value="/deleteregra/{id}",method=RequestMethod.GET)
-	def delete(@PathVariable(value="id") Long id , Model model) {		
-		regraRepositorio.delete(id);	
-		def regras = regraRepositorio.findAll()
-		model.addAttribute("regra", regras);
+	def delete(@PathVariable(value="id") Long id,
+			   @PageableDefault(page=0,size=10) Pageable pageable,
+			   Model model) {		
+		regraRepositorio.delete(id);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(regraRepositorio, pageable, model, orderList)
 		new ModelAndView("views/regra/view")
 	}
 				  

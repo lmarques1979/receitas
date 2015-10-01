@@ -9,7 +9,8 @@
 			   			
 			   			<li><a href="/" class="home"><text for="home" th:text="#{home}"></text></a></li>
 			   		 	<li><a th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}" class="usuario"><text for="usuario" th:text="#{usuario}"></text></a></li>
-			 
+			 			<li><a href="/verconfiguracao" class="configuracao"><text for="configuracao" th:text="#{configuracao}"></text></a></li>
+			 			
 			   		 	<div sec:authorize="hasAuthority('ADMIN')">
 			   		 		<li><a href="/vertiporeceitas" class="tiporeceitas"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a></li>
 			   		 		<li><a href="/verregras" class="regra"><text for="regra" th:text="#{regra}"></text></a></li>
@@ -38,11 +39,12 @@
 				
 				</ul>
 				
-				<div class="autenticado" sec:authorize="isAuthenticated()">
-					<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
-				</div>
-				
-			</div>			
+			</div>		
+			<div class="autenticado">
+					<div sec:authorize="isAuthenticated()" class="userlogado">
+						<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
+					</div>
+			</div>	
 			
 	
 	</div>

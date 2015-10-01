@@ -47,10 +47,8 @@
 							<div class="fieldcontain">
 								<label for="descricao" th:text="#{descricaoregra}"></label>
 								<span class="required-indicator">*</span>
-								<input th:class="upper" th:type="text" th:name="descricao" th:maxlength="50" th:placeholder="#{descricaoregra}" th:required="true" th:autofocus="true" /> 
+								<input class="upper" th:type="text" th:name="descricao" th:size="40" th:placeholder="#{descricaoregra}" th:required="true" th:autofocus="true" /> 
 							</div>
-							
-							<input th:type="hidden" th:name="ativo" th:value="true"/>
 							
 							<div class="fieldcontain">
 								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>

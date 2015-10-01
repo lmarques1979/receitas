@@ -47,18 +47,9 @@
 							<div class="fieldcontain">
 								<label for="descricao" th:text="#{descricaoregra}"></label>
 								<span class="required-indicator">*</span>
-								<input th:class="upper" th:type="text" th:name="descricao" th:field="*{descricao}" th:maxlength="50" th:placeholder="#{descricao}" th:required="true" th:autofocus="true" /> 
+								<input class="upper" th:type="text" th:name="descricao" th:field="*{descricao}" th:placeholder="#{descricaoregra}" th:required="true" th:autofocus="true"  /> 
 								<span class="field-validator" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
 							</div>
-							
-							<div  th:if="${regra}">
-								<div class="fieldcontain">
-									<label for="ativo" th:text="#{ativo}"></label>
-									<input th:type="checkbox" th:field="*{ativo}" th:name="ativo" th:placeholder="#{ativo}"/> 
-									<span class="field-validator" th:if="${#fields.hasErrors('ativo')}" th:errors="*{ativo}"></span>
-								</div>
-							</div>	
-							
 							
 							<div class="fieldcontain">
 								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
