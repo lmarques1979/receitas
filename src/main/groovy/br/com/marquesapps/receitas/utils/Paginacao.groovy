@@ -20,19 +20,23 @@ public class Paginacao{
 	@Autowired
 	private ConfiguracaoRepositorio configuracaoRepositorio
 	
-	def getPaginacao(def repositorio, Pageable pageable , Model model, Sort orderList){
+	def getPaginacao(def repositorio, Pageable pageable , Model model, Sort orderList , int tipo){
 		
 		def itensporpagina
 		def ordenacao
-		def util = new Util()
-		def usuario = util.getUsuarioLogado()
-		def configuracao = configuracaoRepositorio.findByUsuario(usuario);
-		if (configuracao!=null){
-			itensporpagina=configuracao.getItensporpagina()
-		}else{
-			itensporpagina = pageable.getPageSize()
-		}
 		
+		//Tipo 1 = Pageable , 2 = Tabela configuracoes banco
+		//Caso não queria usar os itens por página das configurações para uma determinada página , irá usar
+		//O que tiver no objeto pageable (pageable.getPageSize())
+		if (tipo==1){
+			itensporpagina = pageable.getPageSize()			
+		}else{
+			def util = new Util()
+			def usuario = util.getUsuarioLogado()
+			def configuracao = configuracaoRepositorio.findByUsuario(usuario);
+			itensporpagina=configuracao.getItensporpagina()
+		}
+	
 		def pagerequest = new PageRequest(pageable.getPageNumber(),itensporpagina, orderList)
 		def pageimpl=repositorio.findAll(pagerequest)
 		def i , pages=[]

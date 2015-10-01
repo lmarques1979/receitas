@@ -47,7 +47,7 @@ class RegraController {
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(regraRepositorio, pageable, model,orderList)
+		paginacao.getPaginacao(regraRepositorio, pageable, model,orderList,2)
 		new ModelAndView("views/regra/view")
 	}
 	
@@ -73,7 +73,7 @@ class RegraController {
 			   Model model) {		
 		regraRepositorio.delete(id);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(regraRepositorio, pageable, model, orderList)
+		paginacao.getPaginacao(regraRepositorio, pageable, model, orderList,2)
 		new ModelAndView("views/regra/view")
 	}
 				  

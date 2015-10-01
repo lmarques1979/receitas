@@ -54,7 +54,7 @@ class UsuarioRegraController {
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
-		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList)
+		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList,2)
 		new ModelAndView("views/usuarioregra/view")
 	}
 			 
@@ -81,7 +81,7 @@ class UsuarioRegraController {
 				@PathVariable(value="id") Long id) {
 		usuarioregraRepositorio.delete(id);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
-		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList)
+		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList , 2)
 		new ModelAndView("views/usuarioregra/view")
 	}
 				  

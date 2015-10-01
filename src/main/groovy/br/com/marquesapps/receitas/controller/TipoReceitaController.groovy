@@ -49,7 +49,7 @@ class TipoReceitaController {
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList) 
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList, 2) 
 		new ModelAndView("views/tiporeceita/view")
 	}
 	
@@ -75,7 +75,7 @@ class TipoReceitaController {
 				Model model) {		
 		tipoReceitaRepositorio.delete(id);	
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList) 
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList,2) 
 		new ModelAndView("views/tiporeceita/view")
 	}
 				  

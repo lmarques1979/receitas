@@ -110,7 +110,7 @@ class UsuarioController {
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
-		paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList)
+		paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2)
 		new ModelAndView("views/usuario/view")
 	}
 	
@@ -152,7 +152,7 @@ class UsuarioController {
 			return "redirect:/login?logout";
 		}else{
 			def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
-			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList)
+			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2)
 			new ModelAndView("views/usuario/view")
 		}
 	}
