@@ -24,6 +24,18 @@ public class Configuracao {
 	@Column(name = "itensporpagina", nullable = true)
 	private int itensporpagina;
 	
+	@Column(name = "alturaimgthumbs", nullable = true)
+	private int alturaimgthumbs;
+	
+	@Column(name = "larguraimgthumbs", nullable = true)
+	private int larguraimgthumbs;
+	
+	@Column(name = "alturaimg", nullable = true)
+	private int alturaimg;
+	
+	@Column(name = "larguraimg", nullable = true)
+	private int larguraimg;
+	
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
@@ -52,5 +64,37 @@ public class Configuracao {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public int getAlturaimgthumbs() {
+		return alturaimgthumbs;
+	}
+
+	public void setAlturaimgthumbs(int alturaimgthumbs) {
+		this.alturaimgthumbs = alturaimgthumbs;
+	}
+
+	public int getLarguraimgthumbs() {
+		return larguraimgthumbs;
+	}
+
+	public void setLarguraimgthumbs(int larguraimgthumbs) {
+		this.larguraimgthumbs = larguraimgthumbs;
+	}
+
+	public int getAlturaimg() {
+		return alturaimg;
+	}
+
+	public void setAlturaimg(int alturaimg) {
+		this.alturaimg = alturaimg;
+	}
+
+	public int getLarguraimg() {
+		return larguraimg;
+	}
+
+	public void setLarguraimg(int larguraimg) {
+		this.larguraimg = larguraimg;
 	}
 }

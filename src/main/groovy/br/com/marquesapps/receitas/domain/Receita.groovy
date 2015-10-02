@@ -1,14 +1,16 @@
 package br.com.marquesapps.receitas.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
+import javax.persistence.Table
+
+import br.com.marquesapps.receitas.security.domain.Usuario
 
 @Entity
 @Table(name="tb_receita")
@@ -22,18 +24,22 @@ public class Receita {
 	@Column(name = "descricao", nullable = false, length=255)
 	private String descricao;
 	
-	@Column(name = "ingredientes", nullable = true, length=255)
+	@Column(name = "ingredientes", nullable = true)
 	private String ingredientes;
 	
-	@Column(name = "modopreparo", nullable = true, length=1000)
+	@Column(name = "modopreparo", nullable = true)
 	private String modopreparo;
 	
-	@Column(name = "imagem", nullable = true, length=50)
+	@Column(name = "imagem", nullable = true, length=50) 
 	private String imagem;
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "tiporeceita_id")
-	private TipoReceita tiporeceita;	
+	private TipoReceita tiporeceita;
+	
+	@ManyToOne()
+	@JoinColumn(name="usuario_id")
+	private Usuario usuario;
 
 	protected Receita() {}
 	
@@ -84,5 +90,12 @@ public class Receita {
 	public void setTiporeceita(TipoReceita tiporeceita) {
 		this.tiporeceita = tiporeceita;
 	}
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

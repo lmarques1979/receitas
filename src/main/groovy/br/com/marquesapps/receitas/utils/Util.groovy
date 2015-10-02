@@ -1,4 +1,4 @@
-package br.com.marquesapps.receitas.utils
+package br.com.marquesapps.receitas.utils;
 
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
@@ -15,4 +15,4 @@ class Util {
 		
 		return usuario
 	}	
-}
+} 
