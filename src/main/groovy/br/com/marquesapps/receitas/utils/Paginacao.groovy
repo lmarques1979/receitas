@@ -22,7 +22,7 @@ public class Paginacao{
 	
 	def getPaginacao(def repositorio, Pageable pageable , Model model, Sort orderList , int tipo){
 		
-		def itensporpagina
+		def itensporpagina=1
 		def ordenacao
 		
 		//Tipo 1 = Pageable , 2 = Tabela configuracoes banco
@@ -34,7 +34,9 @@ public class Paginacao{
 			def util = new Util()
 			def usuario = util.getUsuarioLogado()
 			def configuracao = configuracaoRepositorio.findByUsuario(usuario);
-			itensporpagina=configuracao.getItensporpagina()
+			if (configuracao!=null){
+				itensporpagina=configuracao.getItensporpagina()
+			}
 		}
 	
 		def pagerequest = new PageRequest(pageable.getPageNumber(),itensporpagina, orderList)

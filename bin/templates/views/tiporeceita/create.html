@@ -8,7 +8,7 @@
 <meta name="author" content="" />
 <link rel="icon" href="../../favicon.ico" />
 
-<title th:text="#{editartiporeceita}"></title>
+<title th:text="#{criartiporeceita}"></title>
 
 <!-- CSS do projeto -->
 <link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
@@ -34,29 +34,31 @@
 		
 		<div class="content">
 				
-					<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post">
-					
-					<input th:type="hidden" th:name="id" th:field="*{id}"/>
-					
+				<text th:if="${message}">
+					<div th:text="${message}" class="message" role="status"></div>
+				</text>
+				
+				<text th:if="${errors}">
+					<div th:text="${errors}" class="errors"></div>
+				</text>
+				
+				<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post">
+				
 					<fieldset class="form">
 					
-							<legend><text for="editartiporeceita" th:text="#{editartiporeceita}"></text></legend>
-							
-							
-							<a th:href="@{/deletetiporeceita/{id}(id= ${tiporeceita.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
+							<legend><text for="criartiporeceita" th:text="#{tiporeceitas}"></text></legend>
 							
 							<div class="fieldcontain">
-								<label for="descricao" th:text="#{tiporeceita}"></label>
+								<label for="descricao" th:text="#{descricaoregra}"></label>
 								<span class="required-indicator">*</span>
-								<input th:class="upper" th:type="text" th:name="descricao" th:size="45" th:field="*{descricao}" th:maxlength="50" th:placeholder="#{descricao}" th:required="true" th:autofocus="true" /> 
-								<span class="field-validator" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+								<input th:class="upper" th:type="text" th:name="descricao" th:size="30" th:maxlength="50" th:placeholder="#{tiporeceitas}" th:required="true" th:autofocus="true" /> 
 							</div>
+							
 							
 							<div class="fieldcontain">
 								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
 							</div>
 							
-								
 					</fieldset>	
 					
 				</form>
