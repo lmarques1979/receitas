@@ -41,8 +41,8 @@ public class Paginacao{
 			pageimpl=repositorio.findByUsuario(usuario , pagerequest)
 		}else{
 			if (repositorio in ReceitaRepositorio){
-				def tiporeceita = model.getAt("tiporeceita")		
-				pageimpl=repositorio.findByTiporeceitaAndUsuario(tiporeceita, usuario , pagerequest)
+				def tiporeceita = model.getAt("tiporeceita")						
+				pageimpl=repositorio.findByTiporeceitaAndUsuario(tiporeceita, usuario, pagerequest)
 			}else{
 				pageimpl=repositorio.findAll(pagerequest)
 			}

@@ -67,7 +67,7 @@ class ReceitaController {
 			 	    @PageableDefault(page=0,size=10) Pageable pageable) {
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		model.addAttribute("tiporeceita", tipoReceitaRepositorio.findOne(id));
-		paginacao.getPaginacao(ReceitaRepositorio,pageable, model, orderList, 2) 
+		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2) 
 		new ModelAndView("views/receita/viewportipo")
 	}
 					  
@@ -76,10 +76,6 @@ class ReceitaController {
 		     @PathVariable(value="id") Long id) {
 		def receita=receitaRepositorio.findOne(id)
 		model.addAttribute("receita", receita);
-		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		def util=new Util()
-		def usuario=util.getUsuarioLogado()
-		model.addAttribute("tiporeceitas", tipoReceitaRepositorio.findByUsuario(usuario,ordertiporeceita));
 		new ModelAndView("views/receita/edit")		
 	}
 				  

@@ -11,6 +11,6 @@ import br.com.marquesapps.receitas.security.domain.Usuario
 public interface ReceitaRepositorio extends PagingAndSortingRepository<Receita, Long> {
 	
 	Page<Receita> findAll(Pageable pageable);
-	Page<Receita> findByTiporeceitaAndUsuario(TipoReceita tiporeceita, Usuario usuario, Pageable pageable);
+	Page<Receita> findByTiporeceitaAndUsuario(TipoReceita tiporeceita, Usuario usuario,Pageable pageable);
 	Receita findByDescricao(String descricao); 
 }
