@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
+import br.com.marquesapps.receitas.domain.Configuracao
 import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.security.domain.Regra
 import br.com.marquesapps.receitas.security.domain.Usuario
@@ -263,6 +264,19 @@ class UsuarioController {
 					usuarioregra.setRegra(regra)
 					usuarioregra.setUsuario(usuario)
 					usuarioregraRepositorio.save(usuarioregra)
+				}
+				
+				def configuracoes=configuracaoRepositorio.findByUsuario(usuario)
+				if (configuracoes==null){
+					def configuracao= new Configuracao() 
+					configuracao.usuario=usuario
+					configuracao.itensporpagina=10
+					configuracao.alturaimg=50
+					configuracao.larguraimg=50
+					configuracao.alturaimgthumbs=24
+					configuracao.larguraimgthumbs=24
+					configuracao.itensporpagina=10
+					configuracaoRepositorio.save(configuracao)
 				}
 		}
 		
