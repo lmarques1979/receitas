@@ -82,7 +82,9 @@ class ReceitaController {
 	@RequestMapping(value="/deletereceita/{id}",method=RequestMethod.GET)
 	def delete(	@PathVariable(value="id") Long id , 
 				@PageableDefault(page=0,size=10) Pageable pageable,
-				Model model) {		
+				Model model,
+				@ModelAttribute("receita") Receita receita) {		
+		def delete = amazon.fileDelete (receita.getImagem())
 		receitaRepositorio.delete(id);	
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(receitaRepositorio, pageable, model, orderList,2) 
@@ -93,7 +95,8 @@ class ReceitaController {
 	@Transactional
 	def save(@Valid @ModelAttribute("receita") Receita receita, 
 			 BindingResult bindingResult,
-			 @RequestParam("arquivo") MultipartFile f) {
+			 @RequestParam("arquivo") MultipartFile f,
+			 Model model) {
 		
 		if (bindingResult.hasErrors()) {
 				return "views/receita/edit" 
@@ -116,7 +119,7 @@ class ReceitaController {
 				}
 				
 				if (!f.isEmpty()) {
-					def midia = amazon.UploadS3(f , 'receitaslmdcm')
+					def midia = amazon.UploadS3(f)
 					receita.imagem = midia
 				}
 				def util = new Util()
@@ -126,7 +129,9 @@ class ReceitaController {
 			    receitaRepositorio.save(receita)
 		}
 		
-		new ModelAndView("views/receita/create" ,
-			    [message:messageSource.getMessage("dadosinseridossucesso", null, LocaleContextHolder.getLocale())])
+		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		model.addAttribute("tiporeceitas", tipoReceitaRepositorio.findAll(ordertiporeceita));
+		model.addAttribute("message", messageSource.getMessage("dadosinseridossucesso", null, LocaleContextHolder.getLocale()));
+		new ModelAndView("views/receita/create")
 	}
 }
