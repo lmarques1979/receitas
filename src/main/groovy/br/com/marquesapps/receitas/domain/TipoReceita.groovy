@@ -1,11 +1,18 @@
 package br.com.marquesapps.receitas.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.Table
+
+import br.com.marquesapps.receitas.security.domain.UsuarioRegra;;
 
 @Entity
 @Table(name="tb_tipo_receita")
@@ -18,6 +25,9 @@ public class TipoReceita {
 
 	@Column(name = "descricao", nullable = false, length=50)
 	private String descricao;
+	
+	@OneToMany(mappedBy="tiporeceita",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Receita> receitas;
 	
 	protected TipoReceita() {}
 	
@@ -36,5 +46,12 @@ public class TipoReceita {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
+	public Set<Receita> getReceitas() {
+		return receitas;
+	}
+
+	public void setReceitas(Set<Receita> receitas) {
+		this.receitas = receitas;
+	}
 }

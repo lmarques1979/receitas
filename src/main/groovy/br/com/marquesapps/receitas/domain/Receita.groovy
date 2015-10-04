@@ -1,8 +1,8 @@
 package br.com.marquesapps.receitas.domain;
 
-import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -33,11 +33,11 @@ public class Receita {
 	@Column(name = "imagem", nullable = true, length=50) 
 	private String imagem;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "tiporeceita_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="tiporeceita_id")
 	private TipoReceita tiporeceita;
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 

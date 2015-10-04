@@ -26,6 +26,7 @@ import br.com.marquesapps.receitas.domain.Receita
 import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.repositorio.ReceitaRepositorio
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
+import br.com.marquesapps.receitas.security.domain.Usuario;
 import br.com.marquesapps.receitas.utils.Amazon;
 import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.Util
@@ -82,9 +83,9 @@ class ReceitaController {
 	@RequestMapping(value="/deletereceita/{id}",method=RequestMethod.GET)
 	def delete(	@PathVariable(value="id") Long id , 
 				@PageableDefault(page=0,size=10) Pageable pageable,
-				Model model,
-				@ModelAttribute("receita") Receita receita) {		
-		def delete = amazon.fileDelete (receita.getImagem())
+				Model model) {	
+		def receita = receitaRepositorio.findOne(id)
+		def delete = amazon.fileDelete (receita.imagem)
 		receitaRepositorio.delete(id);	
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(receitaRepositorio, pageable, model, orderList,2) 

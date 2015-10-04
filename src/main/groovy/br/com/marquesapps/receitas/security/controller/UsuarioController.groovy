@@ -142,13 +142,12 @@ class UsuarioController {
 			   Model model,
 			   HttpServletRequest request, 
 			   HttpServletResponse response) {
-			   
-	    def usuariodeletado = usuarioRepositorio.findOne(id)
-		def delete = amazon.fileDelete (usuariodeletado.getImagem())
+		def usuario = usuarioRepositorio.findOne(id)
+		def delete = amazon.fileDelete (usuario.imagem)
 		usuarioRepositorio.delete(id);	  
 		def util = new Util()
 		def usuariologado = util.getUsuarioLogado()
-		if(usuariodeletado.getId()==usuariologado.getId()){
+		if(id==usuariologado.getId()){
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		    new SecurityContextLogoutHandler().logout(request, response, auth);
 			return "redirect:/login?logout";

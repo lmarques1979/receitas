@@ -1,5 +1,7 @@
 package br.com.marquesapps.receitas.security.domain;
 
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,7 +24,7 @@ public class Regra {
 	private boolean ativo;
 	
 	@OneToMany(mappedBy="regra",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<UsuarioRegra> regras;
+	private Set<UsuarioRegra> usuarioregras;
 	
 	public Regra() {}
 	
@@ -42,19 +44,19 @@ public class Regra {
 		this.descricao = descricao;
 	}
 	
-	public Set<UsuarioRegra> getRegras() {
-		return regras;
-	}
-
-	public void setRegras(Set<UsuarioRegra> regras) {
-		this.regras = regras;
-	}
-	
 	public boolean isAtivo() {
 		return ativo;
 	}
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public Set<UsuarioRegra> getUsuarioregras() {
+		return usuarioregras;
+	}
+
+	public void setUsuarioregras(Set<UsuarioRegra> usuarioregras) {
+		this.usuarioregras = usuarioregras;
 	}
 }

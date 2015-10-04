@@ -19,11 +19,11 @@ public class UsuarioRegra{
 	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="regra_id")
 	private Regra regra;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 	
