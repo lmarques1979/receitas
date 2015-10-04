@@ -24,21 +24,19 @@ public class Receita {
 	@Column(name = "descricao", nullable = false, length=255)
 	private String descricao;
 	
-	@Column(name = "ingredientes", nullable = true)
+	@Column(name = "ingredientes", nullable = true , columnDefinition="TEXT")
 	private String ingredientes;
 	
-	@Column(name = "modopreparo", nullable = true)
+	@Column(name = "modopreparo", nullable = true, columnDefinition="TEXT")
 	private String modopreparo;
 	
 	@Column(name = "imagem", nullable = true, length=50) 
 	private String imagem;
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="tiporeceita_id")
+	@ManyToOne(fetch=FetchType.LAZY)
 	private TipoReceita tiporeceita;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="usuario_id")
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Usuario usuario;
 
 	protected Receita() {}
