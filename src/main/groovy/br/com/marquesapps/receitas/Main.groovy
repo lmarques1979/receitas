@@ -8,8 +8,6 @@ import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
-import org.springframework.mail.MailSender
-import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
 import org.springframework.web.servlet.LocaleResolver
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
@@ -31,7 +29,7 @@ class Main extends WebMvcConfigurerAdapter{
 	static void main(String[] args) {
 		SpringApplication.run Main, args
 	}
-	 
+	
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver slr = new SessionLocaleResolver();

@@ -142,7 +142,9 @@ class UsuarioController {
 			   Model model,
 			   HttpServletRequest request, 
 			   HttpServletResponse response) {
-		def usuariodeletado = usuarioRepositorio.findOne(id)
+			   
+	    def usuariodeletado = usuarioRepositorio.findOne(id)
+		def delete = amazon.fileDelete (usuariodeletado.getImagem())
 		usuarioRepositorio.delete(id);	  
 		def util = new Util()
 		def usuariologado = util.getUsuarioLogado()
@@ -230,7 +232,7 @@ class UsuarioController {
 				}
 				
 				if (!f.isEmpty()) {
-					def midia = amazon.UploadS3(f , 'receitaslmdcm')
+					def midia = amazon.UploadS3(f)
 					usuario.imagem = midia
 				}
 				usuario.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()))
