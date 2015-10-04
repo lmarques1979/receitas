@@ -42,7 +42,7 @@ public class SmtpMailSender {
 		
 		MimeMessage message = sender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message , true);
-		helper.setFrom(Mail.getFrom())
+		helper.setFrom(this.username)
 		helper.setTo(to);
 		helper.setSubject(subject);
 		helper.setText(body , true);
