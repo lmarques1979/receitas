@@ -43,17 +43,19 @@
 								<th class="model"><text for="regra" th:text="#{regra}"></text></th>
 							</tr>
 							<tr>
-								<th><text for="configuracao.itensporpagina" th:text="#{itensporpagina}"></text></th>
+								<th class="menor"><text for="editar" th:text="#{editar}"></text></th>
+								<th><text for="regras" th:text="#{regra.descricao}"></text></th>
 							</tr>
 						</thead>
 						<tbody>
 						
 							<tr th:each="regra : ${pageimpl}">
-								<td><a th:href="@{/showregra/{id}(id= ${regra.id})}"><text for="home" th:text="${regra.descricao}"></text></a></td>
+								<td class="centro"><a th:href="@{/showregra/{id}(id= ${regra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+								<td><text for="home" th:text="${regra.descricao}"></text></td>
 							</tr>
 							
 							<tr>
-								<td><a class="criar" th:href="@{/regra}"><text for="regra" th:text="#{criarregra}"></text></a></td>
+								<td colspan="2"><a class="criar" th:href="@{/regra}"><text for="regra" th:text="#{criarregra}"></text></a></td>
 							</tr>
 													
 						</tbody>

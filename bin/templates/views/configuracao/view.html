@@ -44,6 +44,7 @@
 								<th class="model"><text for="configuracao" th:text="#{configuracao}"></text></th>
 							</tr>
 							<tr>
+								<th class="menor"><text for="editar" th:text="#{editar}"></text></th>
 								<th><text for="itensporpagina" th:text="#{itensporpagina}"></text></th>
 								<th><text for="alturaimgthumbs" th:text="#{alturaimgthumbs}"></text></th>
 								<th><text for="larguraimgthumbs" th:text="#{larguraimgthumbs}"></text></th>
@@ -54,7 +55,8 @@
 						<tbody>
 						
 							<tr th:each="configuracao : ${configuracao}">
-								<td class="centro"><a th:href="@{/showconfiguracao/{id}(id= ${configuracao.id})}"><text for="home" th:text="${configuracao.itensporpagina}"></text></a></td>
+								<td class="centro"><a th:href="@{/showconfiguracao/{id}(id= ${configuracao.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+								<td class="centro"><text for="home" th:text="${configuracao.itensporpagina}"></text></td>
 								<td class="centro"><text for="alturaimgthumbsreceita" th:text="${configuracao.alturaimgthumbs}"></text></td>
 								<td class="centro"><text for="larguraimgthumbsreceita" th:text="${configuracao.larguraimgthumbs}"></text></td>
 								<td class="centro"><text for="alturaimgreceita" th:text="${configuracao.alturaimg}"></text></td>

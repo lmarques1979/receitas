@@ -5,11 +5,12 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.PagingAndSortingRepository
 
 import br.com.marquesapps.receitas.domain.TipoReceita
+import br.com.marquesapps.receitas.security.domain.Usuario
 
 public interface TipoReceitaRepositorio extends PagingAndSortingRepository<TipoReceita, Long> {
 	
 	Page<TipoReceita> findAll(Pageable pageable);
-	TipoReceita findByDescricao(String descricao);
-	TipoReceita findById(Long id); 
-	
+	Page<TipoReceita> findByUsuario(Usuario usuario, Pageable pageable);
+	TipoReceita findByUsuario(Usuario usuario);
+	TipoReceita findByUsuarioAndDescricao(Usuario usuario, String descricao);    
 }

@@ -1,6 +1,7 @@
 package br.com.marquesapps.receitas.security.domain;
 
 import br.com.marquesapps.receitas.domain.Receita;
+import br.com.marquesapps.receitas.domain.TipoReceita
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,8 +11,6 @@ import org.hibernate.validator.constraints.Email
 @Entity
 @Table(name="tb_usuario")
 public class Usuario{
-	
-	private String nome
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +52,9 @@ public class Usuario{
 	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Receita> receitas;
 	
+	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<TipoReceita> tiporeceitas;
+	
 	public Long getId() {
 		return id;
 	}
@@ -64,7 +66,7 @@ public class Usuario{
 	public String getPrimeironome() {
 		return primeironome;
 	}
-
+	
 	public void setPrimeironome(String primeironome) {
 		this.primeironome = primeironome;
 	}
@@ -131,5 +133,13 @@ public class Usuario{
 
 	public void setReceitas(Set<Receita> receitas) {
 		this.receitas = receitas;
+	}
+
+	public Set<TipoReceita> getTiporeceitas() {
+		return tiporeceitas;
+	}
+
+	public void setTiporeceitas(Set<TipoReceita> tiporeceitas) {
+		this.tiporeceitas = tiporeceitas;
 	}
 }

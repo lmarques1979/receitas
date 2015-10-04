@@ -8,12 +8,12 @@
 			   		
 			   			
 			   			<li><a th:href="@{/}" class="home"><text for="home" th:text="#{home}"></text></a></li>
-			   		 	<li><a th:href="@{/verreceitas}" class="receita"><text for="receita" th:text="#{receita}"></text></a></li>
+			   		 	<li><a th:href="@{/vertiporeceitas}" class="tiporeceitas"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a></li>
+			   		  	<li><a th:href="@{/verreceitas}" class="receita"><text for="receita" th:text="#{receita}"></text></a></li>
 			 			<li><a th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}" class="usuario"><text for="usuario" th:text="#{usuario}"></text></a></li>
 			 			<li><a th:href="@{/verconfiguracao}" class="configuracao"><text for="configuracao" th:text="#{configuracao}"></text></a></li>
 			 			
 			   		 	<div sec:authorize="hasAuthority('ADMIN')">
-			   		 		<li><a th:href="@{/vertiporeceitas}" class="tiporeceitas"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a></li>
 			   		 		<li><a th:href="@{/verregras}" class="regra"><text for="regra" th:text="#{regra}"></text></a></li>
 			   		 		<li><a th:href="@{/verusuarioregras}" class="usuarioregra"><text for="usuarioregra" th:text="#{usuarioregra}"></text></a></li>	
 			   		 		<li><a th:href="@{/verusuarios}" class="cadastrousuario"><text for="usuario" th:text="#{usuarios}"></text></a></li>			   		 	

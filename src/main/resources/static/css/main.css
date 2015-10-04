@@ -6,12 +6,15 @@ body {
 	font-size:13px;
 }
 
-a{
+a , a:hover, a:active{
 	color:#2F548B; 
-	text-decoration:underline;
+	text-decoration:none;
 	
 }
 
+.menor{
+	width:1em;
+}
 .fieldcontain label, .fieldcontain .property-label {
     color: #A6A6A6;
     text-align: right;

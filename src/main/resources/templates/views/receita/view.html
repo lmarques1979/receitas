@@ -25,7 +25,7 @@
 
 <body>
 
-	<div class="container">
+ 	<div class="container">
 	
 		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
 		
@@ -39,13 +39,20 @@
 				</text>
 				
 				<table>
+					<thead>
+							<tr>
+								<th class="model"><text for="receita" th:text="#{receita}"></text></th>
+							</tr>
+							
+					</thead>
 					<tbody>
-						<tr th:each="receita : ${pageimpl}">
-							<td><a th:href="@{/showreceita/{id}(id= ${receita.id})}"><text for="home" th:text="${receita.descricao}"></text></a></td>
+						<tr th:each="tiporeceita : ${pageimpl}">
+							<td class="centro menor"><a th:href="@{/verreceitaportipo/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/view.png}"/></a></td>
+							<td><text for="home" th:text="${tiporeceita.descricao}"></text><text for="home" th:text="' ( ' + ${tiporeceita.receitas.size()} + ' ) '">)</text></td>
 						</tr>
 						
 						<tr>
-									<td><a class="criar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a></td>
+									<td colspan="2"><a class="criar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a></td>
 						</tr>
 							
 					</tbody>

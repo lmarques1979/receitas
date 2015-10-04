@@ -89,8 +89,10 @@ class TipoReceitaController {
 		}else{
 				
 				def tiporeceitadescricao
+				def util = new Util()
+				def usuario = util.getUsuarioLogado()
 				//Valido descricao
-				tiporeceitadescricao = tipoReceitaRepositorio.findByDescricao(tiporeceita.getDescricao())
+				tiporeceitadescricao = tipoReceitaRepositorio.findByUsuarioAndDescricao(usuario, tiporeceita.getDescricao())
 				if (tiporeceitadescricao!=null){
 					
 						if (tiporeceitadescricao.getId()==null){
@@ -103,6 +105,8 @@ class TipoReceitaController {
 							return "views/tiporeceita/edit" 
 						}
 				}
+				
+				tiporeceita.usuario=usuario
 				tiporeceita.descricao = tiporeceita.descricao.toUpperCase()
 			    tipoReceitaRepositorio.save(tiporeceita)
 		}

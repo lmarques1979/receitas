@@ -9,9 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne
 import javax.persistence.OneToMany;
 import javax.persistence.Table
 
+import br.com.marquesapps.receitas.security.domain.Usuario;
 import br.com.marquesapps.receitas.security.domain.UsuarioRegra;;
 
 @Entity
@@ -25,6 +27,9 @@ public class TipoReceita {
 
 	@Column(name = "descricao", nullable = false, length=50)
 	private String descricao;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Usuario usuario;
 	
 	@OneToMany(mappedBy="tiporeceita",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Receita> receitas;

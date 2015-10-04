@@ -8,10 +8,11 @@
 <meta name="author" content="" />
 <link rel="icon" href="../../favicon.ico" />
 
-<title th:text="#{regra}"></title>
+<title th:text="#{receita}"></title>
 
 <!-- CSS do projeto -->
 <link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+
 <!-- CSS do projeto -->
 <link th:href="@{/css/main.css}" rel="stylesheet" />
     
@@ -24,7 +25,7 @@
 
 <body>
 
-	<div class="container">
+ 	<div class="container">
 	
 		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
 		
@@ -40,32 +41,23 @@
 				<table>
 					<thead>
 							<tr>
-								<th class="model"><text for="regra" th:text="#{regra}"></text></th>
-							</tr>
-							<tr>
-								<th class="menor"><text for="editar" th:text="#{editar}"></text></th>
-								<th><text for="regras" th:text="#{regra.descricao}"></text></th>
-							</tr>
-						</thead>
-						<tbody>
-						
-							<tr th:each="regra : ${pageimpl}">
-								<td class="centro"><a th:href="@{/showregra/{id}(id= ${regra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
-								<td><text for="home" th:text="${regra.descricao}"></text></td>
+								<th class="model"><text for="receita" th:text="#{receita}"></text></th>
 							</tr>
 							
-							<tr>
-								<td colspan="2"><a class="criar" th:href="@{/regra}"><text for="regra" th:text="#{criarregra}"></text></a></td>
-							</tr>
-													
-						</tbody>
+					</thead>
+					<tbody>
+						<tr th:each="receita : ${pageimpl}">
+							<td class="centro menor"><a th:href="@{/showreceita/{id}(id= ${receita.id})}"><img th:src="@{/images/view.png}"/></a></td>
+							<td><text for="home" th:text="${receita.descricao}"></text><text for="home" th:text="' ( ' + ${tiporeceita.receitas.size()} + ' ) '">)</text></td>
+						</tr>
+						
+						<tr>
+									<td colspan="2"><a class="criar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a></td>
+						</tr>
+							
+					</tbody>
 				</table>
 				
-		</div>
-		
-		<div th:if="${pageimpl.getTotalPages()} > 1">
-			<!-- pagination -->
-			<div th:include="/fragments/pagination :: paginationcontent"></div>
 		</div>
 		
 		<!-- footer -->
