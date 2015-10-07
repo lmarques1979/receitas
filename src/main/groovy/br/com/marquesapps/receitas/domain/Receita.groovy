@@ -39,6 +39,12 @@ public class Receita {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Usuario usuario;
 
+	@Column(name = "tempopreparo", nullable = true, length=50)
+	private String tempopreparo;
+	
+	@Column(name = "rendimento", nullable = true, length=100)
+	private String rendimento;
+	
 	protected Receita() {}
 	
 	public Long getId() {
@@ -95,5 +101,21 @@ public class Receita {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getTempopreparo() {
+		return tempopreparo;
+	}
+
+	public void setTempopreparo(String tempopreparo) {
+		this.tempopreparo = tempopreparo;
+	}
+
+	public String getRendimento() {
+		return rendimento;
+	}
+
+	public void setRendimento(String rendimento) {
+		this.rendimento = rendimento;
 	}
 }

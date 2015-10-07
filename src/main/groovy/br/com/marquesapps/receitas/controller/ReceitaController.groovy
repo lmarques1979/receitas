@@ -1,7 +1,7 @@
 package br.com.marquesapps.receitas.controller;
 
 import javax.validation.Valid
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
@@ -19,21 +19,30 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
 import br.com.marquesapps.receitas.domain.Receita
 import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.repositorio.ReceitaRepositorio
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
-import br.com.marquesapps.receitas.security.domain.Usuario;
-import br.com.marquesapps.receitas.utils.Amazon;
+import br.com.marquesapps.receitas.utils.Amazon
+import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.Util
 
 @Controller
 @PreAuthorize('isAuthenticated()') 
 class ReceitaController {
+	
+	@Value('${cloud.aws.bucketurl}')
+	private String s3baseurl;
+	
+	@Autowired
+	private Configuracoes configuracoes
+	
+	@Autowired
+	private Util util
 	
 	@Autowired
 	private ReceitaRepositorio receitaRepositorio
@@ -56,6 +65,9 @@ class ReceitaController {
 	@RequestMapping(value="/verreceitas",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
+		model.addAttribute("s3baseurl", this.s3baseurl);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2) 
 		new ModelAndView("views/receita/view")
@@ -66,7 +78,10 @@ class ReceitaController {
 					Model model, 
 			 	    @PageableDefault(page=0,size=10) Pageable pageable) {
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		model.addAttribute("tiporeceita", tipoReceitaRepositorio.findOne(id));
+		model.addAttribute("s3baseurl", this.s3baseurl);
 		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2) 
 		new ModelAndView("views/receita/viewportipo")
 	}
@@ -75,15 +90,53 @@ class ReceitaController {
 	def show(Model model ,
 		     @PathVariable(value="id") Long id) {
 		def receita=receitaRepositorio.findOne(id)
+		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		model.addAttribute("tiporeceitas",tiporeceitas);
 		model.addAttribute("receita", receita);
 		new ModelAndView("views/receita/edit")		
+	}
+			 
+	@RequestMapping(value="/imprimirreceita/{id}",method=RequestMethod.GET)
+	def imprimirreceita(Model model ,
+			  @PathVariable(value="id") Long id) {
+		 def receita=receitaRepositorio.findOne(id)
+		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		 def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		 model.addAttribute("tiporeceitas",tiporeceitas);
+		 model.addAttribute("receita", receita);
+		 new ModelAndView("views/receita/imprimirreceita")
+	}
+	
+	@RequestMapping(value="/imprimiringredientes/{id}",method=RequestMethod.GET)
+	def imprimiringredientes(Model model ,
+				@PathVariable(value="id") Long id) {
+		   def receita=receitaRepositorio.findOne(id)
+		   def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		   def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		   model.addAttribute("tiporeceitas",tiporeceitas);
+		   model.addAttribute("receita", receita);
+		   new ModelAndView("views/receita/imprimiringredientes")
+	}
+			 
+	@RequestMapping(value="/viewreceita/{id}",method=RequestMethod.GET)
+	def viewreceita(Model model,
+	   	     		@PathVariable(value="id") Long id) {
+		 def receita=receitaRepositorio.findOne(id)
+		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		 def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		 /*def img = amazon.getObject(receita.imagem);*/
+		 model.addAttribute("tiporeceitas",tiporeceitas);
+		 model.addAttribute("receita", receita);
+		 new ModelAndView("views/receita/visualizar")
 	}
 				  
 	@RequestMapping(value="/receita" , method = RequestMethod.GET) 
 	def create(Model model) {	
 		model.addAttribute("receita", new Receita());
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		model.addAttribute("tiporeceitas", tipoReceitaRepositorio.findAll(ordertiporeceita));
+		def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		model.addAttribute("tiporeceitas",tiporeceitas);
 		new ModelAndView("views/receita/create")
 		
 	}
@@ -131,15 +184,14 @@ class ReceitaController {
 					def midia = amazon.UploadS3(f)
 					receita.imagem = midia
 				}
-				def util = new Util()
-				def usuario = util.getUsuarioLogado()
-				receita.usuario=usuario
+				receita.usuario=util.getUsuarioLogado() 
 				receita.descricao = receita.descricao.toUpperCase()
 			    receitaRepositorio.save(receita)
 		}
 		
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		model.addAttribute("tiporeceitas", tipoReceitaRepositorio.findAll(ordertiporeceita));
+		def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		model.addAttribute("tiporeceitas",tiporeceitas);
 		model.addAttribute("message", messageSource.getMessage("dadosinseridossucesso", null, LocaleContextHolder.getLocale()));
 		new ModelAndView("views/receita/create")
 	}

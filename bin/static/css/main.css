@@ -12,9 +12,133 @@ a , a:hover, a:active{
 	
 }
 
+#print{
+	display: block;
+	margin: 0 auto;
+}
+
+.impressao{
+	width:100%;
+}
+
+.impressao .ingredientes{
+	position:relative;
+	width:50%;
+	float:left;
+}
+
+.impressao .modopreparo{
+	position:relative;
+	width:50%;
+	float:right;
+}
+
+.print{
+	margin-right:1em;	
+}
+
+.right{
+	position:relative;
+	float:right;
+}
+
+.listing {
+    width: 540px;
+    float: left;
+}
+
+.clearfix {
+	
+}
+
+.listing li .photo-holder {
+    float: left;
+    position: relative;
+}
+
+.listing li img.photo {
+  	margin-right:10px;
+    display: block;
+    float: left;
+    border-radius: 2px;
+}
+
+dl, ul, ol, li, dt, dd {
+    list-style: outside none none;
+}
+
+.separator {
+    font-size:1em;
+    font-style: italic;
+    color: #EA5323;
+}
+
+.block{
+	display:block;
+	position:relative;
+	top:-1.7em;
+	
+}
+.semmargem{
+	margin:0;
+}
+
+.descricaoreceitapreto{
+	color:#000;
+	font-weight:bold;
+	font-size:1em;
+	font-style: italic;
+}
+
+.descricaoreceita{
+	color:#EA5323;
+	font-weight:bold;
+	font-size:1em;
+	font-style: italic;
+}
+
+.viewedit{
+	display:inline-block;
+	margin:2em 0;
+}
+
+.viewedit a img{
+	padding: 0.5em;
+}
+
+.dadosreceita{
+	color:#EA5323;
+	font-weight:bold;
+	font-size:1.3em;
+}
+
+.descricaoreceitamaior{
+	color:#EA5323;
+	font-weight:bold;
+	font-size:1.7em;
+}
+
+.tiporeceita{
+	color:#2F548B;
+	font-weight:normal;
+	font-size:0.8em;
+	font-style: italic;
+}
+
+.semborda{
+	border:0;
+	box-shadow:0px 0px 0px #fff;
+	width:100%
+}
+
 .menor{
 	width:1em;
 }
+
+.capitalize{
+	text-transform:capitalize;
+}
+
 .fieldcontain label, .fieldcontain .property-label {
     color: #A6A6A6;
     text-align: right;
@@ -373,6 +497,7 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 	text-transform:lowercase;
 }
 
+
 .navbar-inner .internacionalizacao{
 	position:relative;
 	float:right;
@@ -503,10 +628,6 @@ a.delete{
 	color:#fff;
 	border-bottom:3px solid #CD592C;
 	/*height:100px;*/
-}
-
-.content{
-	background-color:#fff;
 }
 
 .footer{

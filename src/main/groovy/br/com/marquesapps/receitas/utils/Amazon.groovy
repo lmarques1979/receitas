@@ -39,4 +39,12 @@ public class Amazon{
 		}
 	}
 	
+	def getObject(def nomearquivo){
+		
+		if (nomearquivo!=null){
+			AmazonS3Client s3 = new AmazonS3Client(
+			new BasicAWSCredentials(this.accessKey , this.secretKey));
+			return s3.getObject(this.bucket, nomearquivo)
+		}
+	}
 }

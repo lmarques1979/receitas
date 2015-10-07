@@ -1,12 +1,10 @@
 package br.com.marquesapps.receitas.controller;
 
-import java.util.List;
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
-import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.domain.Sort.Order
@@ -20,18 +18,30 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
 import br.com.marquesapps.receitas.domain.TipoReceita
-import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio;
+import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
-import br.com.marquesapps.receitas.security.domain.Usuario;
-import br.com.marquesapps.receitas.utils.Paginacao;
+import br.com.marquesapps.receitas.utils.Amazon
+import br.com.marquesapps.receitas.utils.Configuracoes
+import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.Util
 
 @Controller
 @PreAuthorize('isAuthenticated()') 
 class TipoReceitaController {
+	
+	@Autowired
+	private Configuracoes configuracoes
+	
+	@Autowired
+	private Amazon amazon;
+	
+	@Autowired
+	private Util util
 	
 	@Autowired
 	private TipoReceitaRepositorio tipoReceitaRepositorio
@@ -48,6 +58,8 @@ class TipoReceitaController {
 	@RequestMapping(value="/vertiporeceitas",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList, 2) 
 		new ModelAndView("views/tiporeceita/view")
@@ -73,7 +85,11 @@ class TipoReceitaController {
 	def delete(	@PathVariable(value="id") Long id , 
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				Model model) {		
+		def tiporeceita = tipoReceitaRepositorio.findOne(id)
+		def delete = amazon.fileDelete (tiporeceita.imagem)
 		tipoReceitaRepositorio.delete(id);	
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList,2) 
 		new ModelAndView("views/tiporeceita/view")
@@ -82,17 +98,16 @@ class TipoReceitaController {
 	@RequestMapping(value="/tiporeceita" , method = RequestMethod.POST)
 	@Transactional
 	def save(@Valid @ModelAttribute("tiporeceita") TipoReceita tiporeceita, 
-			 BindingResult bindingResult) {
+			 BindingResult bindingResult,
+			 @RequestParam("arquivo") MultipartFile f) {
 		
 		if (bindingResult.hasErrors()) {
 				return "views/tiporeceita/edit" 
 		}else{
 				
 				def tiporeceitadescricao
-				def util = new Util()
-				def usuario = util.getUsuarioLogado()
 				//Valido descricao
-				tiporeceitadescricao = tipoReceitaRepositorio.findByUsuarioAndDescricao(usuario, tiporeceita.getDescricao())
+				tiporeceitadescricao = tipoReceitaRepositorio.findByUsuarioAndDescricao(util.getUsuarioLogado(), tiporeceita.getDescricao())
 				if (tiporeceitadescricao!=null){
 					
 						if (tiporeceitadescricao.getId()==null){
@@ -106,7 +121,12 @@ class TipoReceitaController {
 						}
 				}
 				
-				tiporeceita.usuario=usuario
+				if (!f.isEmpty()) {
+					def midia = amazon.UploadS3(f)
+					tiporeceita.imagem = midia
+				}
+				
+				tiporeceita.usuario=util.getUsuarioLogado()
 				tiporeceita.descricao = tiporeceita.descricao.toUpperCase()
 			    tipoReceitaRepositorio.save(tiporeceita)
 		}

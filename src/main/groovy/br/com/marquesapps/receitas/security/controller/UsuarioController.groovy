@@ -39,6 +39,7 @@ import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
 import br.com.marquesapps.receitas.utils.Amazon
+import br.com.marquesapps.receitas.utils.Configuracoes;
 import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.SmtpMailSender
 import br.com.marquesapps.receitas.utils.Util
@@ -46,6 +47,12 @@ import br.com.marquesapps.receitas.utils.Util
 @Controller
 @PreAuthorize('permitAll')
 class UsuarioController {
+	
+	@Autowired
+	private Configuracoes configuracoes
+	
+	@Autowired
+	private Util util
 	
 	@Autowired
 	private Amazon amazon;
@@ -110,6 +117,8 @@ class UsuarioController {
 	@PreAuthorize('hasAuthority("ADMIN")')
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
 		paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2)
 		new ModelAndView("views/usuario/view")
@@ -126,7 +135,7 @@ class UsuarioController {
 		   return new ModelAndView("views/erros/erro404")
 	   }else{
 	   
-	   			def usuariologado = new Util().getUsuarioLogado()
+	   			def usuariologado = util.getUsuarioLogado()
 				if (usuariologado.id!=id && usuariologado.username!='admin'){
 					return new ModelAndView("views/error/acessonegado")
 				}
@@ -146,13 +155,14 @@ class UsuarioController {
 		def usuario = usuarioRepositorio.findOne(id)
 		def delete = amazon.fileDelete (usuario.imagem)
 		usuarioRepositorio.delete(id);	  
-		def util = new Util()
 		def usuariologado = util.getUsuarioLogado()
 		if(id==usuariologado.getId()){
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		    new SecurityContextLogoutHandler().logout(request, response, auth);
 			return "redirect:/login?logout";
 		}else{
+			def configuracao=configuracoes.getConfiguracoesUsuario()
+			model.addAttribute("configuracao",configuracao);
 			def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
 			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2)
 			new ModelAndView("views/usuario/view")

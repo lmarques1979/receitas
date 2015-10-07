@@ -2,6 +2,7 @@ package br.com.marquesapps.receitas.repositorio;
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.PagingAndSortingRepository
 
 import br.com.marquesapps.receitas.domain.TipoReceita
@@ -11,6 +12,6 @@ public interface TipoReceitaRepositorio extends PagingAndSortingRepository<TipoR
 	
 	Page<TipoReceita> findAll(Pageable pageable);
 	Page<TipoReceita> findByUsuario(Usuario usuario, Pageable pageable);
-	TipoReceita findByUsuario(Usuario usuario);
+	List<TipoReceita> findByUsuario(Usuario usuario, Sort sort);
 	TipoReceita findByUsuarioAndDescricao(Usuario usuario, String descricao);    
-}
+} 

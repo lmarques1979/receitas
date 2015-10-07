@@ -5,7 +5,6 @@ import javax.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
-import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.domain.Sort.Order
@@ -21,15 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.servlet.ModelAndView
 
-import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio;
+import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.security.domain.Regra
 import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
+import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
-import br.com.marquesapps.receitas.utils.Util
 
 @Controller
 @PreAuthorize('hasAuthority("ADMIN")')
 class RegraController {
+	
+	@Autowired
+	private Configuracoes configuracoes
 	
 	@Autowired
 	private RegraRepositorio regraRepositorio
@@ -46,6 +48,8 @@ class RegraController {
 	@RequestMapping(value="/verregras",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(regraRepositorio, pageable, model,orderList,2)
 		new ModelAndView("views/regra/view")
@@ -54,7 +58,6 @@ class RegraController {
 	@RequestMapping(value="/showregra/{id}",method=RequestMethod.GET) 
 	def show(Model model ,
 		     @PathVariable(value="id") Long id) {
-				
 		def regra=regraRepositorio.findOne(id)
 		model.addAttribute("regra", regra);
 		new ModelAndView("views/regra/edit")		
@@ -72,6 +75,8 @@ class RegraController {
 			   @PageableDefault(page=0,size=10) Pageable pageable,
 			   Model model) {		
 		regraRepositorio.delete(id);
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(regraRepositorio, pageable, model, orderList,2)
 		new ModelAndView("views/regra/view")

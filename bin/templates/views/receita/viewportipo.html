@@ -41,23 +41,51 @@
 				<table>
 					<thead>
 							<tr>
-								<th class="model"><text for="receita" th:text="#{receita}"></text></th>
+								<th colspan="3" class="model"><text for="receita" th:text="#{receita}"></text></th>
 							</tr>
 							
 					</thead>
 					<tbody>
+						<tr>
+							<td>
+								<div class="fieldcontain semmargem block">
+								    <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
+								    <span class="separator">›</span>
+									<text class="descricaoreceita" th:text="${tiporeceita.descricao}"></text>
+								</div>
+							</td>
+						</tr>
 						<tr th:each="receita : ${pageimpl}">
-							<td class="centro menor"><a th:href="@{/showreceita/{id}(id= ${receita.id})}"><img th:src="@{/images/view.png}"/></a></td>
-							<td><text for="home" th:text="${receita.descricao}"></text><text for="home" th:text="' ( ' + ${tiporeceita.receitas.size()} + ' ) '">)</text></td>
+							<td>
+								<div class="listing">
+									<ul class="clearfix">
+										<li>
+											 <a th:href="@{/viewreceita/{id}(id= ${receita.id})}">
+											    <span class="photo-holder"><img   th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${s3baseurl} + ${receita.imagem !=null ? receita.imagem : 'noimage.png'}"/></span> 
+												<text class="descricaoreceita" th:text="${receita.descricao}"></text> 
+											 </a>
+										</li>
+										<li class="viewedit">
+											 <a th:title="#{editar}" th:href="@{/showreceita/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a>
+										</li>
+									
+									</ul>							
+								</div>
+							</td>
 						</tr>
 						
 						<tr>
-									<td colspan="2"><a class="criar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a></td>
+									<td colspan="3"><a class="criar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a></td>
 						</tr>
 							
 					</tbody>
 				</table>
 				
+		</div>
+		
+		<div th:if="${pageimpl.getTotalPages()} > 1">
+			<!-- pagination -->
+			<div th:include="/fragments/pagination :: paginationcontent"></div>
 		</div>
 		
 		<!-- footer -->

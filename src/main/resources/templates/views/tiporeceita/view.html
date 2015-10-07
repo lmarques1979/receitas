@@ -41,20 +41,22 @@
 				<table>
 					<thead>
 							<tr>
-								<th class="model"><text for="tiporeceita" th:text="#{tiporeceita}"></text></th>
+								<th colspan="2" class="model"><text for="tiporeceita" th:text="#{tiporeceita}"></text></th>
 							</tr>
 							<tr>
-								<th colspan="2"><text for="tiporeceita" th:text="#{tiporeceita}"></text></th>
+								<th><text for="editar" th:text="#{editar}"></text></th>
+								<th><text for="tiporeceita" th:text="#{tiporeceita}"></text></th>
 							</tr>
 						</thead>
 						<tbody>
 						
 							<tr th:each="tiporeceita : ${pageimpl}">
-								<td colspan="2"><a th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><text for="home" th:text="${tiporeceita.descricao}"></text></a></td>
+								<td class="centro menor"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+								<td colspan="2"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><text for="home" th:text="${tiporeceita.descricao}"></text></a></td>
 							</tr>
 							
 							<tr>
-								<td><a class="criar" th:href="@{/tiporeceita}"><text for="tiporeceita" th:text="#{criartiporeceita}"></text></a></td>
+								<td colspan="2"><a class="criar" th:href="@{/tiporeceita}"><text for="tiporeceita" th:text="#{criartiporeceita}"></text></a></td>
 							</tr>
 													
 						</tbody>

@@ -28,6 +28,9 @@ public class TipoReceita {
 	@Column(name = "descricao", nullable = false, length=50)
 	private String descricao;
 	
+	@Column(name = "imagem", nullable = true, length=50)
+	private String imagem;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Usuario usuario;
 	
@@ -59,4 +62,20 @@ public class TipoReceita {
 	public void setReceitas(Set<Receita> receitas) {
 		this.receitas = receitas;
 	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}	
 }

@@ -5,7 +5,6 @@ import javax.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
-import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.domain.Sort.Order
@@ -21,16 +20,19 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.servlet.ModelAndView
 
-import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio;
+import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.security.domain.UsuarioRegra
 import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
-import br.com.marquesapps.receitas.utils.Paginacao;
-import br.com.marquesapps.receitas.utils.Util
+import br.com.marquesapps.receitas.utils.Configuracoes
+import br.com.marquesapps.receitas.utils.Paginacao
 @Controller 
 @PreAuthorize('hasAuthority("ADMIN")')
 class UsuarioRegraController {
+	
+	@Autowired
+	private Configuracoes configuracoes
 	
 	@Autowired
 	private UsuarioRegraRepositorio usuarioregraRepositorio
@@ -53,6 +55,8 @@ class UsuarioRegraController {
 	@RequestMapping(value="/verusuarioregras",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
 		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList,2)
 		new ModelAndView("views/usuarioregra/view")
@@ -80,6 +84,8 @@ class UsuarioRegraController {
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				@PathVariable(value="id") Long id) {
 		usuarioregraRepositorio.delete(id);
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
 		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList , 2)
 		new ModelAndView("views/usuarioregra/view")

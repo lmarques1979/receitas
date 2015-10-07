@@ -34,7 +34,7 @@
 		
 		<div class="content">
 				
-					<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post">
+					<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post" enctype="multipart/form-data">
 					
 					<input th:type="hidden" th:name="id" th:field="*{id}"/>
 					
@@ -50,6 +50,11 @@
 								<span class="required-indicator">*</span>
 								<input th:class="upper" th:type="text" th:name="descricao" th:size="30" th:field="*{descricao}" th:maxlength="50" th:placeholder="#{descricao}" th:required="true" th:autofocus="true" /> 
 								<span class="field-validator" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+							</div>
+							
+							<div class="fieldcontain">
+								<label for="imagem" th:text="#{imagem}"></label>
+								<input th:type="file" th:name="arquivo" placeholder="#{imagem}"/>
 							</div>
 							
 							<div class="fieldcontain">
