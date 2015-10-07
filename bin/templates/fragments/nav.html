@@ -42,6 +42,10 @@
 				
 			</div>		
 			<div class="autenticado">
+			
+					<div class="logo">
+						
+					</div>
 					<div sec:authorize="isAuthenticated()" class="userlogado">
 						<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
 					</div>

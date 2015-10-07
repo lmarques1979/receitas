@@ -34,45 +34,32 @@
 		
 		<div class="content">
 				
-				<text th:if="${message}">
+			<text th:if="${message}">
 					<div th:text="${message}" class="message" role="status"></div>
-				</text>
+			</text>
 				
-				<table>
-					<thead>
-							<tr>
-								<th colspan="2" class="model"><text for="receita" th:text="#{receita}"></text></th>
-							</tr>
+			<fieldset class="view">
+			
+				  <text class="descricaopagina" th:text="#{receita}"></text><div class="clearer"></div>
+				  <div class="listing">
+						<ul class="clearfix" th:each="tiporeceita : ${pageimpl}">
+							<li >
+								 <a th:href="@{/verreceitaportipo/{id}(id= ${tiporeceita.id})}">
+								    <span class="photo-holder"><img th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${s3baseurl} + ${tiporeceita.imagem !=null ? tiporeceita.imagem : 'noimage.png'}"/></span> 
+									<text class="descricaoreceita" th:text="${tiporeceita.descricao} + ' ( ' + ${tiporeceita.receitas.size()} + ' ) '"></text> 
+								 </a>
+							</li>
 							
-					</thead>
-					<tbody>
-						<tr th:each="tiporeceita : ${pageimpl}">
-							<td>
-								<div class="listing">
-									<ul class="clearfix">
-										<li >
-											 <a th:href="@{/verreceitaportipo/{id}(id= ${tiporeceita.id})}">
-											    <span class="photo-holder"><img th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${s3baseurl} + ${tiporeceita.imagem !=null ? tiporeceita.imagem : 'noimage.png'}"/></span> 
-												<text class="descricaoreceita" th:text="${tiporeceita.descricao} + ' ( ' + ${tiporeceita.receitas.size()} + ' ) '"></text> 
-											 </a>
-										</li>
-										
-										<li class="viewedit">
-											 <a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a>
-										</li>
-									
-									</ul>							
-								</div>
-							</td>
-						</tr>
-						
-						<tr>
-							<td colspan="2"><a class="criar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a></td>
-						</tr>
-							
-					</tbody>
-				</table>
-				
+							<li class="viewedit">
+								 <a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a>
+							</li>
+						</ul>	
+					</div>
+			</fieldset>
+			<div class="botao">
+				<a class="botaocriar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a>
+			</div><div class="clearer"></div>
+			
 		</div>
 		
 		<div th:if="${pageimpl.getTotalPages()} > 1">
