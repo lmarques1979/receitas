@@ -394,6 +394,10 @@ fieldset {
 	margin: 0 auto;
 }
 
+fieldset.imprimir {
+	max-width:100%;
+}
+
 fieldset.view {
 	border:0;
 	max-width:85%;
