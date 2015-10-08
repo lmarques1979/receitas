@@ -12,9 +12,8 @@
 
 <!-- CSS do projeto -->
 <link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-
-<!-- CSS do projeto -->
 <link th:href="@{/css/main.css}" rel="stylesheet" />
+<link th:href="@{/css/mobile.css}" rel="stylesheet" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -51,7 +50,7 @@
 						<tbody>
 						
 							<tr th:each="tiporeceita : ${pageimpl}">
-								<td class="centro menor"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+								<td class="centro"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
 								<td colspan="2"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><text for="home" th:text="${tiporeceita.descricao}"></text></a></td>
 							</tr>
 							
