@@ -273,11 +273,12 @@ dl, ul, ol, li, dt, dd {
 	float:left;
 }
 
-a.esqueceu, a.esqueceu:hover, a.esqueceu:active{
+.fieldcontain a.esqueceu, a.esqueceu:hover, a.esqueceu:active{
+	position:relative;
 	display:block;
 	text-decoration:none;
 	font-weight:bold;
-	margin:0.5em;
+	margin:0.5em 30%;
 }
 
 .pagination > li > a, .pagination > li > span {
@@ -389,7 +390,7 @@ fieldset {
 	zoom: 1;
 	border:1px solid #adadad;
 	border-radius:0.7em;
-	max-width:55%;
+	max-width:60%;
 	display: block;
 	margin: 0 auto;
 }

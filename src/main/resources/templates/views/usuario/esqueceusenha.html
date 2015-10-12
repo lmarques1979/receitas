@@ -8,65 +8,70 @@
 <meta name="author" content="" />
 <link rel="icon" href="../../favicon.ico" />
 
-<title th:text="#{criarusuario}"></title>
+<title th:text="#{login}"></title>
 
 <!-- CSS do projeto -->
 <link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-
-<!-- CSS do projeto -->
 <link th:href="@{/css/main.css}" rel="stylesheet" />
+<link th:href="@{/css/mobile.css}" rel="stylesheet" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="/libs/html5shiv/html5shiv.min.js"></script>
       <script src="/libs/respond/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body>
 
 	<div class="container">
-	
+
 		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
-		
+
 		<!-- navbar -->
 		<div th:include="/fragments/nav :: navbarcontent"></div>
-		
+
 		<div class="content">
-				
-				<div class="errors" th:if="${errors}">
-			 	 	<span th:text="${errors}"></span>
-	        	</div>
-	        	
-				<text th:if="${message}">
-					<div th:text="${message}" class="message" role="status"></div>
-				</text>
 			
-				<form action="#" th:action="@{/esqueceusenha}" method="post">
+			<text th:if="${message}">
+					<div th:text="${message}" class="message" role="status"></div>
+			</text>
+			
+		    <div class="errors" th:if="${param.error}">
+			 	 	<span th:text="#{loginerror}"></span>
+	        </div>
+	        
+	       	<form th:action="@{/esqueceusenha}" method="POST">  
+
+				<fieldset class="form">
 				
-					<fieldset class="form">
-					
-							<legend><text for="criarusuario" th:text="#{esqueceusenha}"></text></legend>
-							
-							<div class="fieldcontain">
-								<label for="email" th:text="#{email}"></label>
-								<span class="required-indicator">*</span>
-								<input th:type="text" th:name="email" th:size="35" th:placeholder="#{email}" th:required="true"/> 
-							</div>
-							
-							<div class="fieldcontain">
-								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{enviar}"></text></button>
-							</div>
-							
-					</fieldset>	
-					
-				</form>
+						<legend><text for="esqueceusenha" th:text="#{esqueceusenha}"></text></legend>
+						
+						<div class="fieldcontain">
+							<label for="email" th:text="#{email}"></label>
+							<span class="required-indicator">*</span>
+							<input th:class="lower" th:type="text" th:name="email" th:size="30" th:maxlength="50" th:placeholder="#{email}" th:required="true" th:autofocus="true" /> 
+						</div>
+						
+						<div class="fieldcontain">
+							<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{enviar}"></text></button>
+						</div>
+						
+				</fieldset>
+				
+			</form>
+			
+			
 		</div>
-		
+
 		<!-- footer -->
 		<div th:include="/fragments/footer :: footercontent"></div>
-	
+
 	</div>
 	<!-- /.container -->
+	<!-- Bootstrap core JavaScript-->
+    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
+	<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

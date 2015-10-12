@@ -57,6 +57,10 @@
 						</div>							
 						
 						<div class="fieldcontain">
+							<a th:href="@{/esqueceusenha}" class="esqueceu"><text for="esqueceusenha" th:text="#{esqueceusenha}"></text></a>
+						</div>
+						
+						<div class="fieldcontain">
 							<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{botaoentrarsistema}"></text></button>
 						</div>
 						
@@ -72,5 +76,8 @@
 
 	</div>
 	<!-- /.container -->
+	<!-- Bootstrap core JavaScript-->
+    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
+	<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

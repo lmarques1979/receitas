@@ -76,7 +76,7 @@
 							<div class="fieldcontain">
 								<label for="email" th:text="#{email}"></label>
 								<span class="required-indicator">*</span>
-								<input th:type="text" th:name="email" th:size="35" th:placeholder="#{email}" th:required="true"/> 
+								<input th:type="text" th:name="email" th:size="30" th:placeholder="#{email}" th:required="true"/> 
 							</div>
 							
 							<div class="fieldcontain">
@@ -100,5 +100,8 @@
 	
 	</div>
 	<!-- /.container -->
+	<!-- Bootstrap core JavaScript-->
+    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
+	<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

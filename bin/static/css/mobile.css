@@ -1,5 +1,9 @@
 @media (max-width:500px){
 	
+	body{
+		font-size:0.8em;
+	}
+	
 	fieldset {
 		min-width:100%;
 	}
@@ -10,23 +14,17 @@
 	
 	.fieldcontain label, .fieldcontain .property-label {
     	max-width:25%; 
-    	font-size:11px;
-	}
+    }
 	
 	form{
 		min-width:100%;
 	}
 	
-	input {
-    	font-size:11px;
+	input{
+		font-size:0.8em;
 	}
 	
 	table {
     	min-width: 100%;
 	}
-	
-	table th, td {
-	   font-size: 0.7em;
-	}
-	
 }
