@@ -13,7 +13,7 @@
 	}
 	
 	.fieldcontain label, .fieldcontain .property-label {
-    	max-width:25%; 
+    	/*max-width:50%;*/ 
     }
 	
 	form{
@@ -27,4 +27,9 @@
 	table {
     	min-width: 100%;
 	}
+	
+	.imagemlogo img {
+       height: 100%;
+	   width: 100%;
+    }	
 }

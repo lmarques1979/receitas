@@ -248,29 +248,39 @@ dl, ul, ol, li, dt, dd {
 	clear:both;
 }
 
-.autenticado {
+.userlogado{
+	display:block;
 	position:relative;
-    display:block;
-    float:right;
+	float:right;
 	font-weight: bold;
 	font-size:0.9em;
-	margin:0.5em;
-	padding:0;
-	color: #fff;
-	width:100%;
+	color:#fff;
+	right:0.5em;
 }
 
-.autenticado .userlogado{
-	display:block;
-	position:relative;
-	margin: 0 0.2em;
-	float:right;
+.logo {
+    position: relative;
+    min-width:100%;
+    width: auto !important;
+    /*background: #DB4211 url("../images/background_logo.jpg") repeat scroll 0% 0%;*/
+    background:#2F548B;
+    z-index: 2;
+    height:9em;
 }
-.autenticado .logo img{
+
+.imagemlogo{
 	display:block;
 	position:relative;
-	margin: 0 2em;
 	float:left;
+	height:100%;
+}
+
+.imagemlogo img{
+    display:block;
+    position: relative;
+    height: 100%;   
+    width:auto;
+    margin: 0.2em auto;
 }
 
 .fieldcontain a.esqueceu, a.esqueceu:hover, a.esqueceu:active{
