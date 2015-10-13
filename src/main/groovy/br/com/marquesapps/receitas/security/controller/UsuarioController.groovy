@@ -175,8 +175,12 @@ class UsuarioController {
     }
 	
 	@RequestMapping(value = "/logout" , method = RequestMethod.GET)
-	def logout(){
-		return new ModelAndView("views/usuario/login")
+	def logout(HttpServletRequest request, 
+			   HttpServletResponse response){
+			   
+	   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	   new SecurityContextLogoutHandler().logout(request, response, auth);
+	   return "redirect:/login?logout";
 	}
 	
 	@RequestMapping(value = "/acessonegado")

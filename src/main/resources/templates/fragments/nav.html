@@ -19,12 +19,8 @@
 			   		 		<li><a th:href="@{/verusuarios}" class="cadastrousuario"><text for="usuario" th:text="#{usuarios}"></text></a></li>			   		 	
 			   		 	</div>
 			   		 	
-			   		 	<li><a onclick="document.forms['logout'].submit()" th:href="@{/logout}" class="logout"><text for="logout" th:text="#{logout}"></text></a></li>
-			 			<form id="logout" th:action="@{/logout}" class="form-signin" method="post">
-			 				<button class="invisivel" th:type="submit"></button>
-			 			</form>
-			 					 			
-				 	</div>
+			   		 	<li><a th:href="@{/logout}" class="logout"><text for="logout" th:text="#{logout}"></text></a></li>
+			 		</div>
 				 	
 				 	<div sec:authorize="isAnonymous()">
 				 		<li><a th:href="@{/}" class="home"><text for="home" th:text="#{home}"></text></a></li>
