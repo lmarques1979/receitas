@@ -1,6 +1,6 @@
 tinymce.init({
 		    selector: "textarea",
-		    height :200,
+		    height :270,
 		    toolbar: false,
 		    menubar: false,
 		    readonly:1

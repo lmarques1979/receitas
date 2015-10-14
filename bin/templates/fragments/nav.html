@@ -10,6 +10,10 @@
 					<img th:if="${#locale.toString()=='en'}" th:src="@{/images/logo_en.png}"/>
 					<img th:if="${#locale.toString()=='es'}" th:src="@{/images/logo_es.png}"/>
 				</div>
+				
+				<div sec:authorize="isAuthenticated()" class="userlogado">
+						<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
+				</div>
 			</div>
 			
 			 <div class="navbar-inner">
@@ -46,11 +50,7 @@
 							<li><a th:href="@{/?lang=en}"><img th:src="@{/images/en.png}"/></a></li>
 							<li><a th:href="@{/?lang=es}"><img th:src="@{/images/es.png}"/></a></li>
 					</div><div class="clearer"></div>
-					
-					<div sec:authorize="isAuthenticated()" class="userlogado">
-						<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
-					</div>
-					
+				
 				</ul>
 				
 			</div>	

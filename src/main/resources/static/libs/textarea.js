@@ -5,7 +5,7 @@ tinymce.init({
 		        "searchreplace visualblocks code",
 		        "insertdatetime media table contextmenu paste"
 		    ],
-		    height :200,
+		    height:270,
 		    fullpage_default_fontsize: "12px",
 		    fontsize_formats: "10pt 12pt 14pt",
 		    menubar: false,

@@ -266,6 +266,7 @@ dl, ul, ol, li, dt, dd {
     background:#2F548B;
     z-index: 2;
     height:9em;
+    top: 0.3em;
 }
 
 .imagemlogo{
@@ -288,7 +289,8 @@ dl, ul, ol, li, dt, dd {
 	display:block;
 	text-decoration:none;
 	font-weight:bold;
-	margin:0.5em 30%;
+	margin: 0.5em 43%;
+	min-width: 100%;
 }
 
 .pagination > li > a, .pagination > li > span {

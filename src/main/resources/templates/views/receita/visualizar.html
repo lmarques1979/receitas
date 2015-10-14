@@ -6,7 +6,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="icon" href="../../favicon.ico" />
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
 
 <title th:text="#{visualizarreceita}"></title>
 
@@ -72,7 +72,7 @@
 							
 							<div class="fieldcontain">
 								<text class="dadosreceita" th:text="#{modopreparo}"></text>
-								<textarea name="modopreparo" style="width:70%"><text th:text="${receita.ingredientes}"></text></textarea>
+								<textarea name="modopreparo" style="width:70%"><text th:text="${receita.modopreparo}"></text></textarea>
 							</div>
 					
 					</fieldset>	

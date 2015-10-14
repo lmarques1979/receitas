@@ -31,5 +31,6 @@
 	.imagemlogo img {
        height: 100%;
 	   width: 100%;
+	   left:0.4em;
     }	
 }
