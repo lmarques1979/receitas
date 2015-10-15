@@ -43,8 +43,6 @@
 			<text th:if="${message}">
 					<div th:text="${message}" class="message" role="status"></div>
 			</text>
-			
-			
 						
 			<fieldset class="view">
 			
@@ -61,7 +59,7 @@
 						<ul class="clearfix" th:each="tiporeceita : ${pageimpl}">
 							<li >
 								 <a th:href="@{/verreceitaportipo/{id}(id= ${tiporeceita.id})}">
-								    <span class="photo-holder"><img th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${tiporeceita.imagem !=null ? tiporeceita.imagem : 'noimage.png'}"/></span> 
+								    <span class="photo-holder"><img th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${tiporeceita.imagem !=null ? tiporeceita.imagem : 'noimage.png'}"/></span> 
 									<text class="descricaoreceita" th:text="${tiporeceita.descricao} + ' ( ' + ${tiporeceita.receitas.size()} + ' ) '"></text> 
 								 </a>
 							</li>
