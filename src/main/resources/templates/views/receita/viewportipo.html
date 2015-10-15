@@ -48,6 +48,12 @@
 				
 				<fieldset class="view">
 					
+					<div class="total">
+						<span class="separator">›</span>
+						<text th:text="${tiporeceita.receitas.size()} + ' '+ #{receita}"></text>
+						<a class="adicionar" th:title="#{adicionarregistro}" th:href="@{/receita}"><img th:src="@{/images/add.png}"/></a>
+				    </div><div class="clearer"></div>
+				  
 					<text class="descricaopagina" th:text="${tiporeceita.descricao}"></text><div class="clearer"></div>
 						
 					<div class="listing">
