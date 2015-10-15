@@ -1,5 +1,6 @@
 package br.com.marquesapps.receitas.domain;
 
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -36,7 +37,7 @@ public class Configuracao {
 	@Column(name = "larguraimg", nullable = true)
 	private int larguraimg;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 

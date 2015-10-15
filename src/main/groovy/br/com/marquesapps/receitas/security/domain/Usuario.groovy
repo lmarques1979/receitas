@@ -1,5 +1,6 @@
 package br.com.marquesapps.receitas.security.domain;
 
+import br.com.marquesapps.receitas.domain.Configuracao
 import br.com.marquesapps.receitas.domain.Receita;
 import br.com.marquesapps.receitas.domain.TipoReceita
 import javax.persistence.*;
@@ -54,6 +55,9 @@ public class Usuario{
 	
 	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<TipoReceita> tiporeceitas;
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "usuario")
+	private Configuracao configuracao;
 	
 	public Long getId() {
 		return id;
