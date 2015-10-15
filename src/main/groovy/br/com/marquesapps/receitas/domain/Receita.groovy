@@ -30,7 +30,7 @@ public class Receita {
 	@Column(name = "modopreparo", nullable = true, columnDefinition="TEXT")
 	private String modopreparo;
 	
-	@Column(name = "imagem", nullable = true, length=50) 
+	@Column(name = "imagem", nullable = true, length=255) 
 	private String imagem;
 
 	@ManyToOne(fetch=FetchType.LAZY)
