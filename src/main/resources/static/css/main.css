@@ -6,9 +6,18 @@ body {
 	font-size:13px;
 }
 
+.margintableleft{
+	float:left;	
+}
+
 .buscardiv {
     display:table;
     margin:0 auto;    
+}
+
+.adicionar img{
+	display:inline-block;
+	margin-left:3em;
 }
 
 .buscarinput{
@@ -201,6 +210,16 @@ dl, ul, ol, li, dt, dd {
 	font-weight:bold;
 	font-size:1em;
 	font-style: italic;
+}
+
+.total{
+	padding: 1.4em 0px 0.4em;
+	float: left;
+	color: #808080;
+	font-size:1.3em;
+	line-height: 1em;
+	font-style: italic;
+	margin-left: 0.6em;
 }
 
 .descricaoreceita{

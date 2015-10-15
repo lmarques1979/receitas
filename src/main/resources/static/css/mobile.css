@@ -12,10 +12,11 @@
 		max-width:100%;
 	}
 	
-	.fieldcontain label, .fieldcontain .property-label {
-    	/*max-width:50%;*/ 
-    }
-	
+	.adicionar img{
+		height:16px;
+		width:16px;
+	}
+
 	form{
 		min-width:100%;
 	}

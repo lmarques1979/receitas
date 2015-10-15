@@ -13,6 +13,8 @@ import br.com.marquesapps.receitas.security.domain.Usuario
 public interface ReceitaRepositorio extends PagingAndSortingRepository<Receita, Long> {
 	
 	Page<Receita> findAll(Pageable pageable);
+	List<Receita> findByUsuario(Usuario usuario);
+	Receita       findOneByDescricaoAndUsuario(String descricao, Usuario usuario);
 	Page<Receita> findByTiporeceitaAndUsuario(TipoReceita tiporeceita, Usuario usuario,Pageable pageable);
 	@Query(value="SELECT r FROM Receita r WHERE LOWER(r.descricao) LIKE LOWER(CONCAT('%', :descricao , '%')) and r.usuario=:usuario")
 	Page<Receita> findByDescricaoAndUsuario(@Param("descricao") String descricao , @Param("usuario") Usuario usuario, Pageable pageable);

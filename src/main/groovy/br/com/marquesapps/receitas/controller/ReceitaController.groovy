@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
 import br.com.marquesapps.receitas.domain.Receita
+import br.com.marquesapps.receitas.domain.TipoReceita;
 import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.repositorio.ReceitaRepositorio
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
@@ -76,6 +77,7 @@ class ReceitaController {
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
+		model.addAttribute("totalreceitas", receitaRepositorio.findByUsuario(util.getUsuarioLogado()).size());
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2, null) 
 		new ModelAndView("views/receita/view")
@@ -132,7 +134,6 @@ class ReceitaController {
 		 def receita=receitaRepositorio.findOne(id)
 		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		 def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
-		 /*def img = amazon.getObject(receita.imagem);*/
 		 model.addAttribute("tiporeceitas",tiporeceitas);
 		 model.addAttribute("receita", receita);
 		 new ModelAndView("views/receita/visualizar")
@@ -142,8 +143,8 @@ class ReceitaController {
 	def create(Model model) {	
 		model.addAttribute("receita", new Receita());
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
-		model.addAttribute("tiporeceitas",tiporeceitas);
+		def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		model.addAttribute("tiporeceita",tiporeceita);
 		new ModelAndView("views/receita/create")
 		
 	}
@@ -171,9 +172,12 @@ class ReceitaController {
 				return "views/receita/edit" 
 		}else{
 				
+				def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+				def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+				model.addAttribute("tiporeceitas",tiporeceitas);
 				def receitadescricao
 				//Valido descricao
-				receitadescricao = receitaRepositorio.findByDescricao(receita.getDescricao())
+				receitadescricao = receitaRepositorio.findOneByDescricaoAndUsuario(receita.getDescricao() , util.getUsuarioLogado() )
 				if (receitadescricao!=null){
 					
 						if (receitadescricao.getId()==null){
@@ -197,7 +201,6 @@ class ReceitaController {
 		}
 		
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		def tiporeceitas = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
 		model.addAttribute("tiporeceitas",tiporeceitas);
 		model.addAttribute("message", messageSource.getMessage("dadosinseridossucesso", null, LocaleContextHolder.getLocale()));
 		new ModelAndView("views/receita/create")

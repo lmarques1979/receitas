@@ -97,7 +97,7 @@ class TipoReceitaController {
 				  
 	@RequestMapping(value="/tiporeceita" , method = RequestMethod.POST)
 	@Transactional
-	def save(@Valid @ModelAttribute("tiporeceita") TipoReceita tiporeceita, 
+	def save(@Valid @ModelAttribute("tiporeceitas") TipoReceita tiporeceita, 
 			 BindingResult bindingResult,
 			 @RequestParam("arquivo") MultipartFile f) {
 		

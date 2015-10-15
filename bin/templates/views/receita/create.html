@@ -49,7 +49,7 @@
 								<span class="required-indicator">*</span>
 								<select th:name="tiporeceita" th:required="true">
 								  <option value="" th:text="#{selecionar}"></option>
-								  <option th:each="tiporeceita : ${tiporeceitas}" 
+								  <option th:each="tiporeceita : ${tiporeceita}" 
 								          th:value="${tiporeceita.id}" 
 								          th:text="${tiporeceita.descricao}"></option>
 								</select>
