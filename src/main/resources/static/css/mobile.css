@@ -24,6 +24,16 @@
 		font-size:0.8em;
 	}
 	
+	.buscarsubmit{
+		height: 2em;
+		padding: 0.5em;
+	}
+	
+	.listing li img.photo{
+		height:60px ;
+		width:90px;
+	}
+	
 	table {
     	min-width: 100%;
 	}

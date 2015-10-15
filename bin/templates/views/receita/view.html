@@ -31,6 +31,13 @@
 		<!-- navbar -->
 		<div th:include="/fragments/nav :: navbarcontent"></div>
 		
+		<div class="buscardiv">
+			<form action="#" th:action="@{/buscareceita}" method="post">
+					<input class="buscarinput upper" th:autofocus="true" th:placeholder="#{buscarreceita}" th:type="text" th:name="filtro" th:size="25"/> 
+					<button class="buscarsubmit" th:type="submit"><text for="enviar" th:text="#{buscar}"></text></button>
+			</form>
+		</div>
+		
 		<div class="content">
 				
 			<text th:if="${message}">
@@ -44,7 +51,7 @@
 						<ul class="clearfix" th:each="tiporeceita : ${pageimpl}">
 							<li >
 								 <a th:href="@{/verreceitaportipo/{id}(id= ${tiporeceita.id})}">
-								    <span class="photo-holder"><img th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${s3baseurl} + ${tiporeceita.imagem !=null ? tiporeceita.imagem : 'noimage.png'}"/></span> 
+								    <span class="photo-holder"><img th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${tiporeceita.imagem !=null ? tiporeceita.imagem : 'noimage.png'}"/></span> 
 									<text class="descricaoreceita" th:text="${tiporeceita.descricao} + ' ( ' + ${tiporeceita.receitas.size()} + ' ) '"></text> 
 								 </a>
 							</li>

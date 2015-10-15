@@ -40,16 +40,13 @@
 				
 				<div class="menualto">
 					<div class="fieldcontain semmargem block">
-					    <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
-					    <span class="separator">›</span>
-						<text class="descricaoreceita" th:text="${tiporeceita.descricao}"></text>
+					   <span class="separator">›</span>
+					   <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
 					</div>
 				</div>
 				
 				<fieldset class="view">
 					
-					<text class="descricaopagina" th:text="${tiporeceita.descricao}"></text><div class="clearer"></div>
-						
 					<div class="listing">
 							<ul class="clearfix" th:each="receita : ${pageimpl}">
 								<li>

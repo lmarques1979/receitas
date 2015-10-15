@@ -61,7 +61,7 @@ class TipoReceitaController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList, 2) 
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList, 2, null) 
 		new ModelAndView("views/tiporeceita/view")
 	}
 	
@@ -91,7 +91,7 @@ class TipoReceitaController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList,2) 
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList,2 , null) 
 		new ModelAndView("views/tiporeceita/view")
 	}
 				  

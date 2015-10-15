@@ -6,6 +6,30 @@ body {
 	font-size:13px;
 }
 
+.buscardiv {
+    display:table;
+    margin:0 auto;    
+}
+
+.buscarinput{
+	height:2.5em;
+}
+
+.buscarsubmit{
+	font-size:1em;
+	font-weight:bold;
+	border-width:0px;
+	width:auto;
+	background:#2F548B none repeat scroll 0% 0%;
+	border-radius: 0em 0.5em 0.5em 0em;
+	color:#FFF;
+	padding:0.7em;
+	float:right;
+	height:2.7em;
+	position:relative;
+	left:-0.5em;
+}
+
 /*TABLES*/
 table {
 	min-width:65%; 
@@ -343,7 +367,7 @@ input{
    	height: 2.7em;
    	width:auto;
     padding: 0.2em 1.2em;
-    font-size:14px;
+    font-size:1.1em;
     line-height:1.42857;
     color:#555;
     background-color:#FFF;
@@ -647,7 +671,7 @@ a.delete{
     padding: 0.25em 0.7em;
     text-decoration: none;
     border-radius: 0.3em;
-    font-size: 12px;
+    font-size:0.8em;
     font-weight: bold;
 }
 
@@ -657,6 +681,7 @@ a.delete{
     text-indent:30px;
     margin-top: 0.5em;
     color: #FFF;
+    background-size:2em;
 }
 
 .container{

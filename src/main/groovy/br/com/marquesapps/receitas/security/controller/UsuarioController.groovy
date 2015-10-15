@@ -120,7 +120,7 @@ class UsuarioController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
-		paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2)
+		paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2 , null)
 		new ModelAndView("views/usuario/view")
 	}
 	
@@ -164,7 +164,7 @@ class UsuarioController {
 			def configuracao=configuracoes.getConfiguracoesUsuario()
 			model.addAttribute("configuracao",configuracao);
 			def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
-			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2)
+			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2, null)
 			new ModelAndView("views/usuario/view")
 		}
 	}

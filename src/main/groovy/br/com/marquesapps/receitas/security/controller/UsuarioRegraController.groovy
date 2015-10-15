@@ -58,7 +58,7 @@ class UsuarioRegraController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
-		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList,2)
+		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList,2, null)
 		new ModelAndView("views/usuarioregra/view")
 	}
 			 
@@ -87,7 +87,7 @@ class UsuarioRegraController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
-		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList , 2)
+		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList , 2, null)
 		new ModelAndView("views/usuarioregra/view")
 	}
 				  

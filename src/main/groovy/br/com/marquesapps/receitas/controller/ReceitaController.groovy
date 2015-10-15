@@ -1,7 +1,7 @@
 package br.com.marquesapps.receitas.controller;
 
 import javax.validation.Valid
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
@@ -35,9 +35,6 @@ import br.com.marquesapps.receitas.utils.Util
 @PreAuthorize('isAuthenticated()') 
 class ReceitaController {
 	
-	@Value('${cloud.aws.bucketurl}')
-	private String s3baseurl;
-	
 	@Autowired
 	private Configuracoes configuracoes
 	
@@ -62,14 +59,25 @@ class ReceitaController {
 	@Autowired 
 	private MessageSource messageSource
 	
+	@RequestMapping(value="/buscareceita",method = RequestMethod.POST)
+	def buscareceita(Model model, 
+			 		@PageableDefault(page=0,size=10) Pageable pageable,
+					@RequestParam("filtro") String filtro) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
+		model.addAttribute("descricao", filtro);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2 , "descricaousuario") 
+		new ModelAndView("views/receita/viewreceitas")
+	}
+			 
 	@RequestMapping(value="/verreceitas",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
-		model.addAttribute("s3baseurl", this.s3baseurl);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2) 
+		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2, null) 
 		new ModelAndView("views/receita/view")
 	}
 	
@@ -81,8 +89,7 @@ class ReceitaController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		model.addAttribute("tiporeceita", tipoReceitaRepositorio.findOne(id));
-		model.addAttribute("s3baseurl", this.s3baseurl);
-		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2) 
+		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2 , null) 
 		new ModelAndView("views/receita/viewportipo")
 	}
 					  
@@ -149,7 +156,7 @@ class ReceitaController {
 		def delete = amazon.fileDelete (receita.imagem)
 		receitaRepositorio.delete(id);	
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(receitaRepositorio, pageable, model, orderList,2) 
+		paginacao.getPaginacao(receitaRepositorio, pageable, model, orderList,2, null) 
 		new ModelAndView("views/receita/view")
 	}
 				  

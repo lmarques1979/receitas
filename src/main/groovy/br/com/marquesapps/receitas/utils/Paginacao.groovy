@@ -6,9 +6,9 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Component
 import org.springframework.ui.Model
-
 import br.com.marquesapps.receitas.repositorio.ReceitaRepositorio
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
+import org.springframework.data.repository.query.Param
 
 @Component
 public class Paginacao{
@@ -16,7 +16,7 @@ public class Paginacao{
 	@Autowired
 	private Util util
 	
-	def getPaginacao(def repositorio, Pageable pageable , Model model, Sort orderList , int tipo){
+	def getPaginacao(def repositorio, Pageable pageable , Model model, Sort orderList , int tipo, String busca){
 		
 		def itensporpagina=1
 		def ordenacao
@@ -38,8 +38,16 @@ public class Paginacao{
 			pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() , pagerequest)
 		}else{
 			if (repositorio in ReceitaRepositorio){
-				def tiporeceita = model.getAt("tiporeceita")						
-				pageimpl=repositorio.findByTiporeceitaAndUsuario(tiporeceita, util.getUsuarioLogado(), pagerequest)
+				if (busca!=null && !busca.isEmpty()){
+					if (busca=="descricaousuario"){
+						def descricao = model.getAt("descricao")
+						pageimpl=repositorio.findByDescricaoAndUsuario(descricao,util.getUsuarioLogado(), pagerequest)
+					}
+				}else{
+					def tiporeceita = model.getAt("tiporeceita")
+					pageimpl=repositorio.findByTiporeceitaAndUsuario(tiporeceita, util.getUsuarioLogado(), pagerequest)
+				}
+				
 			}else{
 				pageimpl=repositorio.findAll(pagerequest)
 			}
