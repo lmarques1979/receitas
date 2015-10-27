@@ -1,80 +1,53 @@
-<html lang="en">
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/main">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="" />
-<meta name="author" content="" />
-<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
-
+<div layout:fragment="styles"></div>
 <title th:text="#{criartiporeceita}"></title>
-
-<!-- CSS do projeto -->
-<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/main.css}" rel="stylesheet" />
-<link th:href="@{/css/mobile.css}" rel="stylesheet" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="/libs/html5shiv/html5shiv.min.js"></script>
-      <script src="/libs/respond/respond.min.js"></script>
-    <![endif]-->
-<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>
 </head>
-
 <body>
-
-	<div class="container">
 	
-		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
-		
-		<!-- navbar -->
-		<div th:include="/fragments/nav :: navbarcontent"></div>
-		
-		<div class="content">
-				
-				<text th:if="${message}">
-					<div th:text="${message}" class="message" role="status"></div>
-				</text>
-				
-				<text th:if="${errors}">
-					<div th:text="${errors}" class="errors"></div>
-				</text>
-				
-				<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post" enctype="multipart/form-data">
-				
-					<fieldset class="form">
-					
-							<legend><text for="criartiporeceita" th:text="#{tiporeceitas}"></text></legend>
-							
-							<div class="fieldcontain">
-								<label for="descricao" th:text="#{descricaoregra}"></label>
-								<span class="required-indicator">*</span>
-								<input th:class="upper" th:type="text" th:name="descricao" th:size="30" th:maxlength="50" th:placeholder="#{tiporeceitas}" th:required="true" th:autofocus="true" /> 
-							</div>
-							
-							<div class="fieldcontain">
-								<label for="imagem" th:text="#{imagem}"></label>
-								<input th:type="file" th:name="arquivo" placeholder="#{imagem}"/>
-							</div>
-							
-							<div class="fieldcontain">
-								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
-							</div>
-							
-					</fieldset>	
-					
-				</form>
-		</div>
-		
-		<!-- footer -->
-		<div th:include="/fragments/footer :: footercontent"></div>
+	<div layout:fragment="content">
 	
-	</div>
-	<!-- /.container -->
-	<!-- Bootstrap core JavaScript-->
-    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
-	<!-- Placed at the end of the document so the pages load faster -->
+		<text th:if="${message}">
+			<div th:text="${message}" class="message" role="status"></div>
+		</text>
+		
+		<text th:if="${errors}">
+			<div th:text="${errors}" class="errors"></div>
+		</text>
+		
+		<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post" enctype="multipart/form-data">
+		
+			<fieldset class="form">
+			
+					<legend><text for="criartiporeceita" th:text="#{tiporeceitas}"></text></legend>
+					
+					<div class="fieldcontain">
+						<label for="descricao" th:text="#{descricaoregra}"></label>
+						<span class="required-indicator">*</span>
+						<input th:class="upper" th:type="text" th:name="descricao" th:size="30" th:maxlength="50" th:placeholder="#{tiporeceitas}" th:required="true" th:autofocus="true" /> 
+					</div>
+					
+					<div class="fieldcontain">
+						<label for="imagem" th:text="#{imagem}"></label>
+						<input th:type="file" th:name="arquivo" placeholder="#{imagem}"/>
+					</div>
+					
+					<div class="fieldcontain">
+						<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
+					</div>
+					
+			</fieldset>	
+			
+		</form>
+		
+	</div>	
+	
+	<div layout:fragment="scripts"></div>
+	
 </body>
 </html>

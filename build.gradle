@@ -54,7 +54,7 @@ dependencies {
 	runtime("mysql:mysql-connector-java") 	
 	compile("commons-io:commons-io:2.4")
 	compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
-	
+	compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
 }
 
 dependencyManagement {

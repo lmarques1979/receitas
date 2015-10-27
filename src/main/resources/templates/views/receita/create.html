@@ -1,106 +1,83 @@
-<html lang="en">
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/main">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="" />
-<meta name="author" content="" />
-<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
-
+<div layout:fragment="styles"></div>
 <title th:text="#{criarreceita}"></title>
-<!-- CSS do projeto -->
-<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/main.css}" rel="stylesheet" />
-<link th:href="@{/css/mobile.css}" rel="stylesheet" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="/libs/html5shiv/html5shiv.min.js"></script>
-      <script src="/libs/respond/respond.min.js"></script>
-    <![endif]-->
-<script th:src="@{/libs/tinymce/tinymce.min.js}">...</script>
-<script th:src="@{/libs/textarea.js}">...</script>
-<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>
 </head>
-
 <body>
-
-	<div class="container">
 	
-		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
-		
-		<!-- navbar -->
-		<div th:include="/fragments/nav :: navbarcontent"></div>
-		
-		<div class="content">
-				
-				<text th:if="${message}">
-					<div th:text="${message}" class="message" role="status"></div>
-				</text>
+	<div layout:fragment="content">
+	
+		<text th:if="${message}">
+			<div th:text="${message}" class="message" role="status"></div>
+		</text>
 			
-				<form action="#" th:action="@{/receita}" th:object="${receita}" method="post" enctype="multipart/form-data">
-				
-					<fieldset class="form">
-					
-							<legend><text for="criarreceita" th:text="#{criarreceita}"></text></legend>
-							
-							<div class="fieldcontain">
-								<label class="left" for="tiporeceita" th:text="#{tiporeceita}"></label><div class="clearer"></div>
-								<span class="required-indicator">*</span>
-								<select th:name="tiporeceita" th:required="true">
-								  <option value="" th:text="#{selecionar}"></option>
-								  <option th:each="tiporeceita : ${tiporeceita}" 
-								          th:value="${tiporeceita.id}" 
-								          th:text="${tiporeceita.descricao}"></option>
-								</select>
-							</div>
-							
-							<div class="fieldcontain">
-								<label class="left" for="descricao" th:text="#{descricao}"></label><div class="clearer"></div>
-								<span class="required-indicator">*</span>
-								<input class="upper" th:type="text" th:name="descricao" th:size="35" th:required="true"/> 
-							</div>
-							
-							<div class="fieldcontain">
-								<label class="left" for="tempopreparo" th:text="#{tempopreparo}"></label><div class="clearer"></div>
-								<input th:type="text" th:name="tempopreparo" th:size="25"/> 
-							</div>
-							
-							<div class="fieldcontain">
-								<label class="left" for="rendimento" th:text="#{rendimento}"></label><div class="clearer"></div>
-								<input th:type="text" th:name="rendimento" th:size="25"/> 
-							</div>
-							
-							<div class="fieldcontain">
-								<label class="left" for="ingredientes" th:text="#{ingredientes}"></label>
-								<textarea name="ingredientes" style="width:70%"></textarea>
-							</div>
-							
-							<div class="fieldcontain">
-								<label class="left" for="modopreparo" th:text="#{modopreparo}"></label>
-								<textarea name="modopreparo" style="width:70%"></textarea>
-							</div>
-							
-							<div class="fieldcontain">
-								<label class="left" for="imagem" th:text="#{imagem}"></label><div class="clearer"></div>
-								<input th:type="file" th:name="arquivo" th:placeholder="#{imagem}"/>
-							</div>
-							
-							<div class="fieldcontain">
-								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
-							</div>
-							
-					</fieldset>	
-					
-				</form>
-		</div>
+		<form action="#" th:action="@{/receita}" th:object="${receita}" method="post" enctype="multipart/form-data">
 		
-		<!-- footer -->
-		<div th:include="/fragments/footer :: footercontent"></div>
+			<fieldset class="form">
+			
+					<legend><text for="criarreceita" th:text="#{criarreceita}"></text></legend>
+					
+					<div class="fieldcontain">
+						<label class="left" for="tiporeceita" th:text="#{tiporeceita}"></label><div class="clearer"></div>
+						<span class="required-indicator">*</span>
+						<select th:name="tiporeceita" th:required="true">
+						  <option value="" th:text="#{selecionar}"></option>
+						  <option th:each="tiporeceita : ${tiporeceita}" 
+						          th:value="${tiporeceita.id}" 
+						          th:text="${tiporeceita.descricao}"></option>
+						</select>
+					</div>
+					
+					<div class="fieldcontain">
+						<label class="left" for="descricao" th:text="#{descricao}"></label><div class="clearer"></div>
+						<span class="required-indicator">*</span>
+						<input class="upper" th:type="text" th:name="descricao" th:size="35" th:required="true"/> 
+					</div>
+					
+					<div class="fieldcontain">
+						<label class="left" for="tempopreparo" th:text="#{tempopreparo}"></label><div class="clearer"></div>
+						<input th:type="text" th:name="tempopreparo" th:size="25"/> 
+					</div>
+					
+					<div class="fieldcontain">
+						<label class="left" for="rendimento" th:text="#{rendimento}"></label><div class="clearer"></div>
+						<input th:type="text" th:name="rendimento" th:size="25"/> 
+					</div>
+					
+					<div class="fieldcontain">
+						<label class="left" for="ingredientes" th:text="#{ingredientes}"></label>
+						<textarea name="ingredientes" style="width:70%"></textarea>
+					</div>
+					
+					<div class="fieldcontain">
+						<label class="left" for="modopreparo" th:text="#{modopreparo}"></label>
+						<textarea name="modopreparo" style="width:70%"></textarea>
+					</div>
+					
+					<div class="fieldcontain">
+						<label class="left" for="imagem" th:text="#{imagem}"></label><div class="clearer"></div>
+						<input th:type="file" th:name="arquivo" th:placeholder="#{imagem}"/>
+					</div>
+					
+					<div class="fieldcontain">
+						<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
+					</div>
+					
+			</fieldset>	
+			
+		</form>
 	
+	</div>	
+	
+	<div layout:fragment="scripts">
+		<script th:src="@{/libs/tinymce/tinymce.min.js}">...</script>
+		<script th:src="@{/libs/textarea.js}">...</script>
 	</div>
-	<!-- /.container -->	
-	<script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
+	
 </body>
 </html>

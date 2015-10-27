@@ -1,92 +1,60 @@
-<html lang="en">
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/main">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="" />
-<meta name="author" content="" />
-<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
-
+<div layout:fragment="styles"></div>
 <title th:text="#{usuarios}"></title>
-
-<!-- CSS do projeto -->
-<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/main.css}" rel="stylesheet" />
-<link th:href="@{/css/mobile.css}" rel="stylesheet" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="/libs/html5shiv/html5shiv.min.js"></script>
-      <script src="/libs/respond/respond.min.js"></script>
-    <![endif]-->
-<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>
 </head>
-
 <body>
-
-	<div class="container">
 	
-		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
+	<div layout:fragment="content">
+	
+		<text th:if="${message}">
+			<div th:text="${message}" class="message" role="status"></div>
+		</text>
 		
-		<!-- navbar -->
-		<div th:include="/fragments/nav :: navbarcontent"></div>
-		
-		<div class="content">
-				
-				<text th:if="${message}">
-					<div th:text="${message}" class="message" role="status"></div>
-				</text>
-				
-				<table>
-					<thead>
-							<tr>
-								<th class="model"><text for="usuario" th:text="#{usuario}"></text></th>
-							</tr>
-							<tr>
-								<th colspan="5">
-									<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/usuario}"><img th:src="@{/images/add.png}"/></a>
-								</th>
-							</tr>
-							<tr>
-								<th><text for="username" th:text="#{username}"></text></th>
-								<th><text for="primeironome" th:text="#{primeironome}"></text></th>
-								<th><text for="sobrenome" th:text="#{sobrenome}"></text></th>
-								<th><text for="email" th:text="#{email}"></text></th>
-								<th><text for="ativo" th:text="#{ativo}"></text></th>
-								
-							</tr>
-						</thead>
-						<tbody>
+		<table>
+			<thead>
+					<tr>
+						<th class="model"><text for="usuario" th:text="#{usuario}"></text></th>
+					</tr>
+					<tr>
+						<th colspan="5">
+							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/usuario}"><img th:src="@{/images/add.png}"/></a>
+						</th>
+					</tr>
+					<tr>
+						<th><text for="username" th:text="#{username}"></text></th>
+						<th><text for="primeironome" th:text="#{primeironome}"></text></th>
+						<th><text for="sobrenome" th:text="#{sobrenome}"></text></th>
+						<th><text for="email" th:text="#{email}"></text></th>
+						<th><text for="ativo" th:text="#{ativo}"></text></th>
 						
-							<tr th:each="usuario : ${pageimpl}">
-								<td><a th:href="@{/showusuario/{id}(id=${usuario.id})}"><text for="home" th:text="${usuario.username}"></text></a></td>
-								<td class="centro"><text for="home" th:text="${usuario.primeironome}"></text></td>
-								<td class="centro"><text for="home" th:text="${usuario.sobrenome}"></text></td>
-								<td class="centro"><text for="home" th:text="${usuario.email}"></text></td>
-								<td class="centro"><text for="home" th:text="${usuario.ativo}? #{sim} : #{nao}"></text></td>
-							</tr>
-							
-							<tr>
-								<td colspan="5"><a class="criar" th:href="@{/usuario}"><text for="criarusuario" th:text="#{criarusuario}"></text></a></td>
-							</tr>
-													
-						</tbody>
-				</table>
-		</div>
-		
-		<div th:if="${pageimpl.getTotalPages()} > 1">
-			<!-- pagination -->
-			<div th:include="/fragments/pagination :: paginationcontent"></div>
-		</div>
-		
-		<!-- footer -->
-		<div th:include="/fragments/footer :: footercontent"></div>
+					</tr>
+				</thead>
+				<tbody>
+				
+					<tr th:each="usuario : ${pageimpl}">
+						<td><a th:href="@{/showusuario/{id}(id=${usuario.id})}"><text for="home" th:text="${usuario.username}"></text></a></td>
+						<td class="centro"><text for="home" th:text="${usuario.primeironome}"></text></td>
+						<td class="centro"><text for="home" th:text="${usuario.sobrenome}"></text></td>
+						<td class="centro"><text for="home" th:text="${usuario.email}"></text></td>
+						<td class="centro"><text for="home" th:text="${usuario.ativo}? #{sim} : #{nao}"></text></td>
+					</tr>
+					
+					<tr>
+						<td colspan="5"><a class="criar" th:href="@{/usuario}"><text for="criarusuario" th:text="#{criarusuario}"></text></a></td>
+					</tr>
+											
+				</tbody>
+		</table>
 	
-	</div>
-	<!-- /.container -->
-	<!-- Bootstrap core JavaScript-->
-    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
-	<!-- Placed at the end of the document so the pages load faster -->
+	</div>	
+	
+	<div layout:fragment="scripts"></div>
+	
 </body>
 </html>

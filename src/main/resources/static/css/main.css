@@ -6,6 +6,30 @@ body {
 	font-size:13px;
 }
 
+.wrapper {
+    padding: 15px;
+}
+
+[ng-cloak] {
+	display: none;
+}
+
+[ng-cloak].splash {
+    display: block !important;
+    background-color:#2F548B;
+    width:60%;
+    margin:0 auto;
+    text-align:center;
+    color:#fff;
+    font-size:2em;
+    border: 2px solid #CD592C;
+    border-radius:5px;
+    
+}
+.splash {
+	display: none;    
+}
+
 .margintableleft{
 	float:left;	
 }
@@ -80,10 +104,10 @@ table td a.criar , a.criar:hover, a.criar:active {
 
 table th.model text {
 	background:#2F548B;
-	-moz-border-radius:0.7em
+	-moz-border-radius:0.7em;
 	-webkit-border-radius:0.7em;
 	border-radius:0.7em;
-	color:fff;
+	color:#fff; 
 	padding:0.7em 1em;
 }
 

@@ -1,0 +1,72 @@
+<html 	lang="en" 
+		ng-app="receitas" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
+<title th:text="#{home}"></title>
+
+<!-- CSS do projeto -->
+<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link th:href="@{/css/mobile.css}" rel="stylesheet" />
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="/libs/html5shiv/html5shiv.min.js"></script>
+      <script src="/libs/respond/respond.min.js"></script>
+    <![endif]-->
+
+<div layout:fragment="styles"></div>
+
+</head>
+
+<body> 
+
+	<div class="container">
+	
+			<!-- Logo -->
+			<div th:include="/layouts/fragments/logo :: logocontent"></div>
+			
+			<!-- navbar -->
+			<div th:include="/layouts/fragments/nav :: navbarcontent"></div>
+			
+			<!--main content start-->
+			<section id="main-content" >
+				<section class="wrapper">
+					<div class="splash" ng-cloak="">
+					    <h1><text th:text="#{carregando}"></text></h1>
+					</div>
+					<div ng-cloak="" layout:fragment="content"></div>
+				</section>
+			</section>
+						
+			<!-- footer -->
+			<div th:include="/layouts/fragments/footer::footercontent"></div>
+	
+	</div>
+	<!-- /.container -->
+	
+	<!-- Bootstrap core JavaScript-->
+	<script th:src="@{/libs/angular/angular.min.js}"></script>
+    <script th:src="@{/libs/angular-route/angular-route.min.js}"></script>
+    <script th:src="@{/libs/jquery/jquery.min.js}"></script>    
+    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>	
+	
+	<script th:src="@{/libs/receitas.js}"></script>
+	
+	<div layout:fragment="scripts"></div>
+	
+</body>
+</html>

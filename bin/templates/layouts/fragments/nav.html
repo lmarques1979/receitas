@@ -1,25 +1,13 @@
-<nav th:fragment="navbarcontent">
+<nav th:fragment="navbarcontent"  ng-app="receitas">
 
-
+	<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script> 
+	
 	<div class="navbar">
 	
-			<div class="logo">
-				
-				<div class="imagemlogo">
-					<img th:if="${#locale.toString()=='pt_BR'}" th:src="@{/images/logo_pt_br.png}"/>
-					<img th:if="${#locale.toString()=='en'}" th:src="@{/images/logo_en.png}"/>
-					<img th:if="${#locale.toString()=='es'}" th:src="@{/images/logo_es.png}"/>
-				</div>
-				
-				<div sec:authorize="isAuthenticated()" class="userlogado">
-						<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
-				</div>
-			</div>
-			
-			 <div class="navbar-inner">
+			<div class="navbar-inner">
 			 
 			 	
-			   <ul>
+				<ul>
 			   
 			   		<div sec:authorize="isAuthenticated()">
 			   		

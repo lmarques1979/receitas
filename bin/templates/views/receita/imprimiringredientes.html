@@ -1,36 +1,21 @@
-<html lang="en">
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/main">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="" />
-<meta name="author" content="" />
-<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
-
+<div layout:fragment="styles"></div>
 <title th:text="#{visualizarreceita}"></title>
-
-<!-- CSS do projeto -->
-<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/main.css}" rel="stylesheet" />
-<link th:href="@{/css/mobile.css}" rel="stylesheet" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="/libs/html5shiv/html5shiv.min.js"></script>
-      <script src="/libs/respond/respond.min.js"></script>
-    <![endif]-->
-<script th:src="@{/libs/tinymce/tinymce.min.js}">...</script>
-<script th:src="@{/libs/textareareadonly.js}">...</script>
-
 </head>
-
 <body onload="window.print()">
-
-	<div class="semborda">
 	
-		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
-		<div id="print">
+	<div layout:fragment="content">
+	
+			<div class="semborda">
+	
+				<!--<div th:include="/fragments/logo :: logocontent"></div>-->
+				<div id="print">
 					<fieldset class="imprimir semborda">
 							
 							<div class="fieldcontain semmargem">
@@ -57,11 +42,14 @@
 							</div>
 					
 					</fieldset>	
+				</div>
 		</div>
+	</div>	
+	
+	<div layout:fragment="scripts">
+		<script th:src="@{/libs/tinymce/tinymce.min.js}">...</script>
+		<script th:src="@{/libs/textareareadonly.js}">...</script>
 	</div>
-	<!-- /.container -->
-	<!-- Bootstrap core JavaScript-->
-    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
-	<!-- Placed at the end of the document so the pages load faster -->
+	
 </body>
 </html>

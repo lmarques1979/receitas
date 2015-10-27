@@ -1,92 +1,65 @@
-<html lang="en">
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/main">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="" />
-<meta name="author" content="" />
-<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
-
+<div layout:fragment="styles"></div>
 <title th:text="#{visualizarreceita}"></title>
-
-<!-- CSS do projeto -->
-<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/main.css}" rel="stylesheet" />
-<link th:href="@{/css/mobile.css}" rel="stylesheet" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="/libs/html5shiv/html5shiv.min.js"></script>
-      <script src="/libs/respond/respond.min.js"></script>
-    <![endif]-->
-<script th:src="@{/libs/tinymce/tinymce.min.js}">...</script>
-<script th:src="@{/libs/textareareadonly.js}">...</script>
-<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>
 </head>
-
 <body>
-
-	<div class="container">
 	
-		<!--<div th:include="/fragments/logo :: logocontent"></div>-->
-		
-		<!-- navbar -->
-		<div th:include="/fragments/nav :: navbarcontent"></div>
-		
-		<div class="content">
-				
-					<fieldset class="form semborda">
-					
-							<div class="fieldcontain semmargem block">
-							    <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
-							    <span class="separator">›</span>
-								<a class="tiporeceita" th:href="@{/verreceitaportipo/{id}(id= ${receita.tiporeceita.id})}"><text th:text="${receita.tiporeceita.descricao}"></text></a>
-								 <span class="separator">›</span>
-								<text class="descricaoreceita" th:text="${receita.descricao}"></text>
-							</div>							
-							
-							<div class="fieldcontain semmargem">
-								<text class="descricaoreceitamaior" th:text="${receita.descricao}"></text>
-								<ul class="right">
-										<li >
-											<a th:target="_blank" th:href="@{/imprimirreceita/{id}(id= ${receita.id})}"><img th:title="#{imprimirreceita}" class="print" th:src="@{/images/imprimir.png}"/></a>
-											<a th:target="_blank" th:href="@{/imprimiringredientes/{id}(id= ${receita.id})}"><img th:title="#{imprimiringrediente}" class="print" th:src="@{/images/listaingredientes.png}"/></a>
-										</li>
-								</ul>	
-							</div>
-							
-							<div class="fieldcontain semmargem">
-								<text class="dadosreceita" th:text="#{tempopreparo}"></text><div class="clearer"></div>
-								<text class="descricaoreceitapreto" th:text="${receita.tempopreparo}"></text>
-							</div>
-							
-							<div class="fieldcontain semmargem">
-								<text class="dadosreceita" th:text="#{rendimento}"></text><div class="clearer"></div>
-								<text class="descricaoreceitapreto" th:text="${receita.rendimento}"></text>
-							</div>
-							
-							<div class="fieldcontain semmargem">
-								<text class="dadosreceita" th:text="#{ingredientes}"></text>
-								<textarea name="ingredientes" style="width:70%"><text th:text="${receita.ingredientes}"></text></textarea>
-							</div>
-							
-							<div class="fieldcontain">
-								<text class="dadosreceita" th:text="#{modopreparo}"></text>
-								<textarea name="modopreparo" style="width:70%"><text th:text="${receita.modopreparo}"></text></textarea>
-							</div>
-					
-					</fieldset>	
-
-		</div>
-		
-		<!-- footer -->
-		<div th:include="/fragments/footer :: footercontent"></div>
+	<div layout:fragment="content">
 	
+		<fieldset class="form semborda">
+					
+			<div class="fieldcontain semmargem block">
+			    <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
+			    <span class="separator">›</span>
+				<a class="tiporeceita" th:href="@{/verreceitaportipo/{id}(id= ${receita.tiporeceita.id})}"><text th:text="${receita.tiporeceita.descricao}"></text></a>
+				 <span class="separator">›</span>
+				<text class="descricaoreceita" th:text="${receita.descricao}"></text>
+			</div>							
+			
+			<div class="fieldcontain semmargem">
+				<text class="descricaoreceitamaior" th:text="${receita.descricao}"></text>
+				<ul class="right">
+						<li >
+							<a th:target="_blank" th:href="@{/imprimirreceita/{id}(id= ${receita.id})}"><img th:title="#{imprimirreceita}" class="print" th:src="@{/images/imprimir.png}"/></a>
+							<a th:target="_blank" th:href="@{/imprimiringredientes/{id}(id= ${receita.id})}"><img th:title="#{imprimiringrediente}" class="print" th:src="@{/images/listaingredientes.png}"/></a>
+						</li>
+				</ul>	
+			</div>
+			
+			<div class="fieldcontain semmargem">
+				<text class="dadosreceita" th:text="#{tempopreparo}"></text><div class="clearer"></div>
+				<text class="descricaoreceitapreto" th:text="${receita.tempopreparo}"></text>
+			</div>
+			
+			<div class="fieldcontain semmargem">
+				<text class="dadosreceita" th:text="#{rendimento}"></text><div class="clearer"></div>
+				<text class="descricaoreceitapreto" th:text="${receita.rendimento}"></text>
+			</div>
+			
+			<div class="fieldcontain semmargem">
+				<text class="dadosreceita" th:text="#{ingredientes}"></text>
+				<textarea name="ingredientes" style="width:70%"><text th:text="${receita.ingredientes}"></text></textarea>
+			</div>
+			
+			<div class="fieldcontain">
+				<text class="dadosreceita" th:text="#{modopreparo}"></text>
+				<textarea name="modopreparo" style="width:70%"><text th:text="${receita.modopreparo}"></text></textarea>
+			</div>
+	
+		</fieldset>	
+	
+	</div>	
+	
+	<div layout:fragment="scripts">
+		<script th:src="@{/libs/tinymce/tinymce.min.js}">...</script>
+		<script th:src="@{/libs/textareareadonly.js}">...</script>
 	</div>
-	<!-- /.container -->
-	<!-- Bootstrap core JavaScript-->
-    <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
-	<!-- Placed at the end of the document so the pages load faster -->
+	
 </body>
 </html>

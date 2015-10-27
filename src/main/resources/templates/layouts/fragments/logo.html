@@ -1,0 +1,16 @@
+<logo th:fragment="logocontent">
+
+	<div class="logo">
+				
+				<div class="imagemlogo">
+					<img th:if="${#locale.toString()=='pt_BR'}" th:src="@{/images/logo_pt_br.png}"/>
+					<img th:if="${#locale.toString()=='en'}" th:src="@{/images/logo_en.png}"/>
+					<img th:if="${#locale.toString()=='es'}" th:src="@{/images/logo_es.png}"/>
+				</div>
+				
+				<div sec:authorize="isAuthenticated()" class="userlogado">
+						<text sec:authentication="principal.nome"></text> - <text sec:authentication="principal.authorities"></text>		
+				</div>
+	</div>
+  	
+</logo>
