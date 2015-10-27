@@ -20,10 +20,10 @@
       <script src="/libs/html5shiv/html5shiv.min.js"></script>
       <script src="/libs/respond/respond.min.js"></script>
     <![endif]-->
-
+<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>
 </head>
 
-<body>
+<body ng-controller="AppController">
 
 	<div class="container">
 
@@ -38,7 +38,7 @@
 			 	 	<span th:text="#{loginerror}"></span>
 	        </div>
 	        
-	       	<form th:action="@{/login}" method="POST">  
+	        <form th:action="@{/login}" method="POST">  
 
 				<fieldset class="form">
 				
