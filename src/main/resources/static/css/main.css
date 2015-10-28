@@ -6,30 +6,21 @@ body {
 	font-size:13px;
 }
 
-.wrapper {
-    padding:1.5em;
-}
-
 [ng-cloak] {
-	display: none;
+    display:none;
 }
 
-[ng-cloak].splash .h1, [ng-cloak].splash h1 {
+[ng-cloak].splash {
     display: block !important;
-    background-color:#2F548B;
-    width:60%;
-    margin:0 auto;
-    text-align:center;
+    background:#2F548B;
     color:#fff;
-    font-size:1.5em;
-    border: 2px solid #CD592C;
-    border-radius:5px;
-    font-weight:0;
-    padding:1.5em;
+    width:45%;
+    margin:0 auto;
+    padding:1em;
 }
 
-.splash .h1 , .splash h1{
-	display:none;
+.splash {
+    display:none;
 }
 
 .margintableleft{
@@ -372,10 +363,6 @@ dl, ul, ol, li, dt, dd {
     cursor: default;
     background-color:#2F548B;
     border-color: #2F548B;
-}
-
-.centro {
-	text-align:center;
 }
 
 .link{
