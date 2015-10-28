@@ -4,8 +4,9 @@
 		font-size:2em;
 	}
 	
-	.splash {
-	    padding:0.2em;
+	[ng-cloak].splash img{
+	    width:48px;
+	    height:48px;
 	}
 	
 	body{

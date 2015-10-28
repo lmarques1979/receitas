@@ -12,11 +12,7 @@ body {
 
 [ng-cloak].splash {
     display: block !important;
-    background:#2F548B;
-    color:#fff;
-    width:45%;
     margin:0 auto;
-    padding:1em;
 }
 
 .splash {
