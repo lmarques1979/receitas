@@ -34,24 +34,21 @@
 
 	<div class="container">
 	
-			<!-- Logo -->
-			<div th:include="/layouts/fragments/logo :: logocontent"></div>
-			
 			<!-- navbar -->
-			<div th:include="/layouts/fragments/nav :: navbarcontent"></div>
+			<frag th:include="/layouts/fragments/nav :: navbarcontent"></frag>
 			
 			<!--main content start-->
 			<section id="main-content" >
 				<section class="wrapper">
 					<div class="splash centro" ng-cloak="">
-					    <img th:src="@{/images/loading.gif}"/>
+					   <img th:src="@{/images/loading.gif}"/>
 					</div>
 					<div ng-cloak="" layout:fragment="content"></div>
 				</section>
 			</section>
 						
 			<!-- footer -->
-			<div th:include="/layouts/fragments/footer::footercontent"></div>
+			<frag th:include="/layouts/fragments/footer::footercontent"></frag>
 	
 	</div>
 	<!-- /.container -->
@@ -61,7 +58,9 @@
     <script th:src="@{/libs/angular-route/angular-route.min.js}"></script>
     <script th:src="@{/libs/jquery/jquery.min.js}"></script>    
     <script th:src="@{/libs/bootstrap/bootstrap.min.js}">...</script>
-	<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>		
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script>	
+	
 	<script th:src="@{/libs/receitas.js}"></script>
 	
 	<div layout:fragment="scripts"></div>

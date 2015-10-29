@@ -1,9 +1,131 @@
 body {
 	font-family: "Open Sans","open_sansregular",sans-serif;
 	background-color:#fff;
-	margin: 5px auto;
+	margin:0 auto;
 	overflow-x: hidden;
 	font-size:13px;
+}
+
+.left{
+	float:left;	
+}
+
+.right{
+	float:right;	
+}
+
+ol, ul {
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.navbar{
+	min-height:0;
+	margin-bottom:0;	
+	border:0;
+	
+}
+
+.navbar-inner{
+	width:100%;
+}
+
+.topNav {
+    background: #56555B none repeat scroll 0% 0%;
+    float:left;
+    width:100%;
+    height:3.5em;
+    position:relative;
+    overflow-y:visible !important;
+    z-index: 999;
+}
+
+.topNav .icons ul{
+	width:100%;
+}
+
+.topNav .icons li{
+	display: inline-block !important;
+}
+
+.topNav .icons li a{
+	display:inline-block;
+	background-position: 0.5em center;
+    background-repeat: no-repeat;
+    text-indent:2.4em;
+    margin-top: 0.5em;
+    color: #FFF;
+}
+
+.topNav .icons li a.usuario{
+	 background-image: url("../images/usuario.png");
+	 margin-right:1em;
+}
+
+.topNav .icons li a.email{
+	 background-image: url("../images/email.png");
+	 margin-right:1em;
+}
+
+.topNav .icons li a.int{
+	text-indent:0;
+}
+
+.menu{
+	background:#eeeeee;	
+	margin:0;
+}
+
+.menu ul{
+	text-align:center;
+}
+
+.menu ul li {
+    display:inline-block;
+	font-size:1.2em;
+	padding:1.3em 3em;
+	background:#fff;
+	color:#56555b;
+}
+
+.menu ul li.img{
+    padding:0 1em;	
+}
+
+.menu ul li img{
+   position:relative;	
+   height:90%;
+   
+}
+
+.menu ul li a{
+   color:#56555b;
+}
+
+.menu li.active{
+    background-color:#5EB8CE;
+}
+
+.menu li.active a{
+	color:#fff;
+}    
+
+.menu li.login{
+    background-color:#F7921E;
+}
+
+.menu li.login a{
+    color:#fff;
+}
+
+.menu li , .menu a:visited, .menu span.no-link {
+    background:#fff;
+    text-decoration: none;   
+}
+
+.background{
+	border-bottom: 1px solid #d3d3d3;
+	margin-bottom:2em;
 }
 
 [ng-cloak] {
@@ -12,7 +134,7 @@ body {
 
 [ng-cloak].splash {
     display: block !important;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .splash {
@@ -42,7 +164,7 @@ body {
 	font-weight:bold;
 	border-width:0px;
 	width:auto;
-	background:#2F548B none repeat scroll 0% 0%;
+	background:#56555B none repeat scroll 0% 0%;
 	border-radius: 0em 0.5em 0.5em 0em;
 	color:#FFF;
 	padding: 0.7em 1.5em;
@@ -66,7 +188,7 @@ table th {
 	padding: 0.5em 0.7em;
 	background: #EFEFEF none repeat scroll 0% 0%;
 	border: 1px solid #E0E0E0;
-	color: #2F548B;
+	color:#56555B;
 	text-align: center;
 	font-size: 1em;
 }
@@ -82,7 +204,7 @@ table th.model {
 table td a.criar , a.criar:hover, a.criar:active {
 	position:relative;
 	float:right;
-	background: #2F548B none repeat scroll 0% 0%;
+	background:#56555B none repeat scroll 0% 0%;
 	border-radius:5px;
 	color: #FFF;
 	padding: 0.8em 1em;
@@ -92,7 +214,7 @@ table td a.criar , a.criar:hover, a.criar:active {
 }
 
 table th.model text {
-	background:#2F548B;
+	background:#56555B;
 	-moz-border-radius:0.7em;
 	-webkit-border-radius:0.7em;
 	border-radius:0.7em;
@@ -102,7 +224,7 @@ table th.model text {
 
 table td {
 	padding: 0.4em 1em;
-	color:#2F548B;
+	color:#56555B;
 }
 
 .centro {
@@ -130,7 +252,7 @@ table tr:last-child td:last-child {
 a.botaocriar , a.botaocriar:hover, a.botaocriar:active {
 	display:block;
 	float:right;
-	background: #2F548B none repeat scroll 0% 0%;
+	background:#56555B none repeat scroll 0% 0%;
 	border-radius:0.43em;
 	color: #FFF;
 	padding: 0.8em 1em;
@@ -140,7 +262,7 @@ a.botaocriar , a.botaocriar:hover, a.botaocriar:active {
 }
 
 a , a:hover, a:active{
-	color:#2F548B; 
+	color:#56555B; 
 	text-decoration:none;
 	
 }
@@ -153,6 +275,7 @@ a , a:hover, a:active{
 .menualto{
 	margin-left:1em;
 }
+
 .impressao{
 	min-width:100%;
 }
@@ -171,11 +294,6 @@ a , a:hover, a:active{
 
 .print{
 	margin-right:1em;	
-}
-
-.right{
-	position:relative;
-	float:right;
 }
 
 .listing {
@@ -274,7 +392,6 @@ dl, ul, ol, li, dt, dd {
 }
 
 .tiporeceita{
-	color:#2F548B;
 	font-weight:normal;
 	font-size:0.8em;
 	font-style: italic;
@@ -304,41 +421,6 @@ dl, ul, ol, li, dt, dd {
 	clear:both;
 }
 
-.userlogado{
-	display:block;
-	position:relative;
-	float:right;
-	font-weight: bold;
-	font-size:0.9em;
-	color:#fff;
-	right:0.5em;
-}
-
-.logo {
-    position: relative;
-    min-width:100%;
-    width: auto !important;
-    /*background: #DB4211 url("../images/background_logo.jpg") repeat scroll 0% 0%;*/
-    background:#2F548B;
-    z-index: 2;
-    height:9em;
-    top: 0.3em;
-}
-
-.imagemlogo{
-	display:block;
-	position:relative;
-	float:left;
-	height:100%;
-}
-
-.imagemlogo img{
-    display:block;
-    position: relative;
-    height: 100%;   
-    width:auto;
-    margin: 0.2em auto;
-}
 
 .fieldcontain a.esqueceu, a.esqueceu:hover, a.esqueceu:active{
 	position:relative;
@@ -417,7 +499,7 @@ button.submit {
 	font-weight:bold;
 	border-width:0px;
 	width:auto;
-	background:#2F548B none repeat scroll 0% 0%;
+	background:#56555B none repeat scroll 0% 0%;
 	border-radius:5px;
 	color:#FFF;
 	padding:0.8em 3em;
@@ -484,7 +566,7 @@ legend{
 	font-weight: bold;
 	border-width: 0px;
 	width: auto;
-	background: #2F548B none repeat scroll 0% 0%;
+	background:#56555B none repeat scroll 0% 0%;
 	border-radius: 5px;
 	color: #FFF;
 	padding: 0.5em 0.9em;
@@ -601,19 +683,6 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 	text-transform:lowercase;
 }
 
-
-.navbar-inner .internacionalizacao{
-	position:relative;
-	float:right;
-	padding:0;
-	top:-0.2em;
-	margin-right:0;
-}
-
-.navbar-inner .internacionalizacao li{
-	margin-right:0.3em;
-}
-
 a.delete{ 
 	border:0;
 	position:relative;
@@ -622,124 +691,21 @@ a.delete{
 	right: 1.5em;
 }
 
-.navbar-inner .internacionalizacao a {
-    background-position: 0.7em center;
-    background-repeat: no-repeat;
-    text-indent:0;
-    color: #FFF;
-}
-
-.navbar-inner .internacionalizacao a.pt_BR {
-    background-image: url("../images/pt_BR.png");
-}
-
-.navbar-inner a.receita {
-    background-image: url("../images/receita.png");
-}
-
-
-.navbar-inner a.configuracao {
-    background-image: url("../images/configuracao.png");
-}
-
-.navbar-inner a.usuario {
-    background-image: url("../images/usuario.png");
-}
-
-.navbar-inner a.tiporeceitas {
-    background-image: url("../images/tiporeceitas.png");
-}
-
-
-.navbar-inner a.cadastrousuario {
-    background-image: url("../images/cadastrousuario.png");
-}
-
-.navbar-inner a.regra {
-    background-image: url("../images/regra.png");
-}
-
-.navbar-inner a.usuarioregra {
-    background-image: url("../images/usuarioregra.png");
-}
-
-.navbar-inner a.login {
-    background-image: url("../images/login.png");
-}
-
-.navbar-inner a.logout {
-    background-image: url("../images/logout.png");
-}
-
-.navbar-inner a.home {
-    background-image: url("../images/home.png");
-}
-
-.navbar-inner ul {
-	overflow: hidden;
-	padding-left: 0;
-	padding-top:5px;
-	zoom: 1;
-}
-
-.navbar-inner li {
-	display: block;
-	float: left;
-	list-style-type: none;
-	margin-right:1.3em;
-	padding: 0;
-}
-
-.navbar-inner a, .navbar-inner a.cadastrousuario , .navbar-inner a.login, 
-.navbar-inner a.logout , .navbar-inner a.home , .navbar-inner a.regra,
-.navbar-inner a.usuarioregra , .navbar-inner a.usuario , .navbar-inner a.tiporeceitas,
-.navbar-inner a.configuracao , .navbar-inner a.receita{
-    color: #FFF;
-    display: block;
-    padding: 0.25em 0.7em;
-    text-decoration: none;
-    border-radius: 0.3em;
-    font-size:1em;
-    font-weight: bold;
-}
-
-.navbar-inner a {
-    background-position: 0.5em center;
-    background-repeat: no-repeat;
-    text-indent:30px;
-    margin-top: 0.5em;
-    color: #FFF;
-    background-size:2em;
-}
-
 .container{
 	display:block;
 	margin: 0 auto;
 	background-color:#fff;
 	padding:0;
-	box-shadow: 0px 0px 0.3em #2F548B;
-}
-
-.navbar{
-	border-radius:0px;
-	border:0;
-	min-height:0;
-	margin-bottom:2em;
-	padding-bottom:0;
-	background: #2F548B;
-	border-bottom:3px solid #CD592C;
-}
-
-.navbar-inner{
-	color:#fff;
-	border-bottom:3px solid #CD592C;
-	/*height:100px;*/
+	width:100%;
 }
 
 .footer{
-	height:20px;
+	height:2.5em;
 	text-align:center;
-	font-size:13px;
+	font-size:1em;
     font-style: italic;
-    margin-top:15px;
+    margin-top:1.5em;
+    padding-top:0.5em;
+    background-color:#F7921E;
+    color:#fff;
 }

@@ -1,12 +1,36 @@
 @media (max-width:500px){
 	
+	.menu ul li a {
+    	font-size: 0.7em;
+	}
+	
+	.menu ul li {
+	    padding:0.6em 0.8em;
+	    
+	}
+	
+	.menu ul li.img{
+	    padding:0;	
+	}
+	
+	.menu ul li img{
+	   position:relative;	
+	   width:80px;
+	   height:24px;
+	   
+	}
+
+	.topNav .icons li a img {
+	   width:15px;
+	   height:15px;
+	}
+
 	h1 , .h1{
 		font-size:2em;
 	}
 	
-	[ng-cloak].splash img{
-	    width:48px;
-	    height:48px;
+	.splash {
+	    padding:0.2em;
 	}
 	
 	body{

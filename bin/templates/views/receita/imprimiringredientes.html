@@ -2,11 +2,13 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorator="layouts/main">
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <div layout:fragment="styles"></div>
 <title th:text="#{visualizarreceita}"></title>
+<link th:href="@{/libs/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link th:href="@{/css/mobile.css}" rel="stylesheet" />
 </head>
 <body onload="window.print()">
 	

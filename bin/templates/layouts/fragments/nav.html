@@ -4,44 +4,92 @@
 	
 	<div class="navbar">
 	
-			<div class="navbar-inner">
-			 
-			 	
-				<ul>
-			   
-			   		<div sec:authorize="isAuthenticated()">
-			   		
-			   			
-			   			<li><a th:href="@{/}" class="home"><text for="home" th:text="#{home}"></text></a></li>
-			   		 	<li><a th:href="@{/vertiporeceitas}" class="tiporeceitas"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a></li>
-			   		  	<li><a th:href="@{/verreceitas}" class="receita"><text for="receita" th:text="#{receita}"></text></a></li>
-			 			<li><a th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}" class="usuario"><text for="usuario" th:text="#{usuario}"></text></a></li>
-			 			<li><a th:href="@{/verconfiguracao}" class="configuracao"><text for="configuracao" th:text="#{configuracao}"></text></a></li>
-			 			
-			   		 	<div sec:authorize="hasAuthority('ADMIN')">
-			   		 		<li><a th:href="@{/verregras}" class="regra"><text for="regra" th:text="#{regra}"></text></a></li>
-			   		 		<li><a th:href="@{/verusuarioregras}" class="usuarioregra"><text for="usuarioregra" th:text="#{usuarioregra}"></text></a></li>	
-			   		 		<li><a th:href="@{/verusuarios}" class="cadastrousuario"><text for="usuario" th:text="#{usuarios}"></text></a></li>			   		 	
-			   		 	</div>
-			   		 	
-			   		 	<li><a th:href="@{/logout}" class="logout"><text for="logout" th:text="#{logout}"></text></a></li>
-			 		</div>
-				 	
-				 	<div sec:authorize="isAnonymous()">
-				 		<li><a th:href="@{/}" class="home"><text for="home" th:text="#{home}"></text></a></li>
-				 		<li><a th:href="@{/usuario}" class="cadastrousuario"><text for="criarusuario" th:text="#{criarusuario}"></text></a></li>
-				 		<li><a th:href="@{/login}" class="login"><text for="login" th:text="#{login}"></text></a></li>
-				 	</div>
-				 	
-				 	<div class="internacionalizacao">
-							<li><a th:href="@{/?lang=pt_BR}" th:title="#{portugues}"><img th:src="@{/images/pt_BR.png}"/></a></li>
-							<li><a th:href="@{/?lang=en}" th:title="#{ingles}"><img th:src="@{/images/en.png}"/></a></li>
-							<li><a th:href="@{/?lang=es}" th:title="#{espanhol}"><img th:src="@{/images/es.png}"/></a></li>
-					</div><div class="clearer"></div>
-				
-				</ul>
-				
-			</div>	
+			<div class="topNav">
+			
+				<div class="right">
+	        		<ul class="icons">	        			
+       					  	<sec sec:authorize="isAuthenticated()">
+	       							<li><a class="usuario" th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}">Luiz Marques</a></li>
+	       					</sec>
+							<li><a class="email" href="mailto:liunit@gmail.com" th:title="#{enviaremail}"><text th:text="#{contato}"></text></a></li>							
+							<li><a class="int" th:href="@{/?lang=pt_BR}" th:title="#{portugues}"><img th:src="@{/images/pt_BR.png}"/></a></li>
+							<li><a class="int" th:href="@{/?lang=en}" th:title="#{ingles}"><img th:src="@{/images/en.png}"/></a></li>
+							<li><a class="int" th:href="@{/?lang=es}" th:title="#{espanhol}"><img th:src="@{/images/es.png}"/></a></li>
+					</ul>
+				</div>
+	            	
+	        </div><div class="clearer"></div>
+	        
+	        <div class="menu">
+	       
+			       	<ul>
+			       	
+			       		<li class="img">
+		       				<img th:if="${#locale.toString()=='pt_BR'}" th:src="@{/images/logo_pt_br.png}"/>
+							<img th:if="${#locale.toString()=='en'}" th:src="@{/images/logo_en.png}"/>
+							<img th:if="${#locale.toString()=='es'}" th:src="@{/images/logo_es.png}"/>
+			       		</li>
+					
+						<li th:class="${#httpServletRequest.getServletPath() == '/' ? 'active' : ''}">
+								<a th:href="@{/}"><text for="home" th:text="#{home}"></text></a>
+						</li>
+								
+						<sec sec:authorize="isAuthenticated()">
+							
+							
+				   			<li th:class="${#httpServletRequest.getServletPath() == '/vertiporeceitas' ||
+				   			                #httpServletRequest.getServletPath() == '/tiporeceita' ||
+				   			                #httpServletRequest.getServletPath().contains('/showtiporeceita/') ? 'active' : ''}">
+				   				<a th:href="@{/vertiporeceitas}"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a>
+				   			</li>
+				   		  	<li th:class="${#httpServletRequest.getServletPath().equals('/verreceitas') || 
+				   		  					#httpServletRequest.getServletPath().equals('/receita') ||
+				   		  					#httpServletRequest.getServletPath().contains('/verreceitaportipo') ||
+				   		  					#httpServletRequest.getServletPath().contains('/viewreceita') ||
+				   		  					#httpServletRequest.getServletPath().contains('/showreceita') ? 'active' : ''}">
+				   		  		<a th:href="@{/verreceitas}"><text for="receita" th:text="#{receita}"></text></a>
+				   		  	</li>
+				 			<li th:class="${#httpServletRequest.getServletPath().contains('/showusuario') ||
+				 			                #httpServletRequest.getServletPath().equals('/usuario') ? 'active' : ''}">
+				 				<a th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}"><text for="usuario" th:text="#{usuario}"></text></a>
+				 			</li>
+				 			<li th:class="${#httpServletRequest.getServletPath().equals('/verconfiguracao') ||
+				 							#httpServletRequest.getServletPath().equals('/configuracao') ||
+				 							#httpServletRequest.getServletPath().contains('/showconfiguracao') ? 'active' : ''}">
+				 				<a th:href="@{/verconfiguracao}"><text for="configuracao" th:text="#{configuracao}"></text></a>
+				 			</li>
+				 			
+				   		 	<div sec:authorize="hasAuthority('ADMIN')">
+				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('verregras') ? 'active' : ''}">
+				   		 			<a th:href="@{/verregras}"><text for="regra" th:text="#{regra}"></text></a>
+				   		 		</li>
+				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('verusuarioregras') ? 'active' : ''}">
+				   		 			<a th:href="@{/verusuarioregras}"><text for="usuarioregra" th:text="#{usuarioregra}"></text></a>
+				   		 		</li>	
+				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('verusuarios') ? 'active' : ''}">
+				   		 			<a th:href="@{/verusuarios}"><text for="usuario" th:text="#{usuarios}"></text></a>
+				   		 		</li>			   		 	
+				   		 	</div>
+				   		 	
+				   		 	<li class="login"><a th:href="@{/logout}"><text for="logout" th:text="#{logout}"></text></a></li>
+				   		 	
+				 		</sec>
+					 	
+					 	<sec sec:authorize="isAnonymous()">
+					 		<li th:class="${#httpServletRequest.getServletPath().contains('/showusuario') ||
+					 		                #httpServletRequest.getServletPath().equals('/usuario') ? 'active' : ''}">
+					 			<a th:href="@{/usuario}"><text for="criarusuario" th:text="#{criarusuario}"></text></a>
+					 		</li>
+					 		<li class="login">
+					 			<a th:href="@{/login}"><text for="login" th:text="#{login}"></text></a>
+					 		</li>
+					 	</sec>
+					
+					</ul>
+					
+			</div><div class="clearer"></div>	
+			
+			<div class="background"></div>			
 					
 	</div>
 	

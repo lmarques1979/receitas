@@ -16,15 +16,15 @@
 				<div th:text="${message}" class="message" role="status"></div>
 			</text>
 					
-			<div class="menualto">
-				<div class="fieldcontain semmargem block">
-				    <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
-				    <span class="separator">›</span>
-					<text class="descricaoreceita" th:text="${tiporeceita.descricao}"></text>
-				</div>
-			</div>
-		
-			<fieldset class="view">
+			<fieldset class="form semborda">
+			
+					<div class="menualto">
+						<div class="fieldcontain semmargem block">
+						    <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
+						    <span class="separator">›</span>
+							<text class="descricaoreceita" th:text="${tiporeceita.descricao}"></text>
+						</div>
+					</div>
 			
 					<div class="total">
 						<span class="separator">›</span>
