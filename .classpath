@@ -6,22 +6,22 @@
 	<classpathentry kind="src" path="src/test/groovy"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container" exported="true"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7" exported="true"/>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.0.BUILD-SNAPSHOT/59651378b3df84585e27476f4704ce454f2ac106/spring-boot-starter-thymeleaf-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.0.BUILD-SNAPSHOT/14f063c969ec41a3d9585f148c441a34691616ab/spring-boot-starter-thymeleaf-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.0.BUILD-SNAPSHOT/3cec576eb17298bc070977d8b48fa43dcb599da2/spring-boot-starter-thymeleaf-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.0.BUILD-SNAPSHOT/86cc651ff758ac20613e04722399dbaf632e8717/spring-boot-starter-thymeleaf-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/1.3.0.BUILD-SNAPSHOT/befa743f7964965a3249a625d620f9eab8e61cc0/spring-boot-starter-mail-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/1.3.0.BUILD-SNAPSHOT/cac9e2e6301fce852c61bb8ab111da378428b59e/spring-boot-starter-mail-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/1.3.0.BUILD-SNAPSHOT/d7dfad5b3980faaa51d56871eb5f5b1f8ff8376a/spring-boot-starter-mail-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/1.3.0.BUILD-SNAPSHOT/f006694869def7a9fadeb293670caec54ca7fe6b/spring-boot-starter-mail-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-security/1.3.0.BUILD-SNAPSHOT/87c7d7fa391e0d5a23bf8bb2c80d7150526434fe/spring-boot-starter-security-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-security/1.3.0.BUILD-SNAPSHOT/618b5451c7a6602c4af5b47a70b93271a2ebcd7f/spring-boot-starter-security-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-security/1.3.0.BUILD-SNAPSHOT/ed06841169aa0c5dd2cb9b59c94922d2e8ec7a2a/spring-boot-starter-security-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-security/1.3.0.BUILD-SNAPSHOT/a56a30dedef068f006a5fb63e77743850af62c12/spring-boot-starter-security-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.0.BUILD-SNAPSHOT/97b7fe4d7b1c2ed6030541b84d320da5ea7ac74f/spring-boot-starter-web-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.0.BUILD-SNAPSHOT/2125376dc34fd26c510d58f9f1b2fe41d2e4926d/spring-boot-starter-web-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.0.BUILD-SNAPSHOT/b8cf0aa7a11d359b3c9b665fc6d35943649692e3/spring-boot-starter-web-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.0.BUILD-SNAPSHOT/734d881f9f06996ff75ff5e6f9058aaaa877f608/spring-boot-starter-web-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -36,7 +36,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.0.BUILD-SNAPSHOT/6b5df310aa5432df1998a6ec569ba8393b1db4f3/spring-boot-starter-data-jpa-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.0.BUILD-SNAPSHOT/d6294556f2fda222e334c4412fc75e51822942c2/spring-boot-starter-data-jpa-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.0.BUILD-SNAPSHOT/247386befd77f010265e578735ee60fefa06f0e7/spring-boot-starter-data-jpa-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.3.0.BUILD-SNAPSHOT/56f8f6787296d5691b9542158ff166a1f4710f21/spring-boot-starter-data-jpa-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -56,7 +56,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.0.BUILD-SNAPSHOT/d6b10569d40e987f7027b0efe25b041f84fc1add/spring-boot-starter-tomcat-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.0.BUILD-SNAPSHOT/b5d6866bc263bee78d3b2a5159b2e7647677ae49/spring-boot-starter-tomcat-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.0.BUILD-SNAPSHOT/8a5b64d402eb45df0ea85f28c0d3bd71101d008e/spring-boot-starter-tomcat-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.0.BUILD-SNAPSHOT/56d8056318e140a4a7c5c4e5a977a95bdb1a8840/spring-boot-starter-tomcat-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -66,12 +66,12 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.0.BUILD-SNAPSHOT/a42a44bd7c154cea452c6a36e782d8fc2cbdd8ca/spring-boot-starter-test-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.0.BUILD-SNAPSHOT/11e19652c9865138a08aad9277d8d442ace59b00/spring-boot-starter-test-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.0.BUILD-SNAPSHOT/43fa02ef41f05cb80748faa933486bcb690bfe62/spring-boot-starter-test-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.0.BUILD-SNAPSHOT/e8f72bbcfcfcb199214b2a8a867138a73b2a51b4/spring-boot-starter-test-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.0.BUILD-SNAPSHOT/5da337f145c3e4ce13a8b84b4c96f9fdc1627018/spring-boot-starter-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.0.BUILD-SNAPSHOT/992603f14d63bd1552634a73fedd5b184ec9c84/spring-boot-starter-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.0.BUILD-SNAPSHOT/1d6fce34dab3b0f497e89d2f742eb9c82195afae/spring-boot-starter-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.0.BUILD-SNAPSHOT/3fa0bfc5aaf7188d5d4ae4d013335c37e7af1f9/spring-boot-starter-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -81,12 +81,12 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.3.BUILD-SNAPSHOT/d868776b2f3418fbfd10eefb267462503177045/spring-context-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.3.BUILD-SNAPSHOT/7eb55649ce8c38a31469e63d2ebbcd7a7b476aa1/spring-context-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.3.BUILD-SNAPSHOT/d1a359ef719486116c3a093ab578b5d5331835fb/spring-context-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.3.BUILD-SNAPSHOT/1b472b81e676019620086ff5502872b6d7cb0f91/spring-context-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.2.3.BUILD-SNAPSHOT/44f56498867bcacf56d53d37768cb9285b8bd141/spring-context-support-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.2.3.BUILD-SNAPSHOT/7311503a61fba33b02ebe45b7e18fd74953c9ac9/spring-context-support-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.2.3.BUILD-SNAPSHOT/c66b53077adadfe370753d8aaacdd264d0923a82/spring-context-support-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.2.3.BUILD-SNAPSHOT/6a1ef9abeac372ba23bf0638b6094bec3f952d11/spring-context-support-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -96,22 +96,22 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.3.BUILD-SNAPSHOT/238ba482a68dddd42c98bff6b06f5a333d9f2c1f/spring-aop-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.3.BUILD-SNAPSHOT/1081b06e516b9328e86c098cb0b3568016dba3c8/spring-aop-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.3.BUILD-SNAPSHOT/3a0ee851ed136bf90181af311c16f0bb0f377ca0/spring-aop-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.3.BUILD-SNAPSHOT/e26d50f91f236448f92d0e3511c7bf3815a8cee7/spring-aop-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.0.3.CI-SNAPSHOT/1b0476c3e9b712108875c3a19857281058c0439/spring-security-config-4.0.3.CI-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.0.3.CI-SNAPSHOT/8149feb24292bde9592312f000ce1bcced9ba527/spring-security-config-4.0.3.CI-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.0.3.CI-SNAPSHOT/5ec6804f9a40fb96ec3e6a0b7c239623f7444710/spring-security-config-4.0.3.CI-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.0.3.CI-SNAPSHOT/49eb4fda5292910c8a3327875981fbb6afc42200/spring-security-config-4.0.3.CI-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.0.3.CI-SNAPSHOT/9cb7a5e4f8f6a6daa3017338eb09fc27b8212598/spring-security-web-4.0.3.CI-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.0.3.CI-SNAPSHOT/39740b038762b518c89f5a192597e53f8d100947/spring-security-web-4.0.3.CI-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.0.3.CI-SNAPSHOT/2d3e66b69fa4612edfcaed325b71c2f7a1c33548/spring-security-web-4.0.3.CI-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.0.3.CI-SNAPSHOT/3dd5a6b74e773ccf3676d640060dae8ab3268974/spring-security-web-4.0.3.CI-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/1.3.0.BUILD-SNAPSHOT/4ea7082b595923dfdabbc6f81266aa744f15851a/spring-boot-starter-validation-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/1.3.0.BUILD-SNAPSHOT/23512452c1bf7112243db401fa1d582236111619/spring-boot-starter-validation-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/1.3.0.BUILD-SNAPSHOT/f141f049e60e0574c850bc5d9f1bb7664262ae42/spring-boot-starter-validation-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/1.3.0.BUILD-SNAPSHOT/6610c6b252cd7581faa4984482ca3b5191b2550c/spring-boot-starter-validation-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -121,12 +121,12 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.3.BUILD-SNAPSHOT/617567478a2f67da52b8af0e599dbd031cbf92a5/spring-web-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.3.BUILD-SNAPSHOT/9eb667d4b48e391dbc8900521367a032c0ee2c11/spring-web-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.3.BUILD-SNAPSHOT/d6b4263efc4a8e740557803a11d8ffb32e58250d/spring-web-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.3.BUILD-SNAPSHOT/4f9644cc382bc5cce732e755ad113a3d50b85f82/spring-web-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.BUILD-SNAPSHOT/5a1deac23c90e5c1fe8a20eca6f609e0d6a91808/spring-webmvc-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.BUILD-SNAPSHOT/e6df97900fd9805abe2393f2b9e63281c3ea62cf/spring-webmvc-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.BUILD-SNAPSHOT/dab1caf61338c77e1349f83261bfa1cb7aa7f6e/spring-webmvc-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.3.BUILD-SNAPSHOT/4fafe62758aaa02be973b09907592c1e1dfdcc72/spring-webmvc-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -146,12 +146,12 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/1.3.0.BUILD-SNAPSHOT/dce8d566fdb481c4f4d2bfbbe017bc05e23a98fb/spring-boot-starter-aop-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/1.3.0.BUILD-SNAPSHOT/3b73f71351412fa97342e298d8c3ce5b5663cd69/spring-boot-starter-aop-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/1.3.0.BUILD-SNAPSHOT/600197c02e5b2f7386488a7937ebc00e68afc1f4/spring-boot-starter-aop-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/1.3.0.BUILD-SNAPSHOT/21c1169aa476a5a8a118a7bae74ae5c6d996d387/spring-boot-starter-aop-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/1.3.0.BUILD-SNAPSHOT/5948f9dc52b1e34d6ab00dc470caf69886e78101/spring-boot-starter-jdbc-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/1.3.0.BUILD-SNAPSHOT/31cc9a756c960f29a1852cad63641b90588341d1/spring-boot-starter-jdbc-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/1.3.0.BUILD-SNAPSHOT/51d606fa5e08b1d3fc4420964983b960d65f6b42/spring-boot-starter-jdbc-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/1.3.0.BUILD-SNAPSHOT/f5a63bc1f7465783fbbc421f879e2cc54393edf7/spring-boot-starter-jdbc-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -171,7 +171,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.3.BUILD-SNAPSHOT/583aef6f8b23c6e3f66d45a3a642c38bad124d1e/spring-aspects-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.3.BUILD-SNAPSHOT/605b8557bf6fc5997afd5469582272428a9b81df/spring-aspects-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.3.BUILD-SNAPSHOT/15cb0c0e5922fa82d91eb59076cc9faaad14b894/spring-aspects-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.3.BUILD-SNAPSHOT/fa5cb4d07013251788d29e5e905e6f84501df313/spring-aspects-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -221,27 +221,27 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.BUILD-SNAPSHOT/677e2e94203ac3af05ec6e87a154f9cc576c7f96/spring-core-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.BUILD-SNAPSHOT/3a459e9a122ca6c82f66f1ad0b3cec3775708933/spring-core-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.BUILD-SNAPSHOT/4af636770d0224e815ca3e26530f4ae7e202ac6a/spring-core-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.3.BUILD-SNAPSHOT/3546c395eab7e398199db2cf814f6b94a56820b7/spring-core-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.3.BUILD-SNAPSHOT/e7cf307992d1ccfaf7b29218dfcb81ec0dbf6f01/spring-test-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.3.BUILD-SNAPSHOT/a3ecfe25bec51ff1ab9e1b24b230dd79932ab014/spring-test-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.3.BUILD-SNAPSHOT/5e6ceb5ae236cc951d63816f2f14d65965b4fd1b/spring-test-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.3.BUILD-SNAPSHOT/4123c8849d06301aaf6dd3483ac3336ed23b0ebb/spring-test-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.0.BUILD-SNAPSHOT/38380ae60656c79072eb3474adc79fa8bb6cc122/spring-boot-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.0.BUILD-SNAPSHOT/34137b97569f542006f58bc4bb23a1d41cfe891f/spring-boot-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.0.BUILD-SNAPSHOT/2862e66be4517220ccdaeb69edcab5a69c5800/spring-boot-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.0.BUILD-SNAPSHOT/c6dbe18d048ad8138ec783d4a7874f22b1f70912/spring-boot-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.BUILD-SNAPSHOT/28bfcf9b537b68da0c50faace43800897f238f7c/spring-boot-autoconfigure-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.BUILD-SNAPSHOT/5bdec9a175e7f016236bfcb8665d1f8aac18bd3a/spring-boot-autoconfigure-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.BUILD-SNAPSHOT/f8d1a1b702da4b2ee55e493d1faa058aaf27ee29/spring-boot-autoconfigure-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.0.BUILD-SNAPSHOT/e82a589ba272dc25e2c7e05f41f6430b26eafc90/spring-boot-autoconfigure-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.0.BUILD-SNAPSHOT/2e252b0a09d3f00d5db476c027bcf963af4bb947/spring-boot-starter-logging-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.0.BUILD-SNAPSHOT/29fd856770e439bf8cb68b1f1cee3f66517a5f2d/spring-boot-starter-logging-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.0.BUILD-SNAPSHOT/c90c96090c025b209979ad3ef2bd73dd193df2f6/spring-boot-starter-logging-1.3.0.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.0.BUILD-SNAPSHOT/111c36dd1b88144b4fa8b71f5bac4b8d801caa29/spring-boot-starter-logging-1.3.0.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -251,12 +251,12 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.3.BUILD-SNAPSHOT/8821884b4cf8e769ad26ba80d2dda6430b8052c3/spring-beans-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.3.BUILD-SNAPSHOT/9971c73e0bc7eac444122d930a79f9e9a08e708d/spring-beans-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.3.BUILD-SNAPSHOT/eab3e92618dc593880deb65e5d278c17338199ca/spring-beans-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.3.BUILD-SNAPSHOT/e086accf0e3c26cab16435dd35e415dce5989e61/spring-beans-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.3.BUILD-SNAPSHOT/7328eef29818b089948c5fa1649d1dded0ecfaac/spring-expression-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.3.BUILD-SNAPSHOT/8874ad809aa70ee3d22642d92d8aedaec36120d/spring-expression-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.3.BUILD-SNAPSHOT/3b8dee6b6fd857d7c028cc24fd902c9159cceaae/spring-expression-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.3.BUILD-SNAPSHOT/68cb4746d2d4f7f2438bacd495ba97d25dba401b/spring-expression-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -271,7 +271,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.0.3.CI-SNAPSHOT/fffbedea262a10be43d7c807b8d684688e13be06/spring-security-core-4.0.3.CI-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.0.3.CI-SNAPSHOT/aa8ba1fea65c90fdd17c3c2155ff1ba71a963459/spring-security-core-4.0.3.CI-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.0.3.CI-SNAPSHOT/4144383d0d1f7c26ba13b38b28a3f938da292aeb/spring-security-core-4.0.3.CI-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.0.3.CI-SNAPSHOT/cc1ae215fb8159285b09a1f7e997c82e00d9d5eb/spring-security-core-4.0.3.CI-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -326,7 +326,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.3.BUILD-SNAPSHOT/1146f292626640c8becf5ba7f02a4dbef271424b/spring-jdbc-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.3.BUILD-SNAPSHOT/307955b703b6de24afca21f2b7e10675cab6e73a/spring-jdbc-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.3.BUILD-SNAPSHOT/c693713aa626413cc9c9f322f3da6dc13b69ae83/spring-jdbc-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.3.BUILD-SNAPSHOT/dc14f035225e1934c0d6a0c03132372e7819550c/spring-jdbc-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -371,12 +371,12 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.3.BUILD-SNAPSHOT/85c7f47f5872edb7934c5c09a06d681538296a8f/spring-orm-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.3.BUILD-SNAPSHOT/fec3ac2d9dc821f850ff592b1a0a3af9377ef2a5/spring-orm-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.3.BUILD-SNAPSHOT/7314d27f09828086ab46ff38b452ddcfe6185595/spring-orm-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.3.BUILD-SNAPSHOT/feab895a4f99ba8a9451f94074c24db23347734d/spring-orm-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.3.BUILD-SNAPSHOT/20355b316501badc7d9b6ca1feda419906b7137f/spring-tx-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.3.BUILD-SNAPSHOT/cd161db4e0a1bd8d1685e4a86da23e0b8c18d471/spring-tx-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
+	<classpathentry sourcepath="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.3.BUILD-SNAPSHOT/d94cc9544b6826e61951453fd21b63b689284c78/spring-tx-4.2.3.BUILD-SNAPSHOT-sources.jar" kind="lib" path="/home/marques/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.3.BUILD-SNAPSHOT/9f45d2239bfc2e659b143fbafbc6d3fb966b81cd/spring-tx-4.2.3.BUILD-SNAPSHOT.jar" exported="true">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
