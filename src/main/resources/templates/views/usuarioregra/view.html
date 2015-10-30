@@ -27,13 +27,15 @@
 						</th>
 					</tr>
 					<tr>
-						<th colspan="2"><text for="usuarioregra.descricao" th:text="#{usuarioregra}"></text></th>
+						<th><text for="editar" th:text="#{editar}"></text></th>
+						<th><text for="usuarioregra.descricao" th:text="#{usuarioregra}"></text></th>
 					</tr>
 				</thead>
 				<tbody>
 				
 					<tr th:each="usuarioregra : ${pageimpl}">
-						<td colspan="2"><a th:href="@{/showusuarioregra/{id}(id= ${usuarioregra.id})}"><text for="home" th:text="${usuarioregra.usuario.username + ' - ' + usuarioregra.regra.descricao}"></text></a></td>
+						<td class="centro"><a th:title="#{editar}" th:href="@{/showusuarioregra/{id}(id= ${usuarioregra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td><text for="home" th:text="${usuarioregra.usuario.username + ' - ' + usuarioregra.regra.descricao}"></text></td>
 					</tr>
 					
 					<tr>

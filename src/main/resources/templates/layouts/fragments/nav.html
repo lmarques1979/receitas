@@ -37,29 +37,33 @@
 						<sec sec:authorize="isAuthenticated()">
 							
 							
-				   			<li th:class="${#httpServletRequest.getServletPath() == '/vertiporeceitas' ||
-				   			                #httpServletRequest.getServletPath() == '/tiporeceita' ||
-				   			                #httpServletRequest.getServletPath().contains('/showtiporeceita/') ? 'active' : ''}">
-				   				<a th:href="@{/vertiporeceitas}"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a>
-				   			</li>
-				   		  	<li th:class="${#httpServletRequest.getServletPath().equals('/verreceitas') || 
-				   		  					#httpServletRequest.getServletPath().equals('/receita') ||
-				   		  					#httpServletRequest.getServletPath().contains('/verreceitaportipo') ||
-				   		  					#httpServletRequest.getServletPath().contains('/viewreceita') ||
-				   		  					#httpServletRequest.getServletPath().contains('/showreceita') ? 'active' : ''}">
-				   		  		<a th:href="@{/verreceitas}"><text for="receita" th:text="#{receita}"></text></a>
-				   		  	</li>
-				 			<li th:class="${#httpServletRequest.getServletPath().contains('/showusuario') ||
-				 			                #httpServletRequest.getServletPath().equals('/usuario') ? 'active' : ''}">
-				 				<a th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}"><text for="usuario" th:text="#{usuario}"></text></a>
-				 			</li>
-				 			<li th:class="${#httpServletRequest.getServletPath().equals('/verconfiguracao') ||
+				   			<sec sec:authorize="! hasAuthority('ADMIN')">
+				   				
+				   				<li th:class="${#httpServletRequest.getServletPath().equals('/verconfiguracao') ||
 				 							#httpServletRequest.getServletPath().equals('/configuracao') ||
 				 							#httpServletRequest.getServletPath().contains('/showconfiguracao') ? 'active' : ''}">
-				 				<a th:href="@{/verconfiguracao}"><text for="configuracao" th:text="#{configuracao}"></text></a>
-				 			</li>
+				 					<a th:href="@{/verconfiguracao}"><text for="configuracao" th:text="#{configuracao}"></text></a>
+				 				</li>
+					   			<li th:class="${#httpServletRequest.getServletPath() == '/vertiporeceitas' ||
+					   			                #httpServletRequest.getServletPath() == '/tiporeceita' ||
+					   			                #httpServletRequest.getServletPath().contains('/showtiporeceita/') ? 'active' : ''}">
+					   				<a th:href="@{/vertiporeceitas}"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a>
+					   			</li>
+					   		  	<li th:class="${#httpServletRequest.getServletPath().equals('/verreceitas') || 
+					   		  					#httpServletRequest.getServletPath().equals('/receita') ||
+					   		  					#httpServletRequest.getServletPath().contains('/verreceitaportipo') ||
+					   		  					#httpServletRequest.getServletPath().contains('/viewreceita') ||
+					   		  					#httpServletRequest.getServletPath().contains('/showreceita') ? 'active' : ''}">
+					   		  		<a th:href="@{/verreceitas}"><text for="receita" th:text="#{receita}"></text></a>
+					   		  	</li>
+					 			<li th:class="${#httpServletRequest.getServletPath().contains('/showusuario') ||
+					 			                #httpServletRequest.getServletPath().equals('/usuario') ? 'active' : ''}">
+					 				<a th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}"><text for="usuario" th:text="#{usuario}"></text></a>
+					 			</li>
+					 		</sec>
 				 			
-				   		 	<div sec:authorize="hasAuthority('ADMIN')">
+				 			
+				   		 	<sec sec:authorize="hasAuthority('ADMIN')">
 				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('verregras') ? 'active' : ''}">
 				   		 			<a th:href="@{/verregras}"><text for="regra" th:text="#{regra}"></text></a>
 				   		 		</li>
@@ -69,9 +73,9 @@
 				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('verusuarios') ? 'active' : ''}">
 				   		 			<a th:href="@{/verusuarios}"><text for="usuario" th:text="#{usuarios}"></text></a>
 				   		 		</li>			   		 	
-				   		 	</div>
+				   		 	</sec>
 				   		 	
-				   		 	<li class="login"><a th:href="@{/logout}"><text for="logout" th:text="#{logout}"></text></a></li>
+				   		 	<li class="logout"><a th:href="@{/logout}"><text for="logout" th:text="#{logout}"></text></a></li>
 				   		 	
 				 		</sec>
 					 	

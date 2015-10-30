@@ -22,11 +22,12 @@
 						<th class="model"><text for="usuario" th:text="#{usuario}"></text></th>
 					</tr>
 					<tr>
-						<th colspan="5">
+						<th colspan="6">
 							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/usuario}"><img th:src="@{/images/add.png}"/></a>
 						</th>
 					</tr>
 					<tr>
+						<th><text for="editar" th:text="#{editar}"></text></th>
 						<th><text for="username" th:text="#{username}"></text></th>
 						<th><text for="primeironome" th:text="#{primeironome}"></text></th>
 						<th><text for="sobrenome" th:text="#{sobrenome}"></text></th>
@@ -38,7 +39,8 @@
 				<tbody>
 				
 					<tr th:each="usuario : ${pageimpl}">
-						<td><a th:href="@{/showusuario/{id}(id=${usuario.id})}"><text for="home" th:text="${usuario.username}"></text></a></td>
+						<td class="centro"><a th:title="#{editar}" th:href="@{/showusuario/{id}(id= ${usuario.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td><text for="home" th:text="${usuario.username}"></text></td>
 						<td class="centro"><text for="home" th:text="${usuario.primeironome}"></text></td>
 						<td class="centro"><text for="home" th:text="${usuario.sobrenome}"></text></td>
 						<td class="centro"><text for="home" th:text="${usuario.email}"></text></td>
@@ -46,7 +48,7 @@
 					</tr>
 					
 					<tr>
-						<td colspan="5"><a class="criar" th:href="@{/usuario}"><text for="criarusuario" th:text="#{criarusuario}"></text></a></td>
+						<td colspan="6"><a class="criar" th:href="@{/usuario}"><text for="criarusuario" th:text="#{criarusuario}"></text></a></td>
 					</tr>
 											
 				</tbody>

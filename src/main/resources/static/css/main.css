@@ -110,11 +110,15 @@ ol, ul {
 	color:#fff;
 }    
 
+.menu li.logout{
+    background-color:#FF0000;
+}
+
 .menu li.login{
     background-color:#F7921E;
 }
 
-.menu li.login a{
+.menu li.login a, .menu li.logout a{
     color:#fff;
 }
 
