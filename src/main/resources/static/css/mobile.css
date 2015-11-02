@@ -9,6 +9,12 @@
 	    
 	}
 	
+	.bx-wrapper img {
+		max-width:70px;
+		max-height:40px;
+		display: block;
+	}
+	
 	.menu ul li.img{
 	    padding:0;	
 	}

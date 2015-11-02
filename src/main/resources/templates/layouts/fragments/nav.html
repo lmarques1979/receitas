@@ -30,10 +30,6 @@
 							<img th:if="${#locale.toString()=='es'}" th:src="@{/images/logo_es.png}"/>
 			       		</li>
 					
-						<li th:class="${#httpServletRequest.getServletPath() == '/' ? 'active' : ''}">
-								<a th:href="@{/}"><text for="home" th:text="#{home}"></text></a>
-						</li>
-								
 						<sec sec:authorize="isAuthenticated()">
 							
 							
@@ -93,7 +89,36 @@
 					
 			</div><div class="clearer"></div>	
 			
-			<div class="background"></div>			
+			<div class="background">
+			
+				<ul class="bxslider">
+				  <li><img th:src="@{/images/slideshow/1.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/2.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/3.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/4.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/5.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/6.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/7.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/8.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/9.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/10.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/11.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/12.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/13.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/14.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/15.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/16.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/17.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/18.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/19.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/20.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/21.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/22.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/23.jpg}"/></li>
+				  <li><img th:src="@{/images/slideshow/24.jpg}"/></li>
+				</ul>
+				
+			</div>			
 					
 	</div>
 	
