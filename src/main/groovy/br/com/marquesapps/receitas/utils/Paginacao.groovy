@@ -38,16 +38,8 @@ public class Paginacao{
 			pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() , pagerequest)
 		}else{
 			if (repositorio in ReceitaRepositorio){
-				if (busca!=null && !busca.isEmpty()){
-					if (busca=="descricaousuario"){
-						def descricao = model.getAt("descricao")
-						pageimpl=repositorio.findByDescricaoAndUsuario(descricao,util.getUsuarioLogado(), pagerequest)
-					}
-				}else{
-					def tiporeceita = model.getAt("tiporeceita")
+				def tiporeceita = model.getAt("tiporeceita")
 					pageimpl=repositorio.findByTiporeceitaAndUsuario(tiporeceita, util.getUsuarioLogado(), pagerequest)
-				}
-				
 			}else{
 				pageimpl=repositorio.findAll(pagerequest)
 			}

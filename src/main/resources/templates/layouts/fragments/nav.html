@@ -109,7 +109,7 @@
 			
 			<sec sec:authorize="isAuthenticated()">
 				<div class="buscardiv">
-					<form action="#" th:action="@{/buscareceita}" method="post">
+					<form action="#" th:action="@{/buscareceita}" object="filtro" method="POST">
 						<input class="upper mb busca" th:placeholder="#{buscarreceita}" th:type="text" th:name="filtro" />
 						<button class="find" th:type="submit"><text for="enviar" th:text="#{buscar}"></text></button>
 					</form>

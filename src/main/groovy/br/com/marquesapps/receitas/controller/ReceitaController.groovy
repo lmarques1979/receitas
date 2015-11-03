@@ -1,5 +1,6 @@
 package br.com.marquesapps.receitas.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
@@ -62,13 +63,11 @@ class ReceitaController {
 	
 	@RequestMapping(value="/buscareceita",method = RequestMethod.POST)
 	def buscareceita(Model model, 
-			 		@PageableDefault(page=0,size=10) Pageable pageable,
-					@RequestParam("filtro") String filtro) {
+			 		 @RequestParam("filtro") String filtro) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
-		model.addAttribute("descricao", filtro);
-		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2 , "descricaousuario") 
+		def receitas = receitaRepositorio.findByDescricaoAndUsuario(filtro , util.getUsuarioLogado())
+		model.addAttribute("pageimpl",receitas);
 		new ModelAndView("views/receita/viewreceitas")
 	}
 			 

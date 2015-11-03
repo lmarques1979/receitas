@@ -45,9 +45,11 @@
 						<a class="botaocriar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a>
 				</div><div class="clearer"></div>
 		
-				<div th:if="${pageimpl.getTotalPages()} > 1">
-					<!-- pagination -->
-					<div th:include="/layouts/fragments/pagination :: paginationcontent"></div>
+				<div th:if="${!#httpServletRequest.getServletPath().equals('/buscareceita')}">
+					<div th:if="${pageimpl.getTotalPages()} > 1">
+						<!-- pagination -->
+						<div th:include="/layouts/fragments/pagination :: paginationcontent"></div>
+					</div>
 				</div>
 	</div>	
 	
