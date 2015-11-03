@@ -9,7 +9,9 @@
 				<div class="right">
 	        		<ul class="icons">	        			
        					  	<sec sec:authorize="isAuthenticated()">
-	       							<li><a class="usuario" th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}">Luiz Marques</a></li>
+	       							<li><a class="usuario" th:href="@{/showusuario/{id}(id=${#authentication.principal.usuario.id})}">
+										<text sec:authentication="principal.nome"></text>	
+									</a></li>
 	       					</sec>
 							<li><a class="email" href="mailto:liunit@gmail.com" th:title="#{enviaremail}"><text th:text="#{contato}"></text></a></li>							
 							<li><a class="int" th:href="@{/?lang=pt_BR}" th:title="#{portugues}"><img th:src="@{/images/pt_BR.png}"/></a></li>
@@ -118,8 +120,16 @@
 				  <li><img th:src="@{/images/slideshow/24.jpg}"/></li>
 				</ul>
 				
-			</div>			
-					
+			</div>	
+			
+			<sec sec:authorize="isAuthenticated()">
+				<div class="buscardiv">
+					<form action="#" th:action="@{/buscareceita}" method="post">
+						<input class="upper mb busca" th:placeholder="#{buscarreceita}" th:type="text" th:name="filtro" />
+						<button class="find" th:type="submit"><text for="enviar" th:text="#{buscar}"></text></button>
+					</form>
+				</div><div class="clearer"></div>
+			</sec>		
 	</div>
 	
 </nav>

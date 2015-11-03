@@ -1,5 +1,9 @@
 @media (max-width:500px){
 	
+	.find{
+		height:2.3em;
+	}
+
 	.menu ul li a {
     	font-size: 0.7em;
 	}

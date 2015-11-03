@@ -149,6 +149,20 @@ ol, ul {
 	float:left;	
 }
 
+input.busca{
+	width:20em;
+}
+
+.find{
+	display: inline-block;
+	position: relative;
+	background-color: #EA5323;
+	color: rgb(255, 255, 255);
+	height: 3.06em;
+	border-radius: 5px;
+	border: 1px solid #CCC;
+}
+
 .buscardiv {
     display:table;
     margin:0 auto;    
@@ -681,6 +695,10 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 
 .upper{
 	text-transform: uppercase;
+}
+
+.mb{
+	margin-bottom:1em;
 }
 
 .lower{

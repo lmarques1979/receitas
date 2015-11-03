@@ -12,25 +12,24 @@
 	
 	<div layout:fragment="content">
 	
-	
 				<text th:if="${message}">
 					<div th:text="${message}" class="message" role="status"></div>
 				</text>
 				
-				<div class="menualto">
-					<div class="fieldcontain semmargem block">
-					   <span class="separator">›</span>
-					   <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
-					</div>
-				</div>
-				
 				<fieldset class="form semborda">
 					
+					<div class="menualto">
+						<div class="fieldcontain semmargem block">
+						   <span class="separator">›</span>
+						   <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
+						</div>
+					</div>
+				
 					<div class="listing">
 							<ul class="clearfix" th:each="receita : ${pageimpl}">
 								<li>
 									 <a th:href="@{/viewreceita/{id}(id= ${receita.id})}">
-									    <span class="photo-holder"><img   th:width="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:height="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${receita.imagem !=null ? receita.imagem : 'noimage.png'}"/></span> 
+									    <span class="photo-holder"><img th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '120px'" th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${receita.imagem !=null and !receita.imagem.isEmpty() ? receita.imagem : 'noimage.png'}"/></span> 
 										<text class="descricaoreceita" th:text="${receita.descricao}"></text> 
 									 </a>
 								</li>
