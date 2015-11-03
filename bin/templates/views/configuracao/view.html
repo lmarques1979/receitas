@@ -23,7 +23,7 @@
 					</tr>							
 					<tr>
 						<th colspan="6">
-							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/configuracao}"><img th:src="@{/images/add.png}"/></a>
+							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/configuracao/configuracao}"><img th:src="@{/images/add.png}"/></a>
 						</th>
 					</tr>							
 					<tr>
@@ -38,7 +38,7 @@
 				<tbody>
 				
 					<tr th:each="configuracao : ${configuracao}">
-						<td class="centro"><a th:title="#{editar}" th:href="@{/showconfiguracao/{id}(id= ${configuracao.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td class="centro"><a th:title="#{editar}" th:href="@{/configuracao/show/{id}(id= ${configuracao.id})}"><img th:src="@{/images/edit.png}"/></a></td>
 						<td class="centro"><text for="home" th:text="${configuracao.itensporpagina}"></text></td>
 						<td class="centro"><text for="alturaimgthumbsreceita" th:text="${configuracao.alturaimgthumbs}"></text></td>
 						<td class="centro"><text for="larguraimgthumbsreceita" th:text="${configuracao.larguraimgthumbs}"></text></td>
@@ -47,7 +47,7 @@
 					</tr>
 					
 					<tr>
-						<td colspan="6"><a class="criar" th:href="@{/configuracao}"><text for="configuracao" th:text="#{criarconfiguracao}"></text></a></td>
+						<td colspan="6"><a class="criar" th:href="@{/configuracao/configuracao}"><text for="configuracao" th:text="#{criarconfiguracao}"></text></a></td>
 					</tr>
 											
 				</tbody>

@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<th colspan="2">
-							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/tiporeceita}"><img th:src="@{/images/add.png}"/></a>
+							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/tiporeceita/tiporeceita}"><img th:src="@{/images/add.png}"/></a>
 						</th>
 					</tr>
 					<tr>
@@ -35,12 +35,12 @@
 				<tbody>
 				
 					<tr th:each="tiporeceita : ${pageimpl}">
-						<td class="centro"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
-						<td colspan="2"><a th:title="#{editar}" th:href="@{/showtiporeceita/{id}(id= ${tiporeceita.id})}"><text for="home" th:text="${tiporeceita.descricao}"></text></a></td>
+						<td class="centro"><a th:title="#{editar}" th:href="@{/tiporeceita/show/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td colspan="2"><a th:title="#{editar}" th:href="@{/tiporeceita/show/{id}(id= ${tiporeceita.id})}"><text for="home" th:text="${tiporeceita.descricao}"></text></a></td>
 					</tr>
 					
 					<tr>
-						<td colspan="2"><a class="criar" th:href="@{/tiporeceita}"><text for="tiporeceita" th:text="#{criartiporeceita}"></text></a></td>
+						<td colspan="2"><a class="criar" th:href="@{/tiporeceita/tiporeceita}"><text for="tiporeceita" th:text="#{criartiporeceita}"></text></a></td>
 					</tr>
 											
 				</tbody>

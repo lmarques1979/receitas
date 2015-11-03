@@ -24,7 +24,7 @@
 					
 					<tr>
 						<th colspan="2">
-							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/regra}"><img th:src="@{/images/add.png}"/></a>
+							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/regra/regra}"><img th:src="@{/images/add.png}"/></a>
 						</th>
 					</tr>
 					<tr>
@@ -35,12 +35,12 @@
 				<tbody>
 				
 					<tr th:each="regra : ${pageimpl}">
-						<td class="centro"><a th:href="@{/showregra/{id}(id= ${regra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td class="centro"><a th:href="@{/regra/show/{id}(id= ${regra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
 						<td><text for="home" th:text="${regra.descricao}"></text></td>
 					</tr>
 					
 					<tr>
-						<td colspan="2"><a class="criar" th:href="@{/regra}"><text for="regra" th:text="#{criarregra}"></text></a></td>
+						<td colspan="2"><a class="criar" th:href="@{/regra/regra}"><text for="regra" th:text="#{criarregra}"></text></a></td>
 					</tr>
 											
 				</tbody>

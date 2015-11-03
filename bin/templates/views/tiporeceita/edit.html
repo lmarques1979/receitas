@@ -12,7 +12,7 @@
 	
 	<div layout:fragment="content">
 	
-		<form action="#" th:action="@{/tiporeceita}" th:object="${tiporeceita}" method="post" enctype="multipart/form-data">
+		<form action="#" th:action="@{/tiporeceita/tiporeceita}" th:object="${tiporeceita}" method="post" enctype="multipart/form-data">
 					
 		<input th:type="hidden" th:name="id" th:field="*{id}"/>
 		<input th:type="hidden" th:name="imagem" th:field="*{imagem}"/>
@@ -22,7 +22,7 @@
 					<legend><text for="editartiporeceita" th:text="#{editartiporeceita}"></text></legend>
 					
 					
-					<a th:href="@{/deletetiporeceita/{id}(id= ${tiporeceita.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
+					<a th:href="@{/tiporeceita/delete/{id}(id= ${tiporeceita.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
 					
 					<div class="fieldcontain">
 						<label for="descricao" th:text="#{tiporeceita}"></label>

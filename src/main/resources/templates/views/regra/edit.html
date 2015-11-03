@@ -13,7 +13,7 @@
 	<div layout:fragment="content">
 		
 		
-		<form action="#" th:action="@{/regra}" th:object="${regra}" method="post">
+		<form action="#" th:action="@{/regra/regra}" th:object="${regra}" method="post">
 					
 			<input th:type="hidden" th:name="id" th:field="*{id}"/>
 			
@@ -21,7 +21,7 @@
 			
 					<legend><text for="editarregra" th:text="#{editarregra}"></text></legend>
 					
-					<a th:href="@{/deleteregra/{id}(id= ${regra.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
+					<a th:href="@{/regra/delete/{id}(id= ${regra.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
 				
 					<div class="fieldcontain">
 						<label for="descricao" th:text="#{descricaoregra}"></label>

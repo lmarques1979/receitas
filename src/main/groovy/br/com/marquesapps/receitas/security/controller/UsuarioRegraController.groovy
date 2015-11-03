@@ -1,7 +1,6 @@
 package br.com.marquesapps.receitas.security.controller;
 
 import javax.validation.Valid
-
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
@@ -27,6 +26,8 @@ import br.com.marquesapps.receitas.security.repositorio.UsuarioRegraRepositorio
 import br.com.marquesapps.receitas.security.repositorio.UsuarioRepositorio
 import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
+
+@RequestMapping('/usuarioregra')
 @Controller 
 @PreAuthorize('hasAuthority("ADMIN")')
 class UsuarioRegraController {
@@ -52,7 +53,7 @@ class UsuarioRegraController {
 	@Autowired
 	private MessageSource messageSource
 	
-	@RequestMapping(value="/verusuarioregras",method = RequestMethod.GET)
+	@RequestMapping(value="/view",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
@@ -62,7 +63,7 @@ class UsuarioRegraController {
 		new ModelAndView("views/usuarioregra/view")
 	}
 			 
-	@RequestMapping(value="/showusuarioregra/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/show/{id}",method = RequestMethod.GET)
 	def show(Model model , @PathVariable(value="id") Long id) {
 		def usuarioregra=usuarioregraRepositorio.findOne(id);
 		model.addAttribute("usuarios", usuarioRepositorio.findByAtivoTrue());
@@ -79,7 +80,7 @@ class UsuarioRegraController {
 		return "views/usuarioregra/create"
 	}
 	
-	@RequestMapping(value="/deleteusuarioregra/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method = RequestMethod.GET)
 	def delete(	Model model , 
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				@PathVariable(value="id") Long id) {

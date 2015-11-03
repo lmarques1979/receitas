@@ -44,6 +44,7 @@ import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.SmtpMailSender
 import br.com.marquesapps.receitas.utils.Util
 
+@RequestMapping('/usuario')
 @Controller
 @PreAuthorize('permitAll')
 class UsuarioController {
@@ -113,7 +114,7 @@ class UsuarioController {
 		new ModelAndView("views/usuario/esqueceusenha")
 	}
 	
-	@RequestMapping(value="/verusuarios",method = RequestMethod.GET)
+	@RequestMapping(value="/view",method = RequestMethod.GET)
 	@PreAuthorize('hasAuthority("ADMIN")')
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
@@ -124,7 +125,7 @@ class UsuarioController {
 		new ModelAndView("views/usuario/view")
 	}
 	
-	@RequestMapping(value="/showusuario/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/show/{id}",method = RequestMethod.GET)
 	@PreAuthorize('isAuthenticated()')
 	def show(Model model ,
 		     @PathVariable(value = "id") Long id) {
@@ -145,7 +146,7 @@ class UsuarioController {
 	   new ModelAndView("views/usuario/edit")
 	}
 				  
-	@RequestMapping(value="/deleteusuario/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	@PreAuthorize('isAuthenticated()')
 	def delete(@PathVariable(value="id") Long id, 
 		       @PageableDefault(page=0,size=10) Pageable pageable,
@@ -180,7 +181,7 @@ class UsuarioController {
 			   
 	   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	   new SecurityContextLogoutHandler().logout(request, response, auth);
-	   return "redirect:/login?logout";
+	   return "redirect:/usuario/login?logout";
 	}
 	
 	@RequestMapping(value = "/acessonegado")

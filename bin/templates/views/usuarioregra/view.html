@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<th colspan="2">
-							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/usuarioregra}"><img th:src="@{/images/add.png}"/></a>
+							<a class="adicionar margintableleft" th:title="#{adicionarregistro}" th:href="@{/usuarioregra/usuarioregra}"><img th:src="@{/images/add.png}"/></a>
 						</th>
 					</tr>
 					<tr>
@@ -34,12 +34,12 @@
 				<tbody>
 				
 					<tr th:each="usuarioregra : ${pageimpl}">
-						<td class="centro"><a th:title="#{editar}" th:href="@{/showusuarioregra/{id}(id= ${usuarioregra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td class="centro"><a th:title="#{editar}" th:href="@{/usuarioregra/show/{id}(id= ${usuarioregra.id})}"><img th:src="@{/images/edit.png}"/></a></td>
 						<td><text for="home" th:text="${usuarioregra.usuario.username + ' - ' + usuarioregra.regra.descricao}"></text></td>
 					</tr>
 					
 					<tr>
-						<td><a class="criar" th:href="@{/usuarioregra}"><text for="regra" th:text="#{criarusuarioregra}"></text></a></td>
+						<td><a class="criar" th:href="@{/usuarioregra/usuarioregra}"><text for="regra" th:text="#{criarusuarioregra}"></text></a></td>
 					</tr>
 											
 				</tbody>

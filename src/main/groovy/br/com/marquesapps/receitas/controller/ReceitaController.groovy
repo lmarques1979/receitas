@@ -33,6 +33,7 @@ import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.Util
 
+@RequestMapping('/receita')
 @Controller
 @PreAuthorize('isAuthenticated()') 
 class ReceitaController {
@@ -61,8 +62,8 @@ class ReceitaController {
 	@Autowired 
 	private MessageSource messageSource
 	
-	@RequestMapping(value="/buscareceita",method = RequestMethod.POST)
-	def buscareceita(Model model, 
+	@RequestMapping(value="/busca",method = RequestMethod.POST)
+	def busca(Model model, 
 			 		 @RequestParam("filtro") String filtro) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
@@ -71,7 +72,7 @@ class ReceitaController {
 		new ModelAndView("views/receita/viewreceitas")
 	}
 			 
-	@RequestMapping(value="/verreceitas",method = RequestMethod.GET)
+	@RequestMapping(value="/view",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
@@ -82,7 +83,7 @@ class ReceitaController {
 		new ModelAndView("views/receita/view")
 	}
 	
-	@RequestMapping(value="/verreceitaportipo/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/viewportipo/{id}",method=RequestMethod.GET)
 	def viewportipo(@PathVariable(value="id") Long id,
 					Model model, 
 			 	    @PageableDefault(page=0,size=10) Pageable pageable) {
@@ -94,7 +95,7 @@ class ReceitaController {
 		new ModelAndView("views/receita/viewportipo")
 	}
 					  
-	@RequestMapping(value="/showreceita/{id}",method=RequestMethod.GET) 
+	@RequestMapping(value="/show/{id}",method=RequestMethod.GET) 
 	def show(Model model ,
 		     @PathVariable(value="id") Long id) {
 		def receita=receitaRepositorio.findOne(id)
@@ -127,7 +128,7 @@ class ReceitaController {
 		   new ModelAndView("views/receita/imprimiringredientes")
 	}
 			 
-	@RequestMapping(value="/viewreceita/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/view/{id}",method=RequestMethod.GET)
 	def viewreceita(Model model,
 	   	     		@PathVariable(value="id") Long id) {
 		 def receita=receitaRepositorio.findOne(id)
@@ -148,7 +149,7 @@ class ReceitaController {
 		
 	}
 	
-	@RequestMapping(value="/deletereceita/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	def delete(	@PathVariable(value="id") Long id , 
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				Model model) {	

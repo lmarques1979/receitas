@@ -26,6 +26,7 @@ import br.com.marquesapps.receitas.security.repositorio.RegraRepositorio
 import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
 
+@RequestMapping('/regra')
 @Controller
 @PreAuthorize('hasAuthority("ADMIN")')
 class RegraController {
@@ -45,7 +46,7 @@ class RegraController {
 	@Autowired 
 	private MessageSource messageSource
 	
-	@RequestMapping(value="/verregras",method = RequestMethod.GET)
+	@RequestMapping(value="/view",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
@@ -55,7 +56,7 @@ class RegraController {
 		new ModelAndView("views/regra/view")
 	}
 	
-	@RequestMapping(value="/showregra/{id}",method=RequestMethod.GET) 
+	@RequestMapping(value="/show/{id}",method=RequestMethod.GET) 
 	def show(Model model ,
 		     @PathVariable(value="id") Long id) {
 		def regra=regraRepositorio.findOne(id)
@@ -70,7 +71,7 @@ class RegraController {
 		
 	}
 	
-	@RequestMapping(value="/deleteregra/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	def delete(@PathVariable(value="id") Long id,
 			   @PageableDefault(page=0,size=10) Pageable pageable,
 			   Model model) {		

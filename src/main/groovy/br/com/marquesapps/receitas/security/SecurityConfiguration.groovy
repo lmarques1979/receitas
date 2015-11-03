@@ -21,12 +21,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	   
-		http.authorizeRequests().antMatchers("/login").permitAll();
+		http.authorizeRequests().antMatchers("/usuario/login").permitAll();
 		http.authorizeRequests().antMatchers("/resources/**").permitAll();
-		http.formLogin().loginPage("/login").usernameParameter("username")
+		http.formLogin().loginPage("/usuario/login").usernameParameter("username")
 				.passwordParameter("password").permitAll()
 				.and().logout().invalidateHttpSession(true)
-				.logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
+				.logoutUrl("/usuario/logout").logoutSuccessUrl("/usuario/login").permitAll();
 		http.exceptionHandling().accessDeniedPage("/error/acessonegado");
 
 	}

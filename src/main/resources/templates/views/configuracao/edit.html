@@ -12,7 +12,7 @@
 	
 	<div layout:fragment="content">
 	
-		<form action="#" th:action="@{/configuracao}" th:object="${configuracao}" method="post">
+		<form action="#" th:action="@{/configuracao/configuracao}" th:object="${configuracao}" method="post">
 					
 		<input th:type="hidden" th:name="id" th:field="*{id}"/>
 		
@@ -20,7 +20,7 @@
 			
 					<legend><text for="editarconfiguracao" th:text="#{editarconfiguracao}"></text></legend>
 					
-					<a th:href="@{/deleteconfiguracao/{id}(id= ${configuracao.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
+					<a th:href="@{/configuracao/delete/{id}(id= ${configuracao.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
 				
 					<div class="fieldcontain">
 						<label for="itensporpagina" th:text="#{itensporpagina}"></label>

@@ -12,7 +12,7 @@
 	
 	<div layout:fragment="content">
 		
-		<form action="#" th:action="@{/usuario}" th:object="${usuario}" method="post" enctype="multipart/form-data">
+		<form action="#" th:action="@{/usuario/usuario}" th:object="${usuario}" method="post" enctype="multipart/form-data">
 				
 		<input th:type="hidden" th:name="id" th:field="*{id}"/>
 		<input th:type="hidden" th:name="imagem" th:field="*{imagem}"/>
@@ -21,7 +21,7 @@
 		
 					<legend><text for="editarusuario" th:text="#{editarusuario}"></text></legend>
 					
-					<a th:href="@{/deleteusuario/{id}(id=${usuario.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
+					<a th:href="@{/usuario/delete/{id}(id=${usuario.id})}" th:class="delete"  th:title="#{delete}" th:onclick="'return confirm(\''+#{confirmaexclusao}+'\');'"><img th:src="@{/images/delete.png}"/></a>
 					
 					<div class="fieldcontain">
 						<label for="username" th:text="#{username}"></label>

@@ -30,6 +30,7 @@ import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
 import br.com.marquesapps.receitas.utils.Util
 
+@RequestMapping('/tiporeceita')
 @Controller
 @PreAuthorize('isAuthenticated()') 
 class TipoReceitaController {
@@ -55,7 +56,7 @@ class TipoReceitaController {
 	@Autowired 
 	private MessageSource messageSource
 	
-	@RequestMapping(value="/vertiporeceitas",method = RequestMethod.GET)
+	@RequestMapping(value="/view",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
@@ -65,7 +66,7 @@ class TipoReceitaController {
 		new ModelAndView("views/tiporeceita/view")
 	}
 	
-	@RequestMapping(value="/showtiporeceita/{id}",method=RequestMethod.GET) 
+	@RequestMapping(value="/show/{id}",method=RequestMethod.GET) 
 	def show(Model model ,
 		     @PathVariable(value="id") Long id) {
 				
@@ -81,7 +82,7 @@ class TipoReceitaController {
 		
 	}
 	
-	@RequestMapping(value="/deletetiporeceita/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	def delete(	@PathVariable(value="id") Long id , 
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				Model model) {		

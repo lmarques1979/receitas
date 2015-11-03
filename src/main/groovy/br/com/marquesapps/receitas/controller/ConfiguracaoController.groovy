@@ -20,6 +20,7 @@ import br.com.marquesapps.receitas.domain.Configuracao
 import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.utils.Util
 
+@RequestMapping('/configuracao')
 @Controller
 @PreAuthorize('isAuthenticated()') 
 class ConfiguracaoController {
@@ -30,7 +31,7 @@ class ConfiguracaoController {
 	@Autowired 
 	private MessageSource messageSource
 	
-	@RequestMapping(value="/verconfiguracao",method = RequestMethod.GET)
+	@RequestMapping(value="/view",method = RequestMethod.GET)
 	def view(Model model) {
 		def util = new Util()
 		def usuario = util.getUsuarioLogado()
@@ -39,7 +40,7 @@ class ConfiguracaoController {
 		new ModelAndView("views/configuracao/view")
 	}
 	
-	@RequestMapping(value="/showconfiguracao/{id}",method=RequestMethod.GET) 
+	@RequestMapping(value="/show/{id}",method=RequestMethod.GET) 
 	def show(Model model ,
 		     @PathVariable(value="id") Long id) {				
 		def configuracao=configuracaoRepositorio.findOne(id)
@@ -54,7 +55,7 @@ class ConfiguracaoController {
 		
 	}
 	
-	@RequestMapping(value="/deleteconfiguracao/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	def delete(@PathVariable(value="id") Long id , Model model) {		
 		configuracaoRepositorio.delete(id);	
 		def configuracao = configuracaoRepositorio.findAll()

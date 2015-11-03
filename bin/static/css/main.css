@@ -395,7 +395,7 @@ dl, ul, ol, li, dt, dd {
 .descricaoreceita{
 	color:#EA5323;
 	font-weight:bold;
-	font-size:0.9em;
+	font-size:1em;
 	font-style: italic;
 	width: auto;
 }
@@ -432,7 +432,7 @@ dl, ul, ol, li, dt, dd {
 
 .tiporeceita{
 	font-weight:normal;
-	font-size:0.8em;
+	font-size:1em;
 	font-style: italic;
 }
 
