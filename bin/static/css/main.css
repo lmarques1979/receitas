@@ -6,6 +6,31 @@ body {
 	font-size:13px;
 }
 
+.background{
+	border: 1px solid #d3d3d3;
+	margin-bottom:2em;
+}
+
+ul.comida{
+	width:auto;	
+	margin:1em auto;
+	text-align:center;
+}
+
+ul.comida li{
+	display: inline-block;	
+	margin: 1em auto;
+	text-align:center;
+	position: relative;
+	left:-1.5em;
+}
+
+ul.comida li img{
+	width:11em;
+	height:8em;
+	margin-right:0.5em;
+}
+
 .left{
 	float:left;	
 }
@@ -127,11 +152,6 @@ ol, ul {
     text-decoration: none;   
 }
 
-.background{
-	border-bottom: 1px solid #d3d3d3;
-	margin-bottom:2em;
-}
-
 [ng-cloak] {
     display:none;
 }
@@ -161,6 +181,7 @@ input.busca{
 	height: 3.06em;
 	border-radius: 5px;
 	border: 1px solid #CCC;
+	padding:0 1.5em;
 }
 
 .buscardiv {
