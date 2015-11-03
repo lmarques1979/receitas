@@ -125,6 +125,6 @@ class UsuarioRegraController {
 				usuarioregraRepositorio.save(usuarioregra)			
 		}
 		
-		return "redirect:verusuarioregras";
+		return "redirect:/usuarioregra/view";
 	}
 }

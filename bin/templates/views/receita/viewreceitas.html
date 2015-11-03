@@ -21,20 +21,20 @@
 					<div class="menualto">
 						<div class="fieldcontain semmargem block">
 						   <span class="separator">›</span>
-						   <a class="tiporeceita upper" th:href="@{/verreceitas}"><text th:text="#{receita}"></text></a>
+						   <a class="tiporeceita upper" th:href="@{/receita/view}"><text th:text="#{receita}"></text></a>
 						</div>
 					</div>
 				
 					<div class="listing">
 							<ul class="clearfix" th:each="receita : ${pageimpl}">
 								<li>
-									 <a th:href="@{/viewreceita/{id}(id= ${receita.id})}">
+									 <a th:href="@{/receita/view/{id}(id= ${receita.id})}">
 									    <span class="photo-holder"><img th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '120px'" th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${receita.imagem !=null and !receita.imagem.isEmpty() ? receita.imagem : 'noimage.png'}"/></span> 
 										<text class="descricaoreceita" th:text="${receita.descricao}"></text> 
 									 </a>
 								</li>
 								<li class="viewedit">
-									 <a th:title="#{editar}" th:href="@{/showreceita/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a>
+									 <a th:title="#{editar}" th:href="@{/receita/show/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a>
 								</li>
 							
 							</ul>		
@@ -45,7 +45,7 @@
 						<a class="botaocriar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a>
 				</div><div class="clearer"></div>
 		
-				<div th:if="${!#httpServletRequest.getServletPath().equals('/buscareceita')}">
+				<div th:if="${!#httpServletRequest.getServletPath().equals('/receita/busca')}">
 					<div th:if="${pageimpl.getTotalPages()} > 1">
 						<!-- pagination -->
 						<div th:include="/layouts/fragments/pagination :: paginationcontent"></div>

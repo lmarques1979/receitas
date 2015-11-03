@@ -154,7 +154,11 @@ class ReceitaController {
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				Model model) {	
 		def receita = receitaRepositorio.findOne(id)
-		def delete = amazon.fileDelete (receita.imagem)
+		if (receita.imagem){
+			if (!receita.imagem.isEmpty()){
+				def delete = amazon.fileDelete (receita.imagem)
+			}
+		}
 		receitaRepositorio.delete(id);	
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(receitaRepositorio, pageable, model, orderList,2, null) 

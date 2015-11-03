@@ -87,7 +87,11 @@ class TipoReceitaController {
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				Model model) {		
 		def tiporeceita = tipoReceitaRepositorio.findOne(id)
-		def delete = amazon.fileDelete (tiporeceita.imagem)
+		if (tiporeceita.imagem){
+			if (!tiporeceita.imagem.isEmpty()){
+				def delete = amazon.fileDelete (tiporeceita.imagem)
+			}
+		}
 		tipoReceitaRepositorio.delete(id);	
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);

@@ -31,6 +31,12 @@
 					</div>
 					
 					<div class="fieldcontain">
+						<label for="ativo" th:text="#{ativo}"></label>
+						<input th:type="checkbox" th:field="*{ativo}" th:name="ativo" th:placeholder="#{ativo}"/> 
+						<span class="field-validator" th:if="${#fields.hasErrors('ativo')}" th:errors="*{ativo}"></span>
+					</div>
+					
+					<div class="fieldcontain">
 						<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
 					</div>
 					
