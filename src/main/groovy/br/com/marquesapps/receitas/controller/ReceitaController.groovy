@@ -6,6 +6,7 @@ import javax.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.domain.Sort.Order
@@ -62,13 +63,17 @@ class ReceitaController {
 	@Autowired 
 	private MessageSource messageSource
 	
-	@RequestMapping(value="/busca",method = RequestMethod.POST)
+	@RequestMapping(value="/busca",method = RequestMethod.GET)
 	def busca(Model model, 
-			 		 @RequestParam("filtro") String filtro) {
+			  @RequestParam("descricao") String descricao,
+			  @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
-		def receitas = receitaRepositorio.findByDescricaoAndUsuario(filtro , util.getUsuarioLogado())
-		model.addAttribute("pageimpl",receitas);
+		model.addAttribute("descricao",descricao);
+		def filtro = "&descricao=" + descricao
+		model.addAttribute("filtro", filtro);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2, "usuariodescricao") 
 		new ModelAndView("views/receita/viewreceitas")
 	}
 			 

@@ -1,4 +1,4 @@
-<nav th:fragment="navbarcontent"  ng-app="receitas">
+<nav th:fragment="navbarcontent"  ng-app="receitas"> 
 
 	<script th:src="@{/libs/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js}">...</script> 
 	
@@ -109,8 +109,8 @@
 			
 			<sec sec:authorize="isAuthenticated()">
 				<div class="buscardiv"> 
-					<form th:action="@{/receita/busca}" object="filtro" method="POST">
-						<input class="upper mb busca" th:placeholder="#{buscarreceita}" th:type="text" th:name="filtro" />
+					<form th:action="@{/receita/busca}" method="GET">
+						<input class="upper mb busca" th:placeholder="#{buscarreceita}" th:type="text" th:name="descricao" />
 						<button class="find" th:type="submit"><text for="enviar" th:text="#{buscar}"></text></button>
 					</form>
 				</div><div class="clearer"></div>

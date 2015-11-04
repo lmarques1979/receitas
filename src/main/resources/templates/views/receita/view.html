@@ -10,7 +10,8 @@
 </head>
 <body>
 
-	<div layout:fragment="content">
+	<div 	layout:fragment="content"
+			ng-controller="ReceitaListController as r">
 	
 			<text th:if="${message}">
 				<div th:text="${message}" class="message" role="status"></div>

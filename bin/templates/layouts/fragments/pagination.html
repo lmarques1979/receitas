@@ -1,13 +1,12 @@
 <pagination th:fragment="paginationcontent">
 
-	     
 	<div class="text-center">
 	   <ul class="pagination">
-	  		<li th:class="${pageimpl.getNumber()} == 0 ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${0}}">&laquo;</a></li>
-	  		<li th:class="${pageimpl.getNumber()} == 0 ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${pageimpl.getNumber()==0 ? 0 : (pageimpl.getNumber()-1)}}">&lsaquo;</a></li>
-	   		<li th:each="pages,iterStat : ${pages}" th:class="${iterStat.index} == ${pageimpl.getNumber()} ? 'active' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${iterStat.index}}"><text th:text="${iterStat.count}"></text></a></li>
-	   		<li th:class="${pageimpl.getNumber()} == ${pageimpl.getTotalPages()-1} ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${pageimpl.getNumber()==pageimpl.getTotalPages()-1 ? (pageimpl.getTotalPages()-1) : (pageimpl.getNumber()+1)}}">&rsaquo;</a></li>
-	  		<li th:class="${pageimpl.getNumber()} == ${pageimpl.getTotalPages()-1} ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${pageimpl.getTotalPages()-1}}">&raquo;</a></li>
+	  		<li th:class="${pageimpl.getNumber()} == 0 ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${0} + ${filtro!=null and !filtro.isEmpty() ? filtro : ' '}}">&laquo;</a></li>
+	  		<li th:class="${pageimpl.getNumber()} == 0 ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${pageimpl.getNumber()==0 ? 0 : (pageimpl.getNumber()-1)} + ${filtro!=null and !filtro.isEmpty() ? filtro : ' '}}">&lsaquo;</a></li>
+	   		<li th:each="pages,iterStat : ${pages}" th:class="${iterStat.index} == ${pageimpl.getNumber()} ? 'active' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${iterStat.index} + ${filtro!=null and !filtro.isEmpty() ? filtro : ' '} }"><text th:text="${iterStat.count}"></text></a></li>
+	   		<li th:class="${pageimpl.getNumber()} == ${pageimpl.getTotalPages()-1} ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${pageimpl.getNumber()==pageimpl.getTotalPages()-1 ? (pageimpl.getTotalPages()-1) : (pageimpl.getNumber()+1)} + ${filtro!=null and !filtro.isEmpty() ? filtro : ' '}}">&rsaquo;</a></li>
+	  		<li th:class="${pageimpl.getNumber()} == ${pageimpl.getTotalPages()-1} ? 'disabled' : ''"><a th:href="@{${#httpServletRequest.requestURL} + '?page=' + ${pageimpl.getTotalPages()-1} + ${filtro!=null and !filtro.isEmpty() ? filtro : ' '}}">&raquo;</a></li>
 	   </ul>
 	</div>
   	
