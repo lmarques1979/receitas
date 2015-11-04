@@ -117,6 +117,8 @@ class ReceitaController {
 		 def receita=receitaRepositorio.findOne(id)
 		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		 def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		 def configuracao=configuracoes.getConfiguracoesUsuario()
+		 model.addAttribute("configuracao",configuracao); 
 		 model.addAttribute("tiporeceita",tiporeceita);
 		 model.addAttribute("receita", receita);
 		 new ModelAndView("views/receita/imprimirreceita")
@@ -128,6 +130,8 @@ class ReceitaController {
 		   def receita=receitaRepositorio.findOne(id)
 		   def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		   def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		   def configuracao=configuracoes.getConfiguracoesUsuario()
+		   model.addAttribute("configuracao",configuracao);
 		   model.addAttribute("tiporeceita",tiporeceita);
 		   model.addAttribute("receita", receita);
 		   new ModelAndView("views/receita/imprimiringredientes")
@@ -139,6 +143,8 @@ class ReceitaController {
 		 def receita=receitaRepositorio.findOne(id)
 		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		 def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		 def configuracao=configuracoes.getConfiguracoesUsuario()
+		 model.addAttribute("configuracao",configuracao);
 		 model.addAttribute("tiporeceita",tiporeceita);
 		 model.addAttribute("receita", receita);
 		 new ModelAndView("views/receita/visualizar")

@@ -32,6 +32,12 @@
 				</ul>	
 			</div>
 			
+			<ul class="clearfix">
+				<li>
+					 <span class="photo-holder"><img th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '120px'" th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${receita.imagem !=null and !receita.imagem.isEmpty() ? receita.imagem : 'noimage.png'}"/></span> 
+				</li>
+			</ul>
+			
 			<div class="fieldcontain semmargem">
 				<text class="dadosreceita" th:text="#{tempopreparo}"></text><div class="clearer"></div>
 				<text class="descricaoreceitapreto" th:text="${receita.tempopreparo}"></text>

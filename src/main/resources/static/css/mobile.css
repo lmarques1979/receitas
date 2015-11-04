@@ -1,5 +1,10 @@
 @media (max-width:700px){
 	
+	.pagination > li > a, .pagination > li > span {
+	    font-size: 0.8em;
+	    padding: 0.5em;
+	}
+	
 	ul.comida li img {
     	width:4em;
     	height:3em;
