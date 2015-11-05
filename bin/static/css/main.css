@@ -9,6 +9,7 @@ body {
 .background{
 	border: 1px solid #d3d3d3;
 	margin-bottom:2em;
+	background:#DB4211 url("../images/bg_header.png") repeat scroll 0% 0%; 
 }
 
 ul.comida{
