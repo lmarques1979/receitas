@@ -23,8 +23,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	   
 		http.authorizeRequests().antMatchers("/usuario/login").permitAll();
 		http.authorizeRequests().antMatchers("/resources/**").permitAll();
-		http.formLogin().loginPage("/usuario/login").usernameParameter("username")
+		http.formLogin().loginPage("/usuario/login")
+				.usernameParameter("username")
 				.passwordParameter("password").permitAll()
+				.defaultSuccessUrl("/receita/view")
 				.and().logout().invalidateHttpSession(true)
 				.logoutUrl("/usuario/logout").logoutSuccessUrl("/usuario/login").permitAll();
 		http.exceptionHandling().accessDeniedPage("/error/acessonegado");
