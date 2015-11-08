@@ -34,6 +34,11 @@
 									 </a>
 								</li>
 								
+								<li>
+									  <text class="descricaoreceitapreto" th:text="#{postadapor}"></text>  
+									 <text class="descricaoreceita" th:text="${receita.usuario.getNome()}"></text> 
+								</li>
+								
 								<sec sec:authorize="principal!='anonymousUser'">
 									<li class="viewedit">
 										 <a th:title="#{editar}" th:href="@{/receita/show/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a>

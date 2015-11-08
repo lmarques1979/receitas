@@ -63,6 +63,16 @@ public class Usuario{
 		return id;
 	}
 
+	public String getNome(){
+		def nome
+		if (getSobrenome().isEmpty()){
+			nome = getPrimeironome()
+		}else{
+			nome = getPrimeironome() + ' ' + getSobrenome()
+		}
+		return nome
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
