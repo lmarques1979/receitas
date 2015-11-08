@@ -286,8 +286,8 @@ class UsuarioController {
 					def configuracao= new Configuracao() 
 					configuracao.usuario=usuario
 					configuracao.itensporpagina=10
-					configuracao.alturaimg=50
-					configuracao.larguraimg=50
+					configuracao.alturaimg=120
+					configuracao.larguraimg=180
 					configuracao.alturaimgthumbs=24
 					configuracao.larguraimgthumbs=24
 					configuracao.itensporpagina=10

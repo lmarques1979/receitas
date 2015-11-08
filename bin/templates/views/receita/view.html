@@ -10,8 +10,7 @@
 </head>
 <body>
 
-	<div 	layout:fragment="content"
-			ng-controller="ReceitaListController as r">
+	<div 	layout:fragment="content">
 	
 			<text th:if="${message}">
 				<div th:text="${message}" class="message" role="status"></div>
@@ -33,13 +32,10 @@
 							<li >
 								 <a th:href="@{/receita/viewportipo/{id}(id= ${tiporeceita.id})}">
 								    <span class="photo-holder"><img th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${tiporeceita.imagem !=null and !tiporeceita.imagem.isEmpty() ? tiporeceita.imagem : 'noimage.png'}"/></span> 
-									<text class="descricaoreceita" th:text="${tiporeceita.descricao} + ' ( ' + ${tiporeceita.receitas.size()} + ' ) '"></text> 
+									<text class="descricaoreceita" th:text="${tiporeceita.descricao}"></text> 
 								 </a>
 							</li>
 							
-							<li class="viewedit">
-								 <a th:title="#{editar}" th:href="@{/tiporeceita/show/{id}(id= ${tiporeceita.id})}"><img th:src="@{/images/edit.png}"/></a>
-							</li>
 						</ul>	
 					</div>
 			</fieldset>

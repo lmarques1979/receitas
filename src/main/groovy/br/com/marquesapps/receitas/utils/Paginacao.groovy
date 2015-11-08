@@ -35,7 +35,7 @@ public class Paginacao{
 	
 		def pagerequest = new PageRequest(pageable.getPageNumber(),itensporpagina, orderList)
 		if (repositorio in TipoReceitaRepositorio){
-			pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() , pagerequest)
+			pageimpl=repositorio.findAll(pagerequest)
 		}else{
 			if (repositorio in ReceitaRepositorio){
 				
@@ -50,6 +50,9 @@ public class Paginacao{
 						}
 						if(busca=="publicas"){
 							pageimpl=repositorio.findByPublicoAndAutorizada(true, true , pagerequest)
+						}
+						if(busca=="usuario"){
+							pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() , pagerequest)
 						}
 					}
 				}else{

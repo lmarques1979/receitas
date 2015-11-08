@@ -1,25 +1,19 @@
 package br.com.marquesapps.receitas.domain;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne
-import javax.persistence.OneToMany;
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.OneToMany
 import javax.persistence.Table
-
-import br.com.marquesapps.receitas.security.domain.Usuario;
-import br.com.marquesapps.receitas.security.domain.UsuarioRegra;;
 
 @Entity
 @Table(name="tb_tipo_receita")
 public class TipoReceita {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, updatable = false)
@@ -30,9 +24,6 @@ public class TipoReceita {
 	
 	@Column(name = "imagem", nullable = true, length=50)
 	private String imagem;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Usuario usuario;
 	
 	@OneToMany(mappedBy="tiporeceita",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Receita> receitas;
@@ -70,12 +61,4 @@ public class TipoReceita {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}	
 }

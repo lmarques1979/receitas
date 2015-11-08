@@ -34,9 +34,11 @@ public class Receita {
 	private String imagem;
 
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="tiporeceita_id")
 	private TipoReceita tiporeceita;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 
 	@Column(name = "tempopreparo", nullable = true, length=50)
@@ -46,10 +48,10 @@ public class Receita {
 	private String rendimento;
 	
 	@Column(name="publico", nullable=false)
-	private boolean publico;
+	private boolean publico=true;
 	
 	@Column(name="autorizada", nullable=false)
-	private boolean autorizada;
+	private boolean autorizada=false;
 	
 	protected Receita() {}
 	

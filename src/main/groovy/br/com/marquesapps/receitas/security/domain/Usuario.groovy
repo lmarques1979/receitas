@@ -1,13 +1,13 @@
 package br.com.marquesapps.receitas.security.domain;
 
-import br.com.marquesapps.receitas.domain.Configuracao
-import br.com.marquesapps.receitas.domain.Receita;
-import br.com.marquesapps.receitas.domain.TipoReceita
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Size
 
 import org.hibernate.validator.constraints.Email
+
+import br.com.marquesapps.receitas.domain.Configuracao
+import br.com.marquesapps.receitas.domain.Receita
 
 @Entity
 @Table(name="tb_usuario")
@@ -51,10 +51,7 @@ public class Usuario{
 	private Set<UsuarioRegra> regras;
 	
 	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<Receita> receitas;
-	
-	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<TipoReceita> tiporeceitas;
+	private Set<Receita> receitas; 
 	
 	@OneToOne(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Configuracao configuracao;
@@ -147,13 +144,5 @@ public class Usuario{
 
 	public void setReceitas(Set<Receita> receitas) {
 		this.receitas = receitas;
-	}
-
-	public Set<TipoReceita> getTiporeceitas() {
-		return tiporeceitas;
-	}
-
-	public void setTiporeceitas(Set<TipoReceita> tiporeceitas) {
-		this.tiporeceitas = tiporeceitas;
 	}
 }

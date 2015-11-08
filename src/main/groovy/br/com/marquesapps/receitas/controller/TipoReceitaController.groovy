@@ -32,7 +32,7 @@ import br.com.marquesapps.receitas.utils.Util
 
 @RequestMapping('/tiporeceita')
 @Controller
-@PreAuthorize('isAuthenticated()') 
+@PreAuthorize('hasAuthority("ADMIN")')
 class TipoReceitaController {
 	
 	@Autowired
@@ -68,9 +68,8 @@ class TipoReceitaController {
 	
 	@RequestMapping(value="/show/{id}",method=RequestMethod.GET) 
 	def show(Model model ,
-		     @PathVariable(value="id") Long id) {
-				
-		def tiporeceita=tipoReceitaRepositorio.findOne(id)
+		     @PathVariable(value="id") Long id) {				
+		def tiporeceita=tipoReceitaRepositorio.findOne(id);
 		model.addAttribute("tiporeceita", tiporeceita);
 		new ModelAndView("views/tiporeceita/edit")		
 	}
@@ -107,8 +106,8 @@ class TipoReceitaController {
 		}else{
 				
 				def tiporeceitadescricao
-				//Valido descricao
-				tiporeceitadescricao = tipoReceitaRepositorio.findByUsuarioAndDescricao(util.getUsuarioLogado(), tiporeceita.getDescricao())
+				//Valido descricao 
+				tiporeceitadescricao = tipoReceitaRepositorio.findByDescricao(tiporeceita.getDescricao())
 				if (tiporeceitadescricao!=null){
 					
 						if (tiporeceitadescricao.getId()==null){
@@ -127,7 +126,6 @@ class TipoReceitaController {
 					tiporeceita.imagem = midia
 				}
 				
-				tiporeceita.usuario=util.getUsuarioLogado()
 				tiporeceita.descricao = tiporeceita.descricao.toUpperCase()
 			    tipoReceitaRepositorio.save(tiporeceita)
 		}

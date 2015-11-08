@@ -131,7 +131,7 @@ class ReceitaController {
 		     @PathVariable(value="id") Long id) {
 		def receita=receitaRepositorio.findOne(id)
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		def tiporeceita = tipoReceitaRepositorio.findByUsuario(receita.getUsuario(), ordertiporeceita)
+		def tiporeceita = tipoReceitaRepositorio.findAll(ordertiporeceita)
 		model.addAttribute("tiporeceita",tiporeceita);
 		model.addAttribute("receita", receita);
 		new ModelAndView("views/receita/edit")		
@@ -177,7 +177,7 @@ class ReceitaController {
 	def create(Model model) {	
 		model.addAttribute("receita", new Receita());
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		def tiporeceita = tipoReceitaRepositorio.findAll(ordertiporeceita)
 		model.addAttribute("tiporeceita",tiporeceita);
 		new ModelAndView("views/receita/create")
 		
@@ -209,7 +209,7 @@ class ReceitaController {
 		}else{
 				
 				def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-				def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+				def tiporeceita = tipoReceitaRepositorio.findAll(ordertiporeceita)
 				model.addAttribute("tiporeceita",tiporeceita);
 				def receitadescricao
 				//Valido descricao

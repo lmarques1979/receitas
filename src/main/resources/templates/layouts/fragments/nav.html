@@ -42,13 +42,7 @@
 				 			
 				   			<sec sec:authorize="! hasAuthority('ADMIN')">
 				   				
-				   				
-					   			<li th:class="${#httpServletRequest.getServletPath() == '/tiporeceita/view' ||
-					   			                #httpServletRequest.getServletPath() == '/tiporeceita/tiporeceita' ||
-					   			                #httpServletRequest.getServletPath().contains('/tiporeceita/show/') ? 'active' : ''}">
-					   				<a th:href="@{/tiporeceita/view}"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a>
-					   			</li>
-					   		  	<li th:class="${#httpServletRequest.getServletPath().equals('/receita/view') || 
+				   				<li th:class="${#httpServletRequest.getServletPath().equals('/receita/view') || 
 					   		  					#httpServletRequest.getServletPath().equals('/receita/receita') ||
 					   		  					#httpServletRequest.getServletPath().contains('/receita/viewportipo') ||
 					   		  					#httpServletRequest.getServletPath().contains('/receita/view') ||
@@ -72,6 +66,12 @@
 					   		  					#httpServletRequest.getServletPath().contains('/receita/show') ? 'active' : ''}">
 					   		  		<a th:href="@{/receita/naoautorizada}"><text for="receita" th:text="#{receitanaoautorizada}"></text></a>
 					   		  	</li>
+					   		  	
+					   		  	<li th:class="${#httpServletRequest.getServletPath() == '/tiporeceita/view' ||
+					   			                #httpServletRequest.getServletPath() == '/tiporeceita/tiporeceita' ||
+					   			                #httpServletRequest.getServletPath().contains('/tiporeceita/show/') ? 'active' : ''}">
+					   				<a th:href="@{/tiporeceita/view}"><text for="tiporeceitas" th:text="#{tiporeceitas}"></text></a>
+					   			</li>
 					   		  	
 				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('/regra/view') ? 'active' : ''}">
 				   		 			<a th:href="@{/regra/view}"><text for="regra" th:text="#{regra}"></text></a>
