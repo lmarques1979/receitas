@@ -62,7 +62,7 @@ class TipoReceitaController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList, 2, null) 
+		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList, 2, "todos") 
 		new ModelAndView("views/tiporeceita/view")
 	}
 	

@@ -104,13 +104,13 @@ class ReceitaController {
 	}
 	
 	@RequestMapping(value="/view",method = RequestMethod.GET)
-	def view(Model model, 
+	def view(Model model,
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2, null) 
 		model.addAttribute("total", receitaRepositorio.findByUsuario(util.getUsuarioLogado()).size());
+		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2 , null)
 		new ModelAndView("views/receita/view")
 	}
 	
@@ -118,10 +118,12 @@ class ReceitaController {
 	def viewportipo(@PathVariable(value="id") Long id,
 					Model model, 
 			 	    @PageableDefault(page=0,size=10) Pageable pageable) {
+		def tiporeceita = tipoReceitaRepositorio.findOne(id)
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
-		model.addAttribute("tiporeceita", tipoReceitaRepositorio.findOne(id));
+		model.addAttribute("tiporeceita", tiporeceita);
+		model.addAttribute("total", receitaRepositorio.findByTiporeceitaAndUsuario(tiporeceita, util.getUsuarioLogado()).size());
 		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2 , null) 
 		new ModelAndView("views/receita/viewportipo")
 	}

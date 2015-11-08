@@ -35,7 +35,15 @@ public class Paginacao{
 	
 		def pagerequest = new PageRequest(pageable.getPageNumber(),itensporpagina, orderList)
 		if (repositorio in TipoReceitaRepositorio){
-			pageimpl=repositorio.findAll(pagerequest)
+			if (busca){
+				if (!busca.isEmpty()){
+					if(busca=="todos"){
+						pageimpl=repositorio.findAll(pagerequest)
+					}
+				}
+			}else{
+				pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() ,pagerequest)
+			}
 		}else{
 			if (repositorio in ReceitaRepositorio){
 				

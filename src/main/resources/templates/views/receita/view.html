@@ -28,16 +28,17 @@
 				  <text class="descricaopagina" th:text="#{receita}"></text><div class="clearer"></div>
 				  
 				  <div class="listing">
-						<ul class="clearfix" th:each="tiporeceita : ${pageimpl}">
-							<li >
-								 <a th:href="@{/receita/viewportipo/{id}(id= ${tiporeceita.id})}">
-								    <span class="photo-holder"><img th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${tiporeceita.imagem !=null and !tiporeceita.imagem.isEmpty() ? tiporeceita.imagem : 'noimage.png'}"/></span> 
-									<text class="descricaoreceita" th:text="${tiporeceita.descricao}"></text> 
-								 </a>
-							</li>
-							
-						</ul>	
-					</div>
+					<ul class="clearfix" th:each="tiporeceita : ${pageimpl}">
+						<li >
+							 <a th:href="@{/receita/viewportipo/{id}(id= ${tiporeceita[1]})}">
+							    <span class="photo-holder"><img th:height="${configuracao.alturaimg} ? ${configuracao.alturaimg}+'px' : '120px'" th:width="${configuracao.larguraimg} ? ${configuracao.larguraimg}+'px' : '90px'" class="photo" th:src="${@environment.getProperty('cloud.aws.bucketurl')} + ${tiporeceita[2] !=null and !tiporeceita[2].isEmpty() ? tiporeceita[2] : 'noimage.png'}"/></span> 
+								<text class="descricaoreceita" th:text="${tiporeceita[3]} + ' ('  + ${tiporeceita[0]} + ')'"></text> 
+							 </a>
+						</li>
+						
+					</ul>	
+				</div>
+				
 			</fieldset>
 			<div class="botao">
 				<a class="botaocriar" th:href="@{/receita/receita}"><text for="receita" th:text="#{criarreceita}"></text></a>
@@ -47,6 +48,7 @@
 				<!-- pagination -->
 				<div th:include="/layouts/fragments/pagination :: paginationcontent"></div>
 			</div>
+		
 	</div>	
 	
 	<div layout:fragment="scripts"></div>
