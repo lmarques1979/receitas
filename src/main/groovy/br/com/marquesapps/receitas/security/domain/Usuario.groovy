@@ -56,7 +56,7 @@ public class Usuario{
 	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<TipoReceita> tiporeceitas;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "usuario")
+	@OneToOne(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Configuracao configuracao;
 	
 	public Long getId() {
