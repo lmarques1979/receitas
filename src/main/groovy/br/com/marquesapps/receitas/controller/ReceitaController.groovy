@@ -63,6 +63,32 @@ class ReceitaController {
 	@Autowired 
 	private MessageSource messageSource
 	
+	@PreAuthorize('hasAuthority("ADMIN")')
+	@RequestMapping(value="/naoautorizada",method = RequestMethod.GET)
+	def naoautorizada(Model model,
+			  			   @PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2, "naoautorizada")
+		new ModelAndView("views/receita/viewnaoautorizadas")
+	}
+	
+	@PreAuthorize('permitAll')
+	@RequestMapping(value="/buscapublicas",method = RequestMethod.GET)
+	def buscapublicas(Model model,
+			   @RequestParam("descricao") String descricao,
+			   @PageableDefault(page=0,size=10) Pageable pageable) {
+		 def configuracao=configuracoes.getConfiguracoesUsuario()
+		 model.addAttribute("configuracao",configuracao);
+		 model.addAttribute("descricao",descricao);
+		 def filtro = "&descricao=" + descricao
+		 model.addAttribute("filtro", filtro);
+		 def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		 paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2, "publicas")
+		 new ModelAndView("views/receita/viewreceitas")
+	}
+			   
 	@RequestMapping(value="/busca",method = RequestMethod.GET)
 	def busca(Model model, 
 			  @RequestParam("descricao") String descricao,
@@ -76,15 +102,15 @@ class ReceitaController {
 		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2, "usuariodescricao") 
 		new ModelAndView("views/receita/viewreceitas")
 	}
-			 
+	
 	@RequestMapping(value="/view",method = RequestMethod.GET)
 	def view(Model model, 
 			 @PageableDefault(page=0,size=10) Pageable pageable) {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
-		model.addAttribute("totalreceitas", receitaRepositorio.findByUsuario(util.getUsuarioLogado()).size());
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2, null) 
+		model.addAttribute("total", receitaRepositorio.findByUsuario(util.getUsuarioLogado()).size());
 		new ModelAndView("views/receita/view")
 	}
 	
@@ -105,48 +131,45 @@ class ReceitaController {
 		     @PathVariable(value="id") Long id) {
 		def receita=receitaRepositorio.findOne(id)
 		def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
+		def tiporeceita = tipoReceitaRepositorio.findByUsuario(receita.getUsuario(), ordertiporeceita)
 		model.addAttribute("tiporeceita",tiporeceita);
 		model.addAttribute("receita", receita);
 		new ModelAndView("views/receita/edit")		
 	}
-			 
+	
+	@PreAuthorize('permitAll')
 	@RequestMapping(value="/imprimirreceita/{id}",method=RequestMethod.GET)
 	def imprimirreceita(Model model ,
 			  @PathVariable(value="id") Long id) {
 		 def receita=receitaRepositorio.findOne(id)
 		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		 def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
 		 def configuracao=configuracoes.getConfiguracoesUsuario()
 		 model.addAttribute("configuracao",configuracao); 
-		 model.addAttribute("tiporeceita",tiporeceita);
 		 model.addAttribute("receita", receita);
 		 new ModelAndView("views/receita/imprimirreceita")
 	}
 	
+	@PreAuthorize('permitAll')
 	@RequestMapping(value="/imprimiringredientes/{id}",method=RequestMethod.GET)
 	def imprimiringredientes(Model model ,
 				@PathVariable(value="id") Long id) {
 		   def receita=receitaRepositorio.findOne(id)
 		   def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		   def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
 		   def configuracao=configuracoes.getConfiguracoesUsuario()
 		   model.addAttribute("configuracao",configuracao);
-		   model.addAttribute("tiporeceita",tiporeceita);
 		   model.addAttribute("receita", receita);
 		   new ModelAndView("views/receita/imprimiringredientes")
 	}
-			 
+	
+	@PreAuthorize('permitAll')
 	@RequestMapping(value="/view/{id}",method=RequestMethod.GET)
 	def viewreceita(Model model,
 	   	     		@PathVariable(value="id") Long id) {
 		 def receita=receitaRepositorio.findOne(id)
 		 def ordertiporeceita = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		 def tiporeceita = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado() , ordertiporeceita)
 		 def configuracao=configuracoes.getConfiguracoesUsuario()
 		 model.addAttribute("configuracao",configuracao);
-		 model.addAttribute("tiporeceita",tiporeceita);
-		 model.addAttribute("receita", receita);
+		 model.addAttribute("receita",receita);
 		 new ModelAndView("views/receita/visualizar")
 	}
 				  
@@ -171,9 +194,7 @@ class ReceitaController {
 			}
 		}
 		receitaRepositorio.delete(id);	
-		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(receitaRepositorio, pageable, model, orderList,2, null) 
-		new ModelAndView("views/receita/view")
+		return "redirect:/receita/view";
 	}
 				  
 	@RequestMapping(value="/receita" , method = RequestMethod.POST)
@@ -210,7 +231,11 @@ class ReceitaController {
 					def midia = amazon.UploadS3(f)
 					receita.imagem = midia
 				}
-				receita.usuario=util.getUsuarioLogado() 
+				
+				if(!receita.usuario){
+					receita.usuario=util.getUsuarioLogado()
+				}
+				 
 				receita.descricao = receita.descricao.toUpperCase()
 			    receitaRepositorio.save(receita)
 		}

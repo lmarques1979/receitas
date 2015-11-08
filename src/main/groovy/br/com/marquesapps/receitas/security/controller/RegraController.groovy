@@ -76,11 +76,7 @@ class RegraController {
 			   @PageableDefault(page=0,size=10) Pageable pageable,
 			   Model model) {		
 		regraRepositorio.delete(id);
-		def configuracao=configuracoes.getConfiguracoesUsuario()
-		model.addAttribute("configuracao",configuracao);
-		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(regraRepositorio, pageable, model, orderList,2 , null)
-		new ModelAndView("views/regra/view")
+		return "redirect:/regra/view";
 	}
 				  
 	@RequestMapping(value="/regra" , method = RequestMethod.POST)

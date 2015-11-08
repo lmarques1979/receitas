@@ -14,16 +14,8 @@
 	
 		<fieldset class="form semborda">
 					
-			<div class="fieldcontain semmargem block">
-			    <a class="tiporeceita upper" th:href="@{/receita/view}"><text th:text="#{receita}"></text></a>
-			    <span class="separator">›</span>
-				<a class="tiporeceita" th:href="@{/receita/viewportipo/{id}(id= ${receita.tiporeceita.id})}"><text th:text="${receita.tiporeceita.descricao}"></text></a>
-				 <span class="separator">›</span>
-				<text class="descricaoreceita" th:text="${receita.descricao}"></text>
-			</div>							
-			
 			<div class="fieldcontain semmargem">
-				<text class="descricaoreceitamaior" th:text="${receita.descricao}"></text>
+				<text class="descricaoreceitamaior" th:text="${receita.descricao + ' (' + receita.tiporeceita.descricao + ')'}"></text>
 				<ul class="right">
 						<li >
 							<a th:target="_blank" th:href="@{/receita/imprimirreceita/{id}(id= ${receita.id})}"><img th:title="#{imprimirreceita}" class="print" th:src="@{/images/imprimir.png}"/></a>

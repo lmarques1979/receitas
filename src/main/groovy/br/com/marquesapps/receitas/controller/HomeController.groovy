@@ -12,6 +12,6 @@ class HomeController {
 	@RequestMapping("/")
 	def home() {
 		new ModelAndView(
-        "views/usuario/login")
+        "views/home")
 	} 
 }

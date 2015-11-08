@@ -21,7 +21,7 @@
 					<fieldset class="imprimir semborda">
 							
 							<div class="fieldcontain semmargem">
-								<text class="descricaoreceitamaior" th:text="${receita.descricao}"></text>
+								<text class="descricaoreceitamaior" th:text="${receita.descricao + ' (' + receita.tiporeceita.descricao + ')'}"></text>
 							</div>
 							
 							<div class="listing">

@@ -45,6 +45,12 @@ public class Receita {
 	@Column(name = "rendimento", nullable = true, length=100)
 	private String rendimento;
 	
+	@Column(name="publico", nullable=false)
+	private boolean publico;
+	
+	@Column(name="autorizada", nullable=false)
+	private boolean autorizada;
+	
 	protected Receita() {}
 	
 	public Long getId() {
@@ -117,5 +123,21 @@ public class Receita {
 
 	public void setRendimento(String rendimento) {
 		this.rendimento = rendimento;
+	}
+	
+	public boolean isPublico() {
+		return publico;
+	}
+
+	public void setPublico(boolean publico) {
+		this.publico = publico;
+	}
+
+	public boolean isAutorizada() {
+		return autorizada;
+	}
+
+	public void setAutorizada(boolean autorizada) {
+		this.autorizada = autorizada;
 	}
 }

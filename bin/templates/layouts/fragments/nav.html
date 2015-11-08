@@ -34,14 +34,15 @@
 					
 						<sec sec:authorize="isAuthenticated()">
 							
-							
-				   			<sec sec:authorize="! hasAuthority('ADMIN')">
-				   				
-				   				<li th:class="${#httpServletRequest.getServletPath().equals('/configuracao/view') ||
+							<li th:class="${#httpServletRequest.getServletPath().equals('/configuracao/view') ||
 				 							#httpServletRequest.getServletPath().equals('/configuracao/configuracao') ||
 				 							#httpServletRequest.getServletPath().contains('/configuracao/show') ? 'active' : ''}">
 				 					<a th:href="@{/configuracao/view}"><text for="configuracao" th:text="#{configuracao}"></text></a>
-				 				</li>
+				 			</li>
+				 			
+				   			<sec sec:authorize="! hasAuthority('ADMIN')">
+				   				
+				   				
 					   			<li th:class="${#httpServletRequest.getServletPath() == '/tiporeceita/view' ||
 					   			                #httpServletRequest.getServletPath() == '/tiporeceita/tiporeceita' ||
 					   			                #httpServletRequest.getServletPath().contains('/tiporeceita/show/') ? 'active' : ''}">
@@ -62,6 +63,16 @@
 				 			
 				 			
 				   		 	<sec sec:authorize="hasAuthority('ADMIN')">
+				   		 	
+				   		 		<li th:class="${#httpServletRequest.getServletPath().equals('/receita/naoautorizada') || 
+				   		 		                #httpServletRequest.getServletPath().equals('/receita/view') || 
+					   		  					#httpServletRequest.getServletPath().equals('/receita/receita') ||
+					   		  					#httpServletRequest.getServletPath().contains('/receita/viewportipo') ||
+					   		  					#httpServletRequest.getServletPath().contains('/receita/view') ||
+					   		  					#httpServletRequest.getServletPath().contains('/receita/show') ? 'active' : ''}">
+					   		  		<a th:href="@{/receita/naoautorizada}"><text for="receita" th:text="#{receitanaoautorizada}"></text></a>
+					   		  	</li>
+					   		  	
 				   		 		<li th:class="${#httpServletRequest.getServletPath().contains('/regra/view') ? 'active' : ''}">
 				   		 			<a th:href="@{/regra/view}"><text for="regra" th:text="#{regra}"></text></a>
 				   		 		</li>
@@ -107,14 +118,13 @@
 				
 			</div>	
 			
-			<sec sec:authorize="isAuthenticated()">
-				<div class="buscardiv"> 
-					<form th:action="@{/receita/busca}" method="GET">
+			<div class="buscardiv"> 
+					<form th:action="${#authentication.principal} == 'anonymousUser' ? '/receitas/receita/buscapublicas' : '/receitas/receita/busca'" method="GET">
 						<input class="upper mb busca" th:placeholder="#{buscarreceita}" th:type="text" th:name="descricao" />
 						<button class="find" th:type="submit"><text for="enviar" th:text="#{buscar}"></text></button>
 					</form>
-				</div><div class="clearer"></div>
-			</sec>		
+			</div><div class="clearer"></div>
+			
 	</div>
 	
 </nav>

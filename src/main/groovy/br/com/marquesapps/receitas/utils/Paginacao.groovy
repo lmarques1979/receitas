@@ -45,6 +45,12 @@ public class Paginacao{
 							def descricao = model.getAt("descricao")
 							pageimpl=repositorio.findByDescricaoAndUsuario(descricao, util.getUsuarioLogado(), pagerequest)
 						}
+						if(busca=="naoautorizada"){
+							pageimpl=repositorio.findByPublicoAndAutorizada(true, false , pagerequest)
+						}
+						if(busca=="publicas"){
+							pageimpl=repositorio.findByPublicoAndAutorizada(true, true , pagerequest)
+						}
 					}
 				}else{
 					def tiporeceita = model.getAt("tiporeceita")

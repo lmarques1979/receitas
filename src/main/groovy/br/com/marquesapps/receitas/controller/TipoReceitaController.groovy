@@ -93,11 +93,7 @@ class TipoReceitaController {
 			}
 		}
 		tipoReceitaRepositorio.delete(id);	
-		def configuracao=configuracoes.getConfiguracoesUsuario()
-		model.addAttribute("configuracao",configuracao);
-		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		paginacao.getPaginacao(tipoReceitaRepositorio, pageable, model, orderList,2 , null) 
-		new ModelAndView("views/tiporeceita/view")
+		return "redirect:/tiporeceita/view";
 	}
 				  
 	@RequestMapping(value="/tiporeceita" , method = RequestMethod.POST)

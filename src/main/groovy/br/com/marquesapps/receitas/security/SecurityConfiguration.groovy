@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.formLogin().loginPage("/usuario/login")
 				.usernameParameter("username")
 				.passwordParameter("password").permitAll()
-				.defaultSuccessUrl("/receita/view")
+				.defaultSuccessUrl("/")
 				.and().logout().invalidateHttpSession(true)
 				.logoutUrl("/usuario/logout").logoutSuccessUrl("/usuario/login").permitAll();
 		http.exceptionHandling().accessDeniedPage("/error/acessonegado");

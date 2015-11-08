@@ -34,6 +34,20 @@
 						</div>
 						
 						<div class="fieldcontain">
+							<label class="left" for="publico" th:text="#{publico}"></label><div class="clearer"></div>
+							<input th:type="checkbox" th:field="*{publico}" th:name="publico" th:placeholder="#{publico}"/> 
+							<span class="field-validator" th:if="${#fields.hasErrors('publico')}" th:errors="*{publico}"></span>
+						</div>
+					
+						<sec sec:authorize="hasAuthority('ADMIN')">
+							<div class="fieldcontain">
+								<label class="left" for="autorizada" th:text="#{autorizada}"></label><div class="clearer"></div>
+								<input th:type="checkbox" th:field="*{autorizada}" th:name="autorizada" th:placeholder="#{autorizada}"/> 
+								<span class="field-validator" th:if="${#fields.hasErrors('autorizada')}" th:errors="*{autorizada}"></span>
+							</div>
+						</sec>
+						
+						<div class="fieldcontain">
 							<label class="left" for="descricao" th:text="#{descricao}"></label><div class="clearer"></div>
 							<span class="required-indicator">*</span>
 							<input th:type="text" th:name="descricao" th:size="35" th:field="*{descricao}" th:autofocus="true" th:required="true"/> 
@@ -71,6 +85,7 @@
 							<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
 						</div>
 						
+						<input th:type="hidden" th:name="usuario" th:field="*{usuario}"/>
 							
 				</fieldset>	
 			

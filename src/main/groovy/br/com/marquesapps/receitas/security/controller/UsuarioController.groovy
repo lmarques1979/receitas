@@ -166,11 +166,7 @@ class UsuarioController {
 		    new SecurityContextLogoutHandler().logout(request, response, auth);
 			return "redirect:/usuario/login?logout";
 		}else{
-			def configuracao=configuracoes.getConfiguracoesUsuario()
-			model.addAttribute("configuracao",configuracao);
-			def orderList = new Sort(new Order(Sort.Direction.ASC, "primeironome"))
-			paginacao.getPaginacao(usuarioRepositorio, pageable, model, orderList,2, null)
-			new ModelAndView("views/usuario/view")
+			return "redirect:/usuario/view";
 		}
 	}
 				  

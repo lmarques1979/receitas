@@ -33,10 +33,13 @@
 										<text class="descricaoreceita" th:text="${receita.descricao}"></text> 
 									 </a>
 								</li>
-								<li class="viewedit">
-									 <a th:title="#{editar}" th:href="@{/receita/show/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a>
-								</li>
-							
+								
+								<sec sec:authorize="principal!='anonymousUser'">
+									<li class="viewedit">
+										 <a th:title="#{editar}" th:href="@{/receita/show/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a>
+									</li>
+								</sec>
+								
 							</ul>		
 					</div>	
 					

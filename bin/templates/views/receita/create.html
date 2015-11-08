@@ -34,6 +34,12 @@
 					</div>
 					
 					<div class="fieldcontain">
+						<label class="left" for="publico" th:text="#{publico}"></label><div class="clearer"></div>
+						<input th:type="checkbox" th:field="*{publico}" th:name="publico" th:placeholder="#{publico}"/> 
+						<span class="field-validator" th:if="${#fields.hasErrors('publico')}" th:errors="*{publico}"></span>
+					</div>
+					
+					<div class="fieldcontain">
 						<label class="left" for="descricao" th:text="#{descricao}"></label><div class="clearer"></div>
 						<span class="required-indicator">*</span>
 						<input class="upper" th:type="text" th:name="descricao" th:size="35" th:required="true"/> 

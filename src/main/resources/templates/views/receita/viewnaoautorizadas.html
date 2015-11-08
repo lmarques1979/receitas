@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="layouts/main">
+<head>
+<div layout:fragment="styles"></div>
+<title th:text="#{receitanaoautorizada}"></title>
+</head>
+<body>
+	
+	<div layout:fragment="content">
+	
+		<text th:if="${message}">
+			<div th:text="${message}" class="message" role="status"></div>
+		</text>
+				
+		<table>
+			<thead>
+					<tr>
+						<th class="model"><text for="configuracao" th:text="#{receitanaoautorizada}"></text></th>
+					</tr>							
+												
+					<tr>
+						<th><text for="editar" th:text="#{editar}"></text></th>
+						<th><text for="descricao" th:text="#{descricao}"></text></th>
+						<th><text for="usuario" th:text="#{usuario}"></text></th>
+						<th><text for="publico" th:text="#{publico}"></text></th>
+						<th><text for="autorizado" th:text="#{autorizada}"></text></th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					<tr th:each="receita : ${pageimpl}">
+						<td class="centro"><a th:href="@{/receita/show/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
+						<td><text for="home" th:text="${receita.descricao}"></text></td>
+						<td><text for="home" th:text="${receita.usuario.username}"></text></td>
+						<td class="centro"><text for="home" th:text="${receita.publico}? #{sim} : #{nao}"></text></td>
+						<td class="centro"><text for="home" th:text="${receita.autorizada}? #{sim} : #{nao}"></text></td>
+					</tr>
+																
+				</tbody>
+		</table>
+	
+	</div>	
+	
+	<div layout:fragment="scripts"></div>
+	
+</body>
+</html>

@@ -85,11 +85,7 @@ class UsuarioRegraController {
 				@PageableDefault(page=0,size=10) Pageable pageable,
 				@PathVariable(value="id") Long id) {
 		usuarioregraRepositorio.delete(id);
-		def configuracao=configuracoes.getConfiguracoesUsuario()
-		model.addAttribute("configuracao",configuracao);
-		def orderList = new Sort(new Order(Sort.Direction.ASC, "usuario.primeironome"))
-		paginacao.getPaginacao(usuarioregraRepositorio, pageable, model, orderList , 2, null)
-		new ModelAndView("views/usuarioregra/view")
+		return "redirect:/usuarioregra/view";
 	}
 				  
 	@RequestMapping(value="/usuarioregra" , method = RequestMethod.POST)
