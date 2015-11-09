@@ -18,7 +18,13 @@
 				
 				<fieldset class="form semborda">
 					
+					<div class="total">
+						<span class="separator">›</span>
+						<text th:text="${total} + ' '+ #{receita}"></text>
+				  	</div><div class="clearer"></div>
+				  
 					<div class="listing">
+					
 							<ul class="clearfix" th:each="receita : ${pageimpl}">
 								<li>
 									 <a th:href="@{/receita/view/{id}(id= ${receita.id})}">

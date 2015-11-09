@@ -55,7 +55,8 @@ public class Paginacao{
 							pageimpl=repositorio.findByPublicoAndAutorizada(true, false , pagerequest)
 						}
 						if(busca=="publicas"){
-							pageimpl=repositorio.findByPublicoAndAutorizada(true, true , pagerequest)
+							def descricao = model.getAt("descricao")
+							pageimpl=repositorio.findByPublicoAndAutorizada(descricao , pagerequest)
 						}
 						if(busca=="usuario"){
 							pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() , pagerequest)
@@ -74,5 +75,7 @@ public class Paginacao{
 		for (i=0; i < pageimpl.getTotalPages(); i++) {pages.add(i)}
 		model.addAttribute("pages", pages);
 		model.addAttribute("pageimpl", pageimpl);
+		model.addAttribute("total", pageimpl.getTotalElements());
+		
 	}
 }
