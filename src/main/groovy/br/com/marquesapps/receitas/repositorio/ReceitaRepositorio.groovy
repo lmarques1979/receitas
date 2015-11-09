@@ -23,4 +23,7 @@ public interface ReceitaRepositorio extends PagingAndSortingRepository<Receita, 
 	
 	@Query(value="SELECT r FROM Receita r WHERE r.publico=1 and r.autorizada=1 and LOWER(r.descricao) LIKE LOWER(CONCAT('%', :descricao , '%')) order by r.descricao asc")
 	Page<Receita> findByPublicoAndAutorizada(@Param("descricao") String descricao, Pageable pageable);
+	
+	@Query(value="SELECT r FROM Receita r WHERE r.publico=1 and r.autorizada=1 and r.tiporeceita.id=:tiporeceitaid order by r.descricao asc")
+	Page<Receita> findByPublicoAndAutorizadaAndTipo(@Param("tiporeceitaid") Long tiporeceitaid, Pageable pageable);
 }

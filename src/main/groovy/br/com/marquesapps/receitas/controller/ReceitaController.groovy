@@ -94,6 +94,21 @@ class ReceitaController {
 		 new ModelAndView("views/receita/viewreceitas")
 	}
 			   
+   @PreAuthorize('permitAll')
+   @RequestMapping(value="/buscatipopublica",method = RequestMethod.GET)
+   def buscatipopublica(Model model,
+			  			@RequestParam("id") Long id,
+						@PageableDefault(page=0,size=10) Pageable pageable) {
+		def configuracao=configuracoes.getConfiguracoesUsuario()
+		model.addAttribute("configuracao",configuracao);
+		model.addAttribute("tiporeceitaid",id);
+		def filtro = "&id=" + id
+		model.addAttribute("filtro", filtro);
+		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
+		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2, "buscatipopublica")
+		new ModelAndView("views/receita/viewreceitas")
+   }
+			   
 	@RequestMapping(value="/busca",method = RequestMethod.GET)
 	def busca(Model model, 
 			  @RequestParam("descricao") String descricao,

@@ -32,11 +32,27 @@
 										<text class="descricaoreceita" th:text="${receita.descricao}"></text> 
 									 </a>
 								</li>
+
+								<li>
+									 <sec sec:authorize="isAnonymous()">
+									 	<a th:href="@{/receita/buscatipopublica?id=}+${receita.tiporeceita.id}">
+											<text class="descricaoreceita" th:text="${receita.tiporeceita.descricao}"></text> 
+									  	</a>
+									 </sec>
+									 <sec sec:authorize="isAuthenticated()">
+									 	<a th:href="@{/receita/viewportipo/{id}(id= ${receita.tiporeceita.id})}">
+									 		<text class="descricaoreceita" th:text="${receita.tiporeceita.descricao}"></text> 
+									  	</a>
+									 </sec>
+									  	
+								</li>
 								
 								<li>
 									  <text class="descricaoreceitapreto" th:text="#{postadapor}"></text>  
 									 <text class="descricaoreceita" th:text="${receita.usuario.getNome()}"></text> 
 								</li>
+								
+								
 								
 								<sec sec:authorize="principal!='anonymousUser'">
 									<li class="viewedit">
