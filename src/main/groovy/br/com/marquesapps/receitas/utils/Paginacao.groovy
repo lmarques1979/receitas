@@ -20,7 +20,7 @@ public class Paginacao{
 		
 		def itensporpagina=1
 		def ordenacao
-		def pageimpl
+		def pageimpl , pageimpl2
 		def configuracao=model.getAt("configuracao")
 		//Tipo 1 = Pageable , 2 = Tabela configuracoes banco
 		//Caso não queria usar os itens por página das configurações para uma determinada página , irá usar
@@ -41,8 +41,6 @@ public class Paginacao{
 						pageimpl=repositorio.findAll(pagerequest)
 					}
 				}
-			}else{
-				pageimpl=repositorio.findByUsuario(util.getUsuarioLogado() ,pagerequest)
 			}
 		}else{
 			if (repositorio in ReceitaRepositorio){

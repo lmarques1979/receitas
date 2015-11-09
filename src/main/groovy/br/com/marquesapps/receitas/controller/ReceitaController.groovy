@@ -1,12 +1,10 @@
 package br.com.marquesapps.receitas.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
-import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.domain.Sort.Order
@@ -25,19 +23,26 @@ import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 
 import br.com.marquesapps.receitas.domain.Receita
-import br.com.marquesapps.receitas.domain.TipoReceita;
 import br.com.marquesapps.receitas.repositorio.ConfiguracaoRepositorio
 import br.com.marquesapps.receitas.repositorio.ReceitaRepositorio
 import br.com.marquesapps.receitas.repositorio.TipoReceitaRepositorio
 import br.com.marquesapps.receitas.utils.Amazon
 import br.com.marquesapps.receitas.utils.Configuracoes
 import br.com.marquesapps.receitas.utils.Paginacao
+import br.com.marquesapps.receitas.utils.SmtpMailSender;
 import br.com.marquesapps.receitas.utils.Util
+import org.springframework.beans.factory.annotation.Value
 
 @RequestMapping('/receita')
 @Controller
 @PreAuthorize('isAuthenticated()') 
 class ReceitaController {
+	
+	@Value('${spring.mail.username}')
+	private String email;
+	
+	@Autowired
+	private SmtpMailSender smtpMailSender
 	
 	@Autowired
 	private Configuracoes configuracoes
@@ -109,8 +114,12 @@ class ReceitaController {
 		def configuracao=configuracoes.getConfiguracoesUsuario()
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
-		model.addAttribute("total", receitaRepositorio.findByUsuario(util.getUsuarioLogado()).size());
-		paginacao.getPaginacao(tipoReceitaRepositorio,pageable, model, orderList, 2 , null)
+		model.addAttribute("total", receitaRepositorio.findByUsuario(util.getUsuarioLogado()).size());		
+		def lista = tipoReceitaRepositorio.findByUsuario(util.getUsuarioLogado())
+		def listaUnion = tipoReceitaRepositorio.findByUsuarioUnion(util.getUsuarioLogado())
+		lista.addAll(listaUnion)
+		lista.sort{it[3]}
+		model.addAttribute("tiporeceitas", lista);
 		new ModelAndView("views/receita/view")
 	}
 	
@@ -237,7 +246,11 @@ class ReceitaController {
 				if(!receita.usuario){
 					receita.usuario=util.getUsuarioLogado()
 				}
-				 
+				
+				if (receita.id==null && receita.publico){
+					def ret=smtpMailSender.send(email , messageSource.getMessage("assuntoautorizarreceita", null, LocaleContextHolder.getLocale()), messageSource.getMessage("mensagemautorizarreceita", null, LocaleContextHolder.getLocale()))
+				}
+				
 				receita.descricao = receita.descricao.toUpperCase()
 			    receitaRepositorio.save(receita)
 		}
