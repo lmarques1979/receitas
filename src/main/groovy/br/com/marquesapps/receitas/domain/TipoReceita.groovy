@@ -25,7 +25,7 @@ public class TipoReceita {
 	@Column(name = "imagem", nullable = true, length=50)
 	private String imagem;
 	
-	@OneToMany(mappedBy="tiporeceita",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="tiporeceita",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<Receita> receitas;
 	
 	protected TipoReceita() {}

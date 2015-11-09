@@ -47,13 +47,13 @@ public class Usuario{
 	@Column(name="ativo", nullable=false)
 	private boolean ativo;
 	
-	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<UsuarioRegra> regras;
 	
-	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<Receita> receitas; 
 	
-	@OneToOne(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToOne(mappedBy="usuario",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Configuracao configuracao;
 	
 	public Long getId() {

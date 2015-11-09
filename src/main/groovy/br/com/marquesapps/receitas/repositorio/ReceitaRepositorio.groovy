@@ -18,6 +18,8 @@ public interface ReceitaRepositorio extends PagingAndSortingRepository<Receita, 
 	Page<Receita> findByTiporeceitaAndUsuario(TipoReceita tiporeceita, Usuario usuario,Pageable pageable);
 	List<Receita> findByTiporeceitaAndUsuario(TipoReceita tiporeceita, Usuario usuario)
 	Long 		  countByTiporeceitaAndUsuario(TipoReceita tiporeceita, Usuario usuario)
+	Page<Receita> findByPublicoAndAutorizada(boolean publico, boolean autorizada, Pageable pageable);
+	
 	@Query(value="SELECT r FROM Receita r WHERE LOWER(r.descricao) LIKE LOWER(CONCAT('%', :descricao , '%')) and r.usuario=:usuario order by r.descricao asc")
 	Page<Receita> findByDescricaoAndUsuario(@Param("descricao") String descricao , @Param("usuario") Usuario usuario, Pageable pageable);
 	

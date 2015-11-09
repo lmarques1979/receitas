@@ -23,7 +23,7 @@ public class Regra {
 	@Column(name="ativo", nullable=false)
 	private boolean ativo;
 	
-	@OneToMany(mappedBy="regra",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="regra",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<UsuarioRegra> usuarioregras;
 	
 	public Regra() {}
