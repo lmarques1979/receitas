@@ -15,7 +15,8 @@
 		<text th:if="${message}">
 			<div th:text="${message}" class="message" role="status"></div>
 		</text>
-				
+		
+		<form action="#" th:object="${pageimpl}" th:action="@{/receita/autorizarreceitas}" method="post">
 		<table>
 			<thead>
 					<tr>
@@ -23,29 +24,42 @@
 					</tr>							
 												
 					<tr>
-						<th><text for="editar" th:text="#{editar}"></text></th>
 						<th><text for="descricao" th:text="#{descricao}"></text></th>
 						<th><text for="usuario" th:text="#{usuario}"></text></th>
 						<th><text for="publico" th:text="#{publico}"></text></th>
-						<th><text for="autorizado" th:text="#{autorizada}"></text></th>
+						<th><input class="marcartodos" th:type="checkbox" th:name="marcartodos"/></th>
 					</tr>
 				</thead>
+				
 				<tbody>
 				
-					<tr th:each="receita : ${pageimpl}">
-						<td class="centro"><a th:href="@{/receita/show/{id}(id= ${receita.id})}"><img th:src="@{/images/edit.png}"/></a></td>
-						<td><text for="home" th:text="${receita.descricao}"></text></td>
-						<td><text for="home" th:text="${receita.usuario.username}"></text></td>
-						<td class="centro"><text for="home" th:text="${receita.publico}? #{sim} : #{nao}"></text></td>
-						<td class="centro"><text for="home" th:text="${receita.autorizada}? #{sim} : #{nao}"></text></td>
+					<tr th:each="receita, status : ${pageimpl}">
+							
+							<td><input id="id" th:name="id" th:value="${receita.id}" th:type="hidden"/>		
+								<text for="home" th:text="${receita.descricao}"></text>
+							</td>
+							<td><text for="home" th:text="${receita.usuario.username}"></text></td>
+							<td class="centro"><text for="home" th:text="${receita.publico}? #{sim} : #{nao}"></text></td>
+							<td class="centro">
+								<input type="checkbox" th:value="${receita.autorizada}" />								
+							</td>
 					</tr>
-																
+					
+					<tr>
+						<td colspan="5">
+							<div class="fieldcontain">
+								<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
+							</div>
+						</td>
+					</tr>
 				</tbody>
 		</table>
-	
+		</form>
 	</div>	
 	
-	<div layout:fragment="scripts"></div>
+	<div layout:fragment="scripts">
+		<script th:src="@{/js/marcatodos.js}"></script>
+	</div>
 	
 </body>
 </html>

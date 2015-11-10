@@ -16,8 +16,9 @@
 					
 			<input th:type="hidden" th:name="id" th:field="*{id}"/>
 			<input th:type="hidden" th:name="imagem" th:field="*{imagem}"/>
+			<input th:type="hidden" th:name="autorizada" th:field="*{autorizada}"/>
 			
-				<fieldset class="form">
+			<fieldset class="form">
 				
 						<legend><text for="editarreceita" th:text="#{editarreceita}"></text></legend>
 						
@@ -38,14 +39,6 @@
 							<input th:type="checkbox" th:field="*{publico}" th:name="publico" th:placeholder="#{publico}"/> 
 							<span class="field-validator" th:if="${#fields.hasErrors('publico')}" th:errors="*{publico}"></span>
 						</div>
-					
-						<sec sec:authorize="hasAuthority('ADMIN')">
-							<div class="fieldcontain">
-								<label class="left" for="autorizada" th:text="#{autorizada}"></label><div class="clearer"></div>
-								<input th:type="checkbox" th:field="*{autorizada}" th:name="autorizada" th:placeholder="#{autorizada}"/> 
-								<span class="field-validator" th:if="${#fields.hasErrors('autorizada')}" th:errors="*{autorizada}"></span>
-							</div>
-						</sec>
 						
 						<div class="fieldcontain">
 							<label class="left" for="descricao" th:text="#{descricao}"></label><div class="clearer"></div>

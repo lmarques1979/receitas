@@ -70,6 +70,8 @@
 						<input th:type="file" th:name="arquivo" th:placeholder="#{imagem}"/>
 					</div>
 					
+					<input th:type="hidden" th:name="autorizada" th:value="false"/>
+					
 					<div class="fieldcontain">
 						<button class="btn btn-lg btn-primary btn-block submit" th:type="submit"><text for="enviar" th:text="#{salvar}"></text></button>
 					</div>

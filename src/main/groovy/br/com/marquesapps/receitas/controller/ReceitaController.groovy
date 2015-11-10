@@ -1,5 +1,6 @@
 package br.com.marquesapps.receitas.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid
 
 import org.springframework.beans.factory.annotation.Autowired
@@ -69,10 +70,20 @@ class ReceitaController {
 	private MessageSource messageSource
 	
 	@PreAuthorize('hasAuthority("ADMIN")')
+	@RequestMapping(value="/autorizarreceitas",method = RequestMethod.POST)
+	def autorizarreceitas(@RequestParam("id") Long[] id,
+						  @RequestParam("autorizada") String[] autorizada) {
+		
+		def i
+		println autorizada		
+		return "redirect:/receita/naoautorizada";
+	}
+							 
+	@PreAuthorize('hasAuthority("ADMIN")')
 	@RequestMapping(value="/naoautorizada",method = RequestMethod.GET)
 	def naoautorizada(Model model,
 			  			   @PageableDefault(page=0,size=10) Pageable pageable) {
-		def configuracao=configuracoes.getConfiguracoesUsuario()
+		def configuracao=configuracoes.getConfiguracoesUsuario() 
 		model.addAttribute("configuracao",configuracao);
 		def orderList = new Sort(new Order(Sort.Direction.ASC, "descricao"))
 		paginacao.getPaginacao(receitaRepositorio,pageable, model, orderList, 2, "naoautorizada")
