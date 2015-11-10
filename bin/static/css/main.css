@@ -115,7 +115,7 @@ ol, ul {
 }
 
 .menu ul li.img{
-    padding:0 1em;	
+    padding:0;	
 }
 
 .menu ul li img{
@@ -509,7 +509,7 @@ input[type="checkbox"], input[type="radio"]{
 	padding:5px 15px;
 	border:0;
 	height:auto;
-	margin-left:1.5em;
+	margin:0 auto;
 }
 
 input{
@@ -596,10 +596,11 @@ fieldset.embedded legend {
 }
 
 .btn-primary , .btn-primary:hover , .btn-primary:active{
-    color: #FFF;
-    background-color:#56555B;
-    border-color:#56555B;
+	background-color:#56555B;
+	border-color:#56555B;
+	color: #FFF;
 }
+
 
 legend{
 	font-size: 1em;

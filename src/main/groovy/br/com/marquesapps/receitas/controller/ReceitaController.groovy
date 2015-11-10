@@ -72,10 +72,15 @@ class ReceitaController {
 	@PreAuthorize('hasAuthority("ADMIN")')
 	@RequestMapping(value="/autorizarreceitas",method = RequestMethod.POST)
 	def autorizarreceitas(@RequestParam("id") Long[] id,
-						  @RequestParam("autorizada") String[] autorizada) {
+						  @RequestParam("autorizada") boolean[] autorizada) {
 		
-		def i
-		println autorizada		
+		id.eachWithIndex{ it, index ->
+			def receita = receitaRepositorio.findOne(it)
+			if (autorizada[index]==true){
+				receita.setAutorizada(autorizada[index])
+				receitaRepositorio.save(receita)
+			}
+		}		
 		return "redirect:/receita/naoautorizada";
 	}
 							 

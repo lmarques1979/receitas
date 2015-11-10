@@ -16,7 +16,7 @@
 			<div th:text="${message}" class="message" role="status"></div>
 		</text>
 		
-		<form action="#" th:object="${pageimpl}" th:action="@{/receita/autorizarreceitas}" method="post">
+		<form action="#" th:action="@{/receita/autorizarreceitas}" method="post">
 		<table>
 			<thead>
 					<tr>
@@ -27,22 +27,24 @@
 						<th><text for="descricao" th:text="#{descricao}"></text></th>
 						<th><text for="usuario" th:text="#{usuario}"></text></th>
 						<th><text for="publico" th:text="#{publico}"></text></th>
-						<th><input class="marcartodos" th:type="checkbox" th:name="marcartodos"/></th>
+						<th><input id="autorizadastodos" th:type="checkbox" th:name="marcartodos"/></th>
 					</tr>
 				</thead>
 				
 				<tbody>
 				
 					<tr th:each="receita, status : ${pageimpl}">
-							
+					
 							<td><input id="id" th:name="id" th:value="${receita.id}" th:type="hidden"/>		
 								<text for="home" th:text="${receita.descricao}"></text>
 							</td>
 							<td><text for="home" th:text="${receita.usuario.username}"></text></td>
 							<td class="centro"><text for="home" th:text="${receita.publico}? #{sim} : #{nao}"></text></td>
 							<td class="centro">
-								<input type="checkbox" th:value="${receita.autorizada}" />								
+								<input th:class="checkbox" th:value="${receita.autorizada}" type="checkbox"/>
+								<input th:class="autorizada" id="autorizada" th:name="autorizada" th:value="false" th:type="hidden"/>	
 							</td>
+							
 					</tr>
 					
 					<tr>
@@ -55,6 +57,12 @@
 				</tbody>
 		</table>
 		</form>
+		
+		<div th:if="${pageimpl.getTotalPages()} > 1">
+			<!-- pagination -->
+			<div th:include="/layouts/fragments/pagination :: paginationcontent"></div>
+		</div>
+		
 	</div>	
 	
 	<div layout:fragment="scripts">
