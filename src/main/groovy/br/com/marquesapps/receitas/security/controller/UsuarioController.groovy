@@ -149,9 +149,7 @@ class UsuarioController {
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	@PreAuthorize('isAuthenticated()')
 	def delete(@PathVariable(value="id") Long id, 
-		       @PageableDefault(page=0,size=10) Pageable pageable,
-			   Model model,
-			   HttpServletRequest request, 
+		       HttpServletRequest request, 
 			   HttpServletResponse response) {
 		def usuario = usuarioRepositorio.findOne(id)
 		if (usuario.imagem){

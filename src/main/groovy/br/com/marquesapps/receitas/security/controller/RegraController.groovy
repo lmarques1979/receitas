@@ -72,9 +72,7 @@ class RegraController {
 	}
 	
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
-	def delete(@PathVariable(value="id") Long id,
-			   @PageableDefault(page=0,size=10) Pageable pageable,
-			   Model model) {		
+	def delete(@PathVariable(value="id") Long id) {		
 		regraRepositorio.delete(id);
 		return "redirect:/regra/view";
 	}

@@ -82,9 +82,7 @@ class TipoReceitaController {
 	}
 	
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
-	def delete(	@PathVariable(value="id") Long id , 
-				@PageableDefault(page=0,size=10) Pageable pageable,
-				Model model) {		
+	def delete(	@PathVariable(value="id") Long id) {		
 		def tiporeceita = tipoReceitaRepositorio.findOne(id)
 		if (tiporeceita.imagem){
 			if (!tiporeceita.imagem.isEmpty()){

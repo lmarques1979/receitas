@@ -226,9 +226,7 @@ class ReceitaController {
 	}
 	
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
-	def delete(	@PathVariable(value="id") Long id , 
-				@PageableDefault(page=0,size=10) Pageable pageable,
-				Model model) {	
+	def delete(	@PathVariable(value="id") Long id) {	
 		def receita = receitaRepositorio.findOne(id)
 		if (receita.imagem){
 			if (!receita.imagem.isEmpty()){

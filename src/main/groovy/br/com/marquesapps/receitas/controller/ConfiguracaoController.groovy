@@ -56,7 +56,7 @@ class ConfiguracaoController {
 	}
 	
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
-	def delete(@PathVariable(value="id") Long id , Model model) {		
+	def delete(@PathVariable(value="id") Long id) {		
 		configuracaoRepositorio.delete(id);	
 		return "redirect:/configuracao/view";
 	}
