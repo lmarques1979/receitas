@@ -42,6 +42,6 @@ class Message extends WebMvcConfigurerAdapter{
 	public LocalValidatorFactoryBean getValidator(){
 		LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean()
 		factory.setValidationMessageSource(messageSource)
-		return factory
+		return factory 
 	}	
 }

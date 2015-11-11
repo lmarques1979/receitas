@@ -1,0 +1,52 @@
+# ========
+# = TOMCAT
+# ========
+server.port=9000
+server.context-path=/receitas
+
+# ============
+# = THYMELEAF
+# ============
+spring.thymeleaf.checkTemplateLocation=false
+spring.thymeleaf.cache=false
+
+# ===============================
+# = DATA SOURCE
+# ===============================
+spring.datasource.url=jdbc:mysql://localhost:3306/receitas?autoReconnect=true
+spring.datasource.username=receitas
+spring.datasource.password=receitas
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.jpa.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+spring.jpa.generate-ddl=false
+spring.jpa.show-sql=true 
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.test-on-borrow=true
+spring.datasource.validation-query=SELECT 1
+# =========
+# Amazon S3 
+# =========
+cloud.aws.credentials.accessKey=AKIAJG2T4AXSSTLZ76BA
+cloud.aws.credentials.secretKey=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
+cloud.aws.s3.bucket=receitaslmdcm
+cloud.aws.bucketurl=https://receitaslmdcm.s3.amazonaws.com/
+cloud.aws.region.static=eu-west-1
+# ==================
+# Messages Directory
+# ==================
+spring.messages.basename=i18n/messages
+# =======
+# E-mail
+# =======
+spring.mail.username=liunit@gmail.com	
+spring.mail.password=Lmarques1979
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.smtp.starttls.required=true
+
+# =====
+# Error
+# =====
+server.error.whitelabel.enabled=false

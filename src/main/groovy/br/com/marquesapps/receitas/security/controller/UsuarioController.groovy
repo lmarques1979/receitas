@@ -103,8 +103,8 @@ class UsuarioController {
 		}
 		
 		def msg=[email]
-		Object[] args = msg
-		
+		String[] args = msg
+		args.a
 		new ModelAndView("views/usuario/esqueceusenha",
 			[message:messageSource.getMessage("emailenviadocomsucesso", args , LocaleContextHolder.getLocale())])
 	}
@@ -128,22 +128,20 @@ class UsuarioController {
 	@RequestMapping(value="/show/{id}",method = RequestMethod.GET)
 	@PreAuthorize('isAuthenticated()')
 	def show(Model model ,
-		     @PathVariable(value = "id") Long id) {
+		     @PathVariable(value = "id") Long id,
+			 HttpServletResponse response) {
 		
-	   def usuario=usuarioRepositorio.findOne(id)
+	  def usuario=usuarioRepositorio.findOne(id)
 	
-	   if (usuario==null){
-		   return new ModelAndView("views/erros/erro404")
-	   }else{
-	   
-	   			def usuariologado = util.getUsuarioLogado()
-				if (usuariologado.id!=id && usuariologado.username!='admin'){
-					return new ModelAndView("views/error/acessonegado")
-				}
-	   }	   
-	   	   
-	   model.addAttribute("usuario", usuario);
-	   new ModelAndView("views/usuario/edit")
+	  def usuariologado = util.getUsuarioLogado()
+	  if (usuariologado.id!=id && usuariologado.username!='admin'){
+		  	model.addAttribute("codigoerro", '403');
+			model.addAttribute("mensagemerro", messageSource.getMessage("erro403", null , LocaleContextHolder.getLocale()));
+			return new ModelAndView("views/error/error")
+	  }
+	  	   
+	  model.addAttribute("usuario", usuario);
+	  new ModelAndView("views/usuario/edit")
 	}
 				  
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
@@ -180,12 +178,6 @@ class UsuarioController {
 	   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	   new SecurityContextLogoutHandler().logout(request, response, auth);
 	   return "redirect:/usuario/login?logout";
-	}
-	
-	@RequestMapping(value = "/acessonegado")
-	@PreAuthorize('permitAll')
-	def acessonegado(){
-		return new ModelAndView("views/usuario/acessonegado")
 	}
 	
 	@RequestMapping(value="/usuario" , method = RequestMethod.GET) 

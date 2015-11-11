@@ -86,7 +86,7 @@
 				   		 	
 				 		</sec>
 					 	
-					 	<sec sec:authorize="isAnonymous()">
+					 	<sec th:if="${#authentication}==null or ${#authentication.principal} == 'anonymousUser'">
 					 		<li th:class="${#httpServletRequest.getServletPath().contains('/usuario/show') ||
 					 		                #httpServletRequest.getServletPath().equals('/usuario/usuario') ? 'active' : ''}">
 					 			<a th:href="@{/usuario/usuario}"><text for="criarusuario" th:text="#{criarusuario}"></text></a>
@@ -117,7 +117,7 @@
 			</div>	
 			
 			<div class="buscardiv"> 
-					<form th:action="${#authentication.principal} == 'anonymousUser' ? '/receitas/receita/buscapublicas' : '/receitas/receita/busca'" method="GET">
+					<form th:action="${#authentication}==null or ${#authentication.principal} == 'anonymousUser' ? '/receitas/receita/buscapublicas' : '/receitas/receita/busca'" method="GET">
 						<input class="upper mb busca" th:placeholder="#{buscarreceita}" th:type="text" th:name="descricao" />
 						<button class="find" th:type="submit"><text for="enviar" th:text="#{buscar}"></text></button>
 					</form>
