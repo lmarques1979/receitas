@@ -67,7 +67,7 @@
 				
 				<sec sec:authorize="isAuthenticated()">
 					<div class="botao">				
-							<a class="botaocriar" th:href="@{/receita}"><text for="receita" th:text="#{criarreceita}"></text></a>
+							<a class="botaocriar" th:href="@{/receita/receita}"><text for="receita" th:text="#{criarreceita}"></text></a>
 					</div><div class="clearer"></div>
 				</sec>
 				<div th:if="${pageimpl.getTotalPages()} > 1">
